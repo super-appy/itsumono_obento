@@ -74,4 +74,4 @@ X(旧:Twitter)での発信
 https://www.figma.com/file/8DJFuFQ2o850Wa5bPoFn44/%E3%81%84%E3%81%A4%E3%82%82%E3%81%AE%E3%81%8A%E3%81%B9%E3%82%93%E3%81%A8%E3%81%86?type=design&node-id=0%3A1&mode=design&t=WQQIArD2UmwP7Ia5-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/01a6303cbfe6ce5dc18ba0253f0f2baf.png)](https://gyazo.com/01a6303cbfe6ce5dc18ba0253f0f2baf)
+[![Image from Gyazo](https://i.gyazo.com/5bda2235e22b7329ec69083896a62d98.png)](https://gyazo.com/5bda2235e22b7329ec69083896a62d98)
