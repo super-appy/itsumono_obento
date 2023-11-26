@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cooked_date: 2023-11-26
+  original_menu: MyString
+  comment: MyText
+  image: MyString
+  published_status: 1
+  user: one
+
+two:
+  cooked_date: 2023-11-26
+  original_menu: MyString
+  comment: MyText
+  image: MyString
+  published_status: 1
+  user: two
