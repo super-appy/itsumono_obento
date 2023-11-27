@@ -1,5 +1,6 @@
 class RecipeStep < ApplicationRecord
-  validates :number, :description, presence: true
-
   belongs_to :recipe
+
+  validates :number, :description, presence: true
+  validates :description, length: { maxium: 500 }
 end
