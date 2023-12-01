@@ -3,7 +3,7 @@ class BookmarkedRecipe < ApplicationRecord
   belongs_to :recipe
   # ブックマークしているレシピを引っ張ってきたい
 
-  validates user_id, uniqueness: { scope: :recipe_id }
+  validates :user_id, uniqueness: { scope: :recipe_id }
   validates :comment, length: { maximun: 500 }
 
   # 最初かstatusを「作りたい」で登録
