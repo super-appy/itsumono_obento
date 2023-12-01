@@ -223,7 +223,7 @@ DEPENDENCIES
   debug
   jbuilder
   jsbundling-rails
-  pg (~> 1.1)
+  pg
   puma (~> 5.0)
   rails (~> 7.0.8)
   selenium-webdriver
