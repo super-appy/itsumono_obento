@@ -4,7 +4,7 @@ class LunchboxLog < ApplicationRecord
   has_many :bookmarked_recipes
 
   validates :cooked_date, :published_status, presence: true
-  validates :comment, length: { maximun: 500 }
-  validates :original_menu, length: { maximun: 50 }
+  validates :comment, length: { maximum: 500 }
+  validates :original_menu, length: { maximum: 50 }
   # imageはpngかjpeg,jpgのみ
 end

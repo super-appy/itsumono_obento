@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_steps
 
   validates :title, :time_required, :taste, :taste_tag_time, presence: true
-  validates :title, length: { maximun: 50 }
-  validates :api_ingredients, :api_steps, length: { maximun: 500 }
+  validates :title, length: { maximum: 50 }
+  validates :api_ingredients, :api_steps, length: { maximum: 500 }
 
 end
