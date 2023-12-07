@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookmarked_recipes", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", null: false
     t.text "comment"
     t.integer "repeat"
     t.bigint "user_id", null: false
@@ -36,11 +36,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
   end
 
   create_table "lunchbox_logs", force: :cascade do |t|
-    t.date "cooked_date"
+    t.date "cooked_date", null: false
     t.string "original_menu"
     t.text "comment"
     t.string "image"
-    t.integer "published_status"
+    t.integer "published_status", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,12 +48,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.string "name"
-    t.string "quantity"
+    t.string "name", null: false
+    t.string "quantity", null: false
     t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
+  create_table "recipe_steps", force: :cascade do |t|
+    t.integer "number", null: false
+    t.text "description", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_steps_on_recipe_id"
   end
 
   create_table "recipe_tags", force: :cascade do |t|
@@ -66,12 +75,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "title"
-    t.integer "time_required"
-    t.integer "taste"
+    t.string "title", null: false
+    t.integer "time_required", null: false
+    t.integer "taste", null: false
     t.text "api_ingredients"
     t.text "api_steps"
-    t.string "taste_tag_time"
+    t.string "taste_tag_time", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,16 +89,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "category"
-    t.string "name"
+    t.integer "category", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "email", null: false
     t.string "crypted_password"
-    t.string "name"
+    t.string "name", null: false
     t.string "avator"
     t.integer "line_registerd"
     t.datetime "created_at", null: false
@@ -103,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074726) do
   add_foreign_key "like_lunchbox_logs", "users"
   add_foreign_key "lunchbox_logs", "users"
   add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipe_steps", "recipes"
   add_foreign_key "recipe_tags", "recipes"
   add_foreign_key "recipe_tags", "tags"
   add_foreign_key "recipes", "users"
