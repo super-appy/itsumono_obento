@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  authenticates_with_sorcery!
   has_many :recipes
   has_many :bookmarked_recipes
   has_many :like_lunchbox_logs

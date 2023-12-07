@@ -11,16 +11,11 @@
     <script src="https://kit.fontawesome.com/d78e08d846.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="flex flex-col min-h-screen">
-    <%= render 'shared/header' %>
-    <div class="container-fluid flex-grow">
-      <div class="row">
-        <%# <%= render "shared/flash_message" %>
-        <%# <%= render "admin/shared/sidebar"%>
-        <%= yield %>
-      </div>
-    </div>
-    <%= render "shared/footer" %>
-  </body>
+<body>
+  <%= render 'shared/header' %>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+
+</body>
 
 </html>
