@@ -8,3 +8,27 @@
 # where the inspected file is and continue its way up to the root directory.
 #
 # See https://docs.rubocop.org/rubocop/configuration
+
+AllCops:
+  DisabledByDefault: true
+  Exclude:
+    - 'gems/**/*'
+  NewCops: enable
+
+Bundler:
+  Enabled: true
+
+Gemspec:
+  Enabled: true
+
+Lint:
+  Enabled: true
+
+# Performance:
+#   Enabled: true
+
+# Rubycw:
+#   Enabled: true
+
+Security:
+  Enabled: true
