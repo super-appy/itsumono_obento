@@ -1,0 +1,13 @@
+<% flash.each do |message_type, message| %>
+  <% bg_color_class = flash_background_color(message_type) %>
+  <div class="flash_message container mx-auto px-8 md:px-14 lg:px-24 w-full">
+    <div class="<%= bg_color_class %> px-4 py-3 rounded relative mt-5" role="alert">
+      <span class="block sm:inline">
+        <%= message %>
+      </span>
+      <button class="cancel_button absolute top-0 bottom-0 right-0 px-4 py-3">
+        <i class="fa-solid fa-xmark fill-current h-6 w-6 text-current"></i>
+      </button>
+    </div>
+  </div>
+<% end %>

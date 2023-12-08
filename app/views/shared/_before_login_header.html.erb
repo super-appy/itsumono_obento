@@ -1,5 +1,5 @@
 <!-- ヘッダー -->
-<header class="container mx-auto flex justify-between items-center px-8 md:px-14 lg:px-24 w-full">
+<header class="container mx-auto flex justify-between items-center px-8 md:px-14 lg:px-24 w-full mt-5">
   <div class="text-3xl text-gray-800 font-bold">いつものお弁当</div>
   <div class="space-x-12 items-center hidden md:flex">
     <%# レシピのプルダウン %>
@@ -16,28 +16,12 @@
           <i class="fa-solid fa-list fa-fw"></i>
           <span> レシピ一覧</span>
         </a>
-        <a href="#" class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
-          <i class="fa-solid fa-pen-to-square fa-fw"></i>
-          <span> レシピ投稿</span>
-        </a>
       </div>
     </div>
-
     <a href="#portfolio" class="hover:text-selected-text transition-all text-gray-800 duration-300">みんなのお弁当</a>
-    <a href="#portfolio" class="hover:text-selected-text transition-all text-gray-800 duration-300">お弁当ログ</a>
-    <%# マイページのプルダウン %>
-    <div class="group relative cursor-pointer py-2">
-      <div class="flex items-center justify-between">
-        <a class="menu-hover my-2 py-2 lg:mx-4">
-          <%= image_tag "icon_default", class: "rounded-full h-12 w-12 flex items-center justify-center ring-1 ring-gray-400" %>
-        </a>
-      </div>
-      <div class="invisible absolute left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
-        <a href="#" class="my-1 block px-4 border-b text-center border-gray-100 py-1 text-gray-700 hover:text-selected-text">マイページ</a>
-        <a href="#" class="my-1 block px-4 border-b text-center border-gray-100 py-1 text-gray-700 hover:text-selected-text">プロフィール</a>
-        <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: "my-1 block px-4 border-b text-center border-gray-100 py-1 text-gray-700 hover:text-selected-text"%>
-    </div>
-  </div>
+    <%= link_to 'ユーザー登録', new_user_path, class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full"%>
+    <%= link_to 'ログイン', login_path, class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full"%>
+
   <%# スマホで見た時のハンバーガーメニュー %>
   <div class="md:hidden">
     <i class="fa-solid fa-bars menu-button fa-2x"></i>

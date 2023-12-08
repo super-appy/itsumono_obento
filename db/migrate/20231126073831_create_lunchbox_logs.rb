@@ -6,7 +6,7 @@ class CreateLunchboxLogs < ActiveRecord::Migration[7.0]
       t.text :comment
       t.string :image
       t.integer :published_status, null: false
-      t.references :user, null: false, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

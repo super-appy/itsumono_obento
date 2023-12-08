@@ -1,5 +1,5 @@
 class CreateRecipes < ActiveRecord::Migration[7.0]
-  def change # rubocop:disable Metrics/MethodLength
+  def change
     create_table :recipes do |t|
       t.string :title, null: false
       t.integer :time_required, null: false
@@ -7,7 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.text :api_ingredients
       t.text :api_steps
       t.string :taste_tag_time, null: false
-      t.references :user, null: false, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

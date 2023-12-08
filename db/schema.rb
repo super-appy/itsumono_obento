@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_082741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
     t.integer "status", null: false
     t.text "comment"
     t.integer "repeat"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
   end
 
   create_table "like_lunchbox_logs", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "lunchbox_log_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
     t.text "comment"
     t.string "image"
     t.integer "published_status", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lunchbox_logs_on_user_id"
@@ -81,7 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
     t.text "api_ingredients"
     t.text "api_steps"
     t.string "taste_tag_time", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["taste_tag_time"], name: "index_recipes_on_taste_tag_time", unique: true
@@ -103,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_074849) do
     t.integer "line_registerd"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "salt"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -11,16 +11,17 @@
     <script src="https://kit.fontawesome.com/d78e08d846.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+<body>
+  <% if logged_in? %>
     <%= render 'shared/header' %>
-    <div class="container-fluid flex-grow">
-      <div class="row">
-        <%# <%= render "shared/flash_message" %>
-        <%# <%= render "admin/shared/sidebar"%>
-        <%= yield %>
-      </div>
-    </div>
-    <%= render "shared/footer" %>
-  </body>
+  <% else %>
+    <%= render 'shared/before_login_header' %>
+  <% end %>
+
+  <%= render 'shared/flash_messages'%>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+
+</body>
 
 </html>
