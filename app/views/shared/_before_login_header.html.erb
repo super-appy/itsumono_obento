@@ -10,33 +10,35 @@
       <div class="invisible absolute left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
         <a href="#" class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
           <i class="fa-solid fa-utensils fa-fw"></i>
-          <span> レシピ生成</span>
+          <span>レシピ生成</span>
         </a>
         <a href="#" class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
           <i class="fa-solid fa-list fa-fw"></i>
-          <span> レシピ一覧</span>
+          <span>レシピ一覧</span>
         </a>
       </div>
     </div>
     <a href="#portfolio" class="hover:text-selected-text transition-all text-gray-800 duration-300">みんなのお弁当</a>
     <%= link_to 'ユーザー登録', new_user_path, class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full"%>
     <%= link_to 'ログイン', login_path, class: "text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full"%>
-
+  </div>
   <%# スマホで見た時のハンバーガーメニュー %>
   <div class="md:hidden">
     <i class="fa-solid fa-bars menu-button fa-2x"></i>
     <i class="fa-solid fa-xmark menu-button fa-2x hidden"></i>
   </div>
-</div>
-<div class="mt-3 menu hidden">
-  <ul class="space-y-4">
-    <li><a href="#home" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ生成</a></li>
-    <li><a href="#portfolio" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ一覧</a></li>
-    <li><a href="#clients" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ投稿</a></li>
-    <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">みんなのお弁当</a></li>
-    <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">お弁当ログ</a></li>
-    <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">マイページ</a></li>
-    <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">プロフィール</a></li>
-    <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">ログアウト</a></li>
-  </ul>
+  </div>
+
+  <div class="mt-3 menu hidden">
+    <ul class="space-y-4">
+      <li><a href="#home" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ生成</a></li>
+      <li><a href="#portfolio" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ一覧</a></li>
+      <li><a href="#clients" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">レシピ投稿</a></li>
+      <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">みんなのお弁当</a></li>
+      <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">お弁当ログ</a></li>
+      <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">マイページ</a></li>
+      <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">プロフィール</a></li>
+      <li><a href="#contact" class="my-1 block text-center px-4 border-b border-gray-100 py-1 hover:text-selected-text">ログアウト</a></li>
+    </ul>
+  </div>
 </header>
