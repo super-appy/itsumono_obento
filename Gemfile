@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # ログイン
 gem 'sorcery'
 
+# 入力フォームを増やす
+gem 'cocoon'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
