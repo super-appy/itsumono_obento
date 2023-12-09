@@ -1,2 +1,67 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+  <!-- text - start -->
+  <div class="mt-6">
+    <h2 class="mb-2 text-center text-2xl font-bold text-gray-800 md:mb-4">レシピ投稿</h2>
+    <p class="mx-auto max-w-screen-md text-center text-gray-500">レシピ投稿できるよ</p>
+  </div>
+  <!-- text - end -->
+
+  <!-- form - start -->
+  <div class="mx-auto grid max-w-screen-md gap-4 mb-10">
+
+    <%= form_with model: @recipe do |form| %>
+
+      <div class="mb-6">
+        <%= form.label :title, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
+        <%= form.text_field :title, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"%>
+      </div>
+
+      <div class="mb-6">
+        <%= form.label :time_required, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
+        <%= form.select :time_required, options_for_select(Recipe.time_requireds.keys), class: ""%>
+      </div>
+
+
+      <div class="mb-6">
+        <%= form.label :taste, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
+        <%= form.select :taste, options_for_select(Recipe.tastes.keys), class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"%>
+      </div>
+
+      <!-- <div class="mb-6">
+        <%= form.label :vegetable, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
+        <%= form.select :vegetable, ['test', 'test01', 'test'], class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" %>
+      </div> %>
+      -->
+
+      <%# レシピの材料 %>
+      <%= form.fields_for :recipe_ingredients do | ing | %>
+
+        <%= ing.label :name, "材料名" %>
+        <%= ing.text_field :name %>
+
+        <%= ing.label :quantity, "分量" %>
+        <%= ing.text_field :quantity %>
+
+      <% end %>
+
+      <%# レシピの手順 %>
+      <%= form.fields_for :recipe_steps do | step | %>
+
+        <%= step.label :number, "手順番号" %>
+        <%= step.text_field :number %>
+
+        <%= step.label :description, "説明" %>
+        <%= step.text_field :description %>
+
+      <% end %>
+
+
+      <div class="flex items-center justify-between">
+        <%= form.submit "投稿する", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"%>
+        <span class="text-sm text-gray-500">*Required</span>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
