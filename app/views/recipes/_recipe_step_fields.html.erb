@@ -1,0 +1,9 @@
+<div class="nested-fields field">
+    <%= f.label :number, "手順番号" %>
+    <%= f.text_field :number %>
+
+    <%= f.label :description, "説明" %>
+    <%= f.text_field :description %>
+
+    <%= link_to_remove_association '削除', f, class: '' %>
+</div>

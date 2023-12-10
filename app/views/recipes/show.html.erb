@@ -1,6 +1,6 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
-    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center">ここに料理のタイトル</h1>
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"><%= @recipe.title%></h1>
     <div class="md:flex md:justify-center mt-10">
       <div class="md:w-1/3 mb-20 md:mb-0 px-10">
         <%# カード %>
@@ -11,7 +11,7 @@
               <div class="px-2 flex items-center">
                 <p class="leading-relaxed">テイスト</p>
                 <i class="fa-solid fa-bowl-rice mx-3"></i>
-                <h2 class="title-font text-gray-900 font-semibold">和風</h2>
+                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.taste%></h2>
               </div>
             </div>
           </div>
@@ -21,64 +21,34 @@
               <div class="px-2 flex items-center">
                 <p class="leading-relaxed">調理時間</p>
                 <i class="fa-solid fa-clock-rotate-left mx-3"></i>
-                <h2 class="title-font text-gray-900 font-semibold">10分</h2>
+                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.time_required%></h2>
               </div>
             </div>
           </div>
         </div>
         <%# 食材と分量 %>
-        <div class="mt-5">
+        <div class="mt-5 border-b border-gray-200">
           <div class="flex py-2">
             <span class="text-gray-500">食材の名前</span>
-            <span class="ml-auto text-gray-900">分量</span>
+            <span class="ml-auto text-gray-500">分量</span>
           </div>
-          <%# ここから下をパーシャルにする %>
-          <div class="flex border-t border-gray-200 py-2">
-            <span class="text-gray-500">白菜</span>
-            <span class="ml-auto text-gray-900">1/2</span>
-          </div>
-          <div class="flex border-t border-gray-200 py-2">
-            <span class="text-gray-500">Size</span>
-            <span class="ml-auto text-gray-900">Medium</span>
-          </div>
-          <div class="flex border-t border-b mb-6 border-gray-200 py-2">
-            <span class="text-gray-500">Quantity</span>
-            <span class="ml-auto text-gray-900">4</span>
-          </div>
+          <%# 材料のパーシャルファイル %>
+          <% @recipe.recipe_ingredients.each do |ingredient| %>
+            <%= render 'ingredient', ingredient: ingredient %>
+          <% end %>
         </div>
       </div>
       <%# 料理手順 %>
-      <div class="md:w-1/3 px-10">
+      <div class="md:w-1/3 px-10 ">
         <%# STEP1 %>
-        <div class="flex relative pb-12">
-          <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">1</div>
-          <div class="flex-grow pl-4">
-            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 1</h2>
-            <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.ああああああああああああああああ</p>
-          </div>
-        </div>
-        <%# STEP2 %>
-        <div class="flex relative pb-12">
-          <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">2</div>
-          <div class="flex-grow pl-4">
-            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
-            <p class="leading-relaxed">Vice migas literally kitsch +1 pok pok. Truffaut hot chicken slow-carb health goth, vape typewriter.</p>
-          </div>
-        </div>
-        <%# STEP3 %>
-        <div class="flex relative">
-          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">3</div>
-          <div class="flex-grow pl-4">
-            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 3</h2>
-            <p class="leading-relaxed">Pitchfork ugh tattooed scenester echo park gastropub whatever cold-pressed retro.</p>
-          </div>
-        </div>
+          <% @recipe.recipe_steps.each_with_index do |step, index| %>
+            <% if index != @recipe.recipe_steps.length-1 %>
+              <%= render 'step', step: step %>
+            <% else%>
+              <%= render 'step_last', step: step%>
+            <% end %>
+          <% end %>
+
       </div>
     </div>
   </div>

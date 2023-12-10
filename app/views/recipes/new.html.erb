@@ -34,27 +34,24 @@
       -->
 
       <%# レシピの材料 %>
-      <%= form.fields_for :recipe_ingredients do | ing | %>
-
-        <%= ing.label :name, "材料名" %>
-        <%= ing.text_field :name %>
-
-        <%= ing.label :quantity, "分量" %>
-        <%= ing.text_field :quantity %>
-
+      <%= form.fields_for :recipe_ingredients do |ing| %>
+          <div class="field">
+              <%= render 'recipe_ingredient_fields', f: ing %>
+          </div>
       <% end %>
+      <div class="links">
+          <%= link_to_add_association 'スポットを追加', form, :recipe_ingredients %>
+      </div>
 
       <%# レシピの手順 %>
       <%= form.fields_for :recipe_steps do | step | %>
-
-        <%= step.label :number, "手順番号" %>
-        <%= step.text_field :number %>
-
-        <%= step.label :description, "説明" %>
-        <%= step.text_field :description %>
-
+          <div class="field">
+              <%= render 'recipe_step_fields', f: step %>
+          </div>
       <% end %>
-
+      <div class="links">
+          <%= link_to_add_association 'スポットを追加', form, :recipe_steps %>
+      </div>
 
       <div class="flex items-center justify-between">
         <%= form.submit "投稿する", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"%>
