@@ -1,10 +1,19 @@
 <div class="nested-fields field">
-
-        <%= f.label :name, "材料名" %>
-        <%= f.text_field :name %>
-
-        <%= f.label :quantity, "分量" %>
-        <%= f.text_field :quantity %>
-
-    <%= link_to_remove_association '削除', f, class: '' %>
+  <div class="flex flex-wrap items-center">
+    <div class="p-2 w-full md:w-6/12">
+      <div class="relative">
+        <%= f.text_field :name, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+      </div>
+    </div>
+    <div class="p-2 w-full md:w-5/12">
+      <div class="relative">
+        <%= f.text_field :quantity, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+      </div>
+    </div>
+    <div class="p-2 w-full md:w-1/12 flex justify-center">
+      <%= link_to_remove_association f, class: "text-white bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center hover:bg-red-600" do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
+  </div>
 </div>

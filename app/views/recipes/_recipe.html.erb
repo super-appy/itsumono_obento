@@ -5,18 +5,21 @@
         <%= tag.name %>
       </div>
     <% end%>
-    <h2 class="text-lg text-gray-900 font-medium title-font my-3"><%= recipe.title %></h2>
+    <p>
+      <%= link_to recipe.title, recipe_path(recipe), class: "text-gray-900 text-2xl py-5" %>
+    </p>
     <div class= "flex mb-2">
       <div class="border-2 border-gray-200 px-1 py-1 rounded-lg flex justify-center">
         <div class="px-1 flex items-center">
           <i class="fa-solid fa-clock-rotate-left pr-2"></i>
-          <h2 class="title-font text-gray-900 font-semibold"><%= recipe.time_required %></h2>
+          <h2 class="text-gray-900"><%= recipe.time_required_i18n %></h2>
         </div>
       </div>
       <div class="border-2 border-gray-200 mx-2 px-1 py-1 rounded-lg flex justify-center">
         <div class="px-1 flex items-center">
           <i class="fa-solid fa-bowl-rice pr-2"></i>
-          <h2 class="title-font text-gray-900 font-semibold"><%= recipe.taste %></h2>
+          <%# <%= t("activerecord.attributes.recipe.taste.#{recipe.taste}") %>
+          <h2 class="text-gray-900"><%= recipe.taste_i18n %></h2>
         </div>
       </div>
     </div>
@@ -26,7 +29,5 @@
         <span class="text-gray-500"> | </span>
       <% end %>
     <% end %>
-
-
   </div>
 </div>

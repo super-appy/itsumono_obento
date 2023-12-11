@@ -1,6 +1,6 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
-    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"><%= @recipe.title%></h1>
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"><%= @recipe.title %></h1>
     <div class="md:flex md:justify-center mt-10">
       <div class="md:w-1/3 mb-20 md:mb-0 px-10">
         <%# カード %>
@@ -8,20 +8,20 @@
           <%# テイスト %>
           <div class="p-1 sm:w-1/2 w-full">
             <div class="border-2 border-gray-200 px-2 py-3 rounded-lg flex justify-center items-center">
-              <div class="px-2 flex items-center">
+              <div class="flex items-center">
                 <p class="leading-relaxed">テイスト</p>
-                <i class="fa-solid fa-bowl-rice mx-3"></i>
-                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.taste%></h2>
+                <i class="fa-solid fa-bowl-rice mx-2"></i>
+                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.taste_i18n %></h2>
               </div>
             </div>
           </div>
           <%# 調理時間 %>
           <div class="p-1 sm:w-1/2 w-full">
             <div class="border-2 border-gray-200 px-2 py-3 rounded-lg flex justify-center items-center">
-              <div class="px-2 flex items-center">
+              <div class="flex items-center">
                 <p class="leading-relaxed">調理時間</p>
-                <i class="fa-solid fa-clock-rotate-left mx-3"></i>
-                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.time_required%></h2>
+                <i class="fa-solid fa-clock-rotate-left mx-2"></i>
+                <h2 class="title-font text-gray-900 font-semibold"><%= @recipe.time_required_i18n %></h2>
               </div>
             </div>
           </div>

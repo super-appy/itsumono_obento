@@ -6,3 +6,5 @@ import "./flash_message";
 
 // yarn addした
 import "cocoon-js-vanilla";
+
+import "./add_steps";
