@@ -4,9 +4,9 @@
     <div class="md:flex md:justify-center mt-10">
       <div class="md:w-1/3 mb-20 md:mb-0 px-10">
         <%# カード %>
-        <div class="flex flex-wrap text-center md:text-left justify-center">
+        <div class="flex flex-wrap justify-center px-1">
           <%# テイスト %>
-          <div class="px-1 sm:w-1/2 w-full">
+          <div class="p-1 sm:w-1/2 w-full">
             <div class="border-2 border-gray-200 px-2 py-3 rounded-lg flex justify-center items-center">
               <div class="px-2 flex items-center">
                 <p class="leading-relaxed">テイスト</p>
@@ -16,7 +16,7 @@
             </div>
           </div>
           <%# 調理時間 %>
-          <div class="px-1 sm:w-1/2 w-full">
+          <div class="p-1 sm:w-1/2 w-full">
             <div class="border-2 border-gray-200 px-2 py-3 rounded-lg flex justify-center items-center">
               <div class="px-2 flex items-center">
                 <p class="leading-relaxed">調理時間</p>
@@ -37,18 +37,19 @@
             <%= render 'ingredient', ingredient: ingredient %>
           <% end %>
         </div>
+        <%# タグ付けした食材 %>
+        <div class="mt-5 flex flex-wrap justify-center">
+          <% @tags.each do |tag| %>
+            <%= render 'tag', tag:tag  %>
+          <% end %>
+        </div>
       </div>
       <%# 料理手順 %>
       <div class="md:w-1/3 px-10 ">
         <%# STEP1 %>
-          <% @recipe.recipe_steps.each_with_index do |step, index| %>
-            <% if index != @recipe.recipe_steps.length-1 %>
-              <%= render 'step', step: step %>
-            <% else%>
-              <%= render 'step_last', step: step%>
-            <% end %>
-          <% end %>
-
+        <% @recipe.recipe_steps.each do |step| %>
+          <%= render 'step', step: step, last: step == @recipe.recipe_steps.last %>
+        <% end %>
       </div>
     </div>
   </div>

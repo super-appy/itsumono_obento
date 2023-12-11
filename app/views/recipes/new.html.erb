@@ -27,6 +27,13 @@
         <%= form.select :taste, options_for_select(Recipe.tastes.keys), class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"%>
       </div>
 
+      <% @tags.each do |category, tags| %>
+        <%= form.label category %>
+        <%= form.select :tag_ids, tags, {}, {multiple: true} %>
+      <% end %>
+
+
+
       <!-- <div class="mb-6">
         <%= form.label :vegetable, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
         <%= form.select :vegetable, ['test', 'test01', 'test'], class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" %>

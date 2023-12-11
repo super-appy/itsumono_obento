@@ -12,10 +12,10 @@
             <i class="fa-solid fa-utensils fa-fw"></i>
             <span> レシピ生成</span>
           </a>
-          <a href="#" class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
+          <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
             <i class="fa-solid fa-list fa-fw"></i>
-            <span> レシピ一覧</span>
-          </a>
+            <%= link_to 'レシピ一覧', recipes_path %>
+          </div>
           <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
             <i class="fa-solid fa-pen-to-square fa-fw"></i>
             <%= link_to 'レシピ投稿', new_recipe_path %>
