@@ -51,6 +51,10 @@ gem 'sorcery'
 # 入力フォームを増やす
 gem 'cocoon'
 
+# 日本語化
+gem 'rails-i18n'
+gem 'enum_help'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
