@@ -17,8 +17,6 @@ class RecipesController < ApplicationController
       recipe_params_with_api = recipe_params
       api_resp = api(recipe_params_with_api)
       @recipe = data_change(recipe_params_with_api, api_resp)
-
-      binding.pry
     else
       @recipe = current_user.recipes.build(recipe_params)
       @recipe.taste_tag_time = make_taste_tag_time(@recipe, @recipe.tag_ids)
@@ -77,7 +75,6 @@ class RecipesController < ApplicationController
   end
 
   def api(params_with_api)
-    # binding.pry
     client = OpenAI::Client.new
 
     response = client.chat(
