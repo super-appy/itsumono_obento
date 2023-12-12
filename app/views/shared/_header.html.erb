@@ -7,11 +7,11 @@
         <div class="flex items-center justify-center">
           <a class="menu-hover py-2 text-gray-800 lg:mx-4">レシピ</a>
         </div>
-        <div class="invisible absolute left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
-          <a href="#" class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
+        <div class="invisible absolute bg-white border border-gray-300 left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
+          <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
             <i class="fa-solid fa-utensils fa-fw"></i>
-            <span> レシピ生成</span>
-          </a>
+            <%= link_to 'レシピ生成', new_api_recipes_path %>
+          </div>
           <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
             <i class="fa-solid fa-list fa-fw"></i>
             <%= link_to 'レシピ一覧', recipes_path %>
