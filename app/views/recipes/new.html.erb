@@ -1,71 +1,112 @@
-<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-  <!-- text - start -->
-  <div class="mt-6">
-    <h2 class="mb-2 text-center text-2xl font-bold text-gray-800 md:mb-4">レシピ投稿</h2>
-    <p class="mx-auto max-w-screen-md text-center text-gray-500">レシピ投稿できるよ</p>
-  </div>
-  <!-- text - end -->
-
-  <!-- form - start -->
-  <div class="mx-auto grid max-w-screen-md gap-4 mb-10">
-
-    <%= form_with model: @recipe do |form| %>
-
-      <div class="mb-6">
-        <%= form.label :title, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
-        <%= form.text_field :title, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"%>
-      </div>
-
-      <div class="mb-6">
-        <%= form.label :time_required, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
-        <%= form.select :time_required, options_for_select(Recipe.time_requireds.keys), class: ""%>
-      </div>
-
-
-      <div class="mb-6">
-        <%= form.label :taste, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
-        <%= form.select :taste, options_for_select(Recipe.tastes.keys), class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"%>
-      </div>
-
-      <% @tags.each do |category, tags| %>
-        <%= form.label category %>
-        <%= form.select :tag_ids, tags, {}, {multiple: true} %>
-      <% end %>
-
-
-
-      <!-- <div class="mb-6">
-        <%= form.label :vegetable, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base"%>
-        <%= form.select :vegetable, ['test', 'test01', 'test'], class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" %>
-      </div> %>
-      -->
-
-      <%# レシピの材料 %>
-      <%= form.fields_for :recipe_ingredients do |ing| %>
-          <div class="field">
-              <%= render 'recipe_ingredient_fields', f: ing %>
-          </div>
-      <% end %>
-      <div class="links">
-          <%= link_to_add_association 'スポットを追加', form, :recipe_ingredients %>
-      </div>
-
-      <%# レシピの手順 %>
-      <%= form.fields_for :recipe_steps do | step | %>
-          <div class="field">
-              <%= render 'recipe_step_fields', f: step %>
-          </div>
-      <% end %>
-      <div class="links">
-          <%= link_to_add_association 'スポットを追加', form, :recipe_steps %>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <%= form.submit "投稿する", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"%>
-        <span class="text-sm text-gray-500">*Required</span>
-      </div>
+<section class="text-gray-600 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <%# レシピ投稿と説明 %>
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">レシピ投稿</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">レシピ投稿できるよ</p>
     </div>
+    <%# 入力フォーム %>
+    <%= form_with model: @recipe do |form| %>
+      <div class="lg:w-1/2 md:w-2/3 mx-auto">
+          <%# タイトル %>
+          <div class="p-2 w-full">
+            <div class="relative">
+              <%= form.label :title, class: "eading-6 text-sm text-gray-600"%>
+              <%= form.text_field :title, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+            </div>
+          </div>
+          <%# プルダウンを並べる %>
+          <div class="flex flex-wrap">
+            <%# 調理時間 %>
+            <div class="p-2 w-full md:w-1/2">
+              <div class="relative">
+                <%= form.label :time_required, class: "leading-7 text-sm text-gray-600" %>
+                <%= form.select :time_required,
+                                Recipe.time_requireds.keys.map { |k| [I18n.t("enums.recipe.time_required.#{k}"), k] },
+                                {},
+                                class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
+              </div>
+            </div>
+            <%# テイスト %>
+            <div class="p-2 w-full md:w-1/2">
+              <div class="relative">
+                <%= form.label :taste, class: "leading-7 text-sm text-gray-600" %>
+                <%= form.select :taste,
+                                Recipe.tastes.keys.map {|k| [I18n.t("enums.recipe.taste.#{k}"), k]},
+                                {},
+                                class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
+              </div>
+            </div>
+          </div>
+          <%# タグ %>
+          <div class="mt-5">タグ</div>
+            <div class="flex flex-wrap">
+              <% @tags.each do |category, tags| %>
+                <div class="p-2 w-full md:w-1/3 px-2">
+                  <div class="relative">
+                      <%= form.label :category, category.to_s.humanize, class: "leading-7 text-sm text-gray-600" %>
+                      <%= form.select :tag_ids, tags, {}, { multiple: true, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out"} %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
 
-  <% end %>
+          <%# ここから材料 %>
+          <div class="mt-5">
+            <div class="flex flex-wrap">
+              <div class="p-2 w-full md:w-6/12 flex justify-center items-center ">
+                <div>材料</div>
+              </div>
+              <div class="p-2 w-full md:w-5/12 flex justify-center items-center">
+                <div>分量</div>
+              </div>
+            </div>
+            <% 3.times do %>
+              <%= form.fields_for :recipe_ingredients do |ing| %>
+                <%= render 'recipe_ingredient_fields', f: ing %>
+              <% end %>
+            <% end %>
+            <div class="mt-2 flex justify-center">
+              <%= link_to_add_association form, :recipe_ingredients, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full" do %>
+                <i class="fa-solid fa-plus"> 材料を追加</i>
+              <% end %>
+            </div>
+          </div>
 
-</div>
+          <%# 手順 %>
+            <div class="mt-5">
+              <div class="flex flex-wrap">
+                <div class="p-2 w-full md:w-1/12 flex justify-center items-center ">
+                  <div>手順</div>
+                </div>
+                <div class="p-2 w-full md:w-10/12 flex justify-center items-center">
+                  <div>内容</div>
+                </div>
+              </div>
+              <% 3.times do %>
+                <%= form.fields_for :recipe_steps do |step| %>
+                  <%= render 'recipe_step_fields', f: step %>
+                <% end %>
+              <% end %>
+              <div class="mt-2 flex justify-center">
+                <%= link_to_add_association form, :recipe_steps, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full" do %>
+                  <i class="fa-solid fa-plus"> 手順を追加</i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 mx-3 flex justify-center">
+            <%= form.button tyoe: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+              <i class="fa-solid fa-magnifying-glass"> プレビュー</i>
+            <% end %>
+            <%= form.button tyoe: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+              <i class="fa-solid fa-magnifying-glass"> プレビュー</i>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</section>
