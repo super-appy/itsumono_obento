@@ -1,0 +1,12 @@
+ja:
+  enums:
+    recipe:
+      time_required:
+        under_10: "10分未満"
+        minutes_10: "10分"
+        minutes_20: "20分"
+        over_20: "20分以上"
+      taste:
+        japanese: "和食"
+        chinese: "中華"
+        western: "洋食"
