@@ -37,3 +37,6 @@
 /.env
 
 .DS_Store
+
+/node_modules
+tag.csv

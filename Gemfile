@@ -48,6 +48,19 @@ gem "bootsnap", require: false
 # ログイン
 gem 'sorcery'
 
+# 入力フォームを増やす
+gem 'cocoon'
+
+# 日本語化
+gem 'rails-i18n'
+gem 'enum_help'
+
+# OpenAIのAPI
+gem "ruby-openai"
+
+# APIのための環境変数の設定
+gem "dotenv-rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
