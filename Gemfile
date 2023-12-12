@@ -55,6 +55,12 @@ gem 'cocoon'
 gem 'rails-i18n'
 gem 'enum_help'
 
+# OpenAIのAPI
+gem "ruby-openai"
+
+# APIのための環境変数の設定
+gem "dotenv-rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
