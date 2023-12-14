@@ -11,11 +11,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 function updateSteps() {
-  document.querySelectorAll('.step-nested-fields').forEach(function(element, index) {
-    var stepIndexElement = element.querySelector(".step-index");
-    if (stepIndexElement) {
-      stepIndexElement.textContent = index + 1;
-    }
+    // 仮の値を設定する例
+  document.querySelectorAll('.step-index').forEach((element, index) => {
+    // ここで設定する値は、実際のアプリケーションロジックに基づく必要があります。
+    element.value = index + 1; // 例えば、インデックスに1を加えた値を設定
   });
 }
 

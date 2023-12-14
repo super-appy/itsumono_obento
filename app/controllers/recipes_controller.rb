@@ -19,12 +19,15 @@ class RecipesController < ApplicationController
       @recipe = data_change(recipe_params_with_api, api_resp)
     else
       @recipe = current_user.recipes.build(recipe_params)
+      @recipe.tag_ids = recipe_params[:tag_ids].reject(&:blank?)
       @recipe.taste_tag_time = make_taste_tag_time(@recipe, @recipe.tag_ids)
     end
 
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
+      Rails.logger.info(@recipe.errors.full_messages)
+      set_select_lists
       render :new
     end
   end
@@ -56,8 +59,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :time_required, :taste, tag_ids:[],
-      recipe_ingredients_attributes: [:id, :name, :quantity],
-      recipe_steps_attributes: [:id, :number, :description])
+      recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
+      recipe_steps_attributes: [:id, :number, :description, :_destroy])
   end
 
   def set_select_lists
