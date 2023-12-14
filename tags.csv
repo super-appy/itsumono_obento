@@ -1,11 +1,42 @@
-ID,category,name,created_at,updated_at
-1,0,白菜,2023-12-08 08:28:38.688811,2023-12-08 08:28:38.688812
-2,0,にんじん,2023-12-08 08:28:38.688812,2023-12-08 08:28:38.688813
-3,0,れんこん,2023-12-08 08:28:38.688813,2023-12-08 08:28:38.688814
-4,0,ごぼう,2023-12-08 08:28:38.688814,2023-12-08 08:28:38.688815
-5,1,鶏肉,2023-12-08 08:28:38.688815,2023-12-08 08:28:38.688816
-6,1,豚肉,2023-12-08 08:28:38.688816,2023-12-08 08:28:38.688817
-7,1,ウインナー,2023-12-08 08:28:38.688817,2023-12-08 08:28:38.688818
-8,2,たまご,2023-12-08 08:28:38.688818,2023-12-08 08:28:38.688819
-9,2,ちくわ,2023-12-08 08:28:38.688819,2023-12-08 08:28:38.688820
-10,2,ひじき,2023-12-08 08:28:38.688820,2023-12-08 08:28:38.688821
+category,name,image_url
+vegetable,かぼちゃ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/1.webp
+vegetable,キャベツ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/2.webp
+vegetable,キュウリ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/3.webp
+vegetable,ゴーヤ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/4.webp
+vegetable,小松菜,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/5.webp
+vegetable,さつまいも,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/6.webp
+vegetable,じゃがいも,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/7.webp
+vegetable,大根,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/8.webp
+vegetable,玉ねぎ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/9.webp
+vegetable,チンゲン菜,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/10.webp
+vegetable,ナス,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/11.webp
+vegetable,にんじん,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/12.webp
+vegetable,白菜,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/13.webp
+vegetable,ピーマン,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/14.webp
+vegetable,ブロッコリー,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/15.webp
+vegetable,ほうれん草,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/16.webp
+vegetable,もやし,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/17.webp
+vegetable,レタス,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/18.webp
+vegetable,レンコン,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/19.webp
+meat_fish,豚肉,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/20.webp
+meat_fish,鶏肉,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/21.webp
+meat_fish,牛肉,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/22.webp
+meat_fish,ベーコン,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/23.webp
+meat_fish,ウインナー,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/24.webp
+meat_fish,ハム,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/25.webp
+meat_fish,ツナ缶,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/26.webp
+meat_fish,鮭,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/27.webp
+meat_fish,ぶり,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/28.webp
+meat_fish,さば,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/29.webp
+meat_fish,アジ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/30.webp
+meat_fish,たこ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/31.webp
+meat_fish,イカ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/32.webp
+meat_fish,えび,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/33.webp
+others,チーズ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/34.webp
+others,ちくわ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/35.webp
+others,厚揚げ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/36.webp
+others,油揚げ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/37.webp
+others,たまご,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/38.webp
+others,こんにゃく,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/39.webp
+others,ひじき,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/40.webp
+others,わかめ,https://everydaylunchbox.s3.ap-northeast-3.amazonaws.com/tags/41.webp
