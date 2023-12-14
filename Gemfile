@@ -61,6 +61,9 @@ gem "ruby-openai"
 # APIのための環境変数の設定
 gem "dotenv-rails"
 
+# 画像投稿機能
+gem "image_processing"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

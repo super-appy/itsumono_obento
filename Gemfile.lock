@@ -117,11 +117,15 @@ GEM
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
     faraday-net_http (3.0.2)
+    ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     io-console (0.6.0)
     irb (1.9.1)
       rdoc
@@ -145,6 +149,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -255,6 +260,8 @@ GEM
       faraday (>= 1)
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
+    ruby-vips (2.2.0)
+      ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.15.0)
@@ -315,6 +322,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   enum_help
+  image_processing
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
