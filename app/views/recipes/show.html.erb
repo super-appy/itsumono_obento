@@ -58,5 +58,12 @@
         <% end %>
       </div>
     </div>
+    <% if current_user.own?(@recipe) %>
+      <div class="mt-2 mx-3 flex justify-center">
+        <%= link_to edit_recipe_path(@recipe), class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+          <i class="fa-solid fa-pen-to-square"> レシピを編集</i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </section>
