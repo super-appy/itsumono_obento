@@ -1,9 +1,7 @@
 <div class="xl:w-1/3 md:w-1/2 p-4">
   <div class="border border-gray-200 p-6 rounded-lg">
     <% recipe.tags.each do |tag| %>
-      <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500">
-        <%= tag.name %>
-      </div>
+      <%= image_tag tag.image_url, class: 'w-14 h-14 inline-flex items-center justify-center bg-indigo-100 text-indigo-500 mb-2 flex-shrink-0 ring-1 ring-gray-400 rounded-full'%>
     <% end%>
     <p>
       <%= link_to recipe.title, recipe_path(recipe), class: "text-gray-900 text-2xl py-5" %>

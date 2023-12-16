@@ -43,9 +43,20 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = current_user.recipes.find(params[:id])
+    @tags = set_select_lists
+    @selected_tags = @recipe.tags.group_by(&:category).transform_values do |tags|
+      tags.map(&:id)
+    end
   end
 
   def update
+    @recipe = current_user.recipes.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe), success: 'レシピ編集できた！'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
