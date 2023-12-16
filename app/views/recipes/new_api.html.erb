@@ -6,7 +6,7 @@
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base">レシピ生成できるよ</p>
     </div>
     <%# 入力フォーム %>
-    <%= form_with model: @recipe do |form| %>
+    <%= form_for @recipe, url: recipes_path(from_new_api: true) do |form| %>
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
           <%# プルダウンを並べる %>
           <div class="flex flex-wrap">
@@ -46,15 +46,12 @@
 
           </div>
           <div class="mt-10 mx-3 flex justify-center">
-            <%= form.hidden_field :from_new_api, value: "true" %>
             <%= form.button tyoe: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
               <i class="fa-solid fa-magnifying-glass"> プレビュー</i>
             <% end %>
           </div>
-
         </div>
       </div>
-
     <% end %>
   </div>
 </section>

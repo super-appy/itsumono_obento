@@ -13,10 +13,12 @@ class RecipesController < ApplicationController
   end
 
   def create
-    if params[:recipe][:from_new_api] == "true"
+    if params[:from_new_api] == "true"
       recipe_params_with_api = recipe_params
       api_resp = api(recipe_params_with_api)
+      set_api_request_cookie
       @recipe = data_change(recipe_params_with_api, api_resp)
+
     else
       @recipe = current_user.recipes.build(recipe_params)
       @recipe.tag_ids = recipe_params[:tag_ids].reject(&:blank?)
@@ -68,7 +70,12 @@ class RecipesController < ApplicationController
 
 
   def new_api
-    @recipe = Recipe.new
+    # Cookieの有効期限が切れなければこの画面にアクセスできないようにする
+    if api_request_allowed?
+      @recipe = Recipe.new
+    else
+      redirect_to root_path, success: 'レシピの生成は1日1度までです'
+    end
   end
 
   private
@@ -83,9 +90,6 @@ class RecipesController < ApplicationController
     @tags = Tag.all.group_by(&:category).transform_values do |tags|
       tags.map { |tag| [tag.name, tag.id] }
     end
-  end
-
-  def get_response
   end
 
   def make_taste_tag_time(recipe, tag_ids)
@@ -113,13 +117,12 @@ class RecipesController < ApplicationController
                 Output should be less than 300 tokens
 
                 # output
-                タイトル:
+                タイトル:(no break)
                 材料(一人前):(no more than 6)
                 手順:(only 3 steps)" }],
         })
 
     response["choices"][0]["message"]["content"]
-
   end
 
   def array_tag(params_with_api)
@@ -128,13 +131,26 @@ class RecipesController < ApplicationController
   end
 
   def data_change(recipe_params_with_api, api_resp)
-    api_resp_name = api_resp.match(/(?<=: ).*(?=\n\n材料)/)[0]
+    api_resp_name = api_resp.match(/(?<=:).*/)[0]
     api_resp_ingredients = api_resp.match(/(?<=材料\(一人前\):\n)[\s\S]*(?=\n\n手順)/)[0]
     api_resp_steps = api_resp.match(/(?<=手順:\n)[\s\S]*/)[0]
 
     taste_tag_time = "#{recipe_params_with_api[:taste]}_#{recipe_params_with_api[:tag_ids].reject(&:blank?).join('')}_#{recipe_params_with_api[:time_required]}"
 
     Recipe.new(recipe_params_with_api.merge(api_resp: api_resp, title: api_resp_name, api_ingredients: api_resp_ingredients, api_steps: api_resp_steps, taste_tag_time: taste_tag_time))
+  end
 
+  def api_request_allowed?
+    last_request_date = cookies[:last_api_request_date]
+    last_request_date.blank? || Date.parse(last_request_date) < Date.today
+  end
+
+  def set_api_request_cookie
+    cookies[:last_api_request_date] = {
+      value: Date.today.to_s,
+      expires: Date.today.end_of_day,
+      secure: Rails.env.production?,
+      httponly: true
+    }
   end
 end
