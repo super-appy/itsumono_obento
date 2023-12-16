@@ -59,8 +59,13 @@ class RecipesController < ApplicationController
     end
   end
 
+
   def destroy
+    recipe = current_user.recipes.find(params[:id])
+    recipe.destroy!
+    redirect_to recipes_path, status: :see_other
   end
+
 
   def new_api
     @recipe = Recipe.new
