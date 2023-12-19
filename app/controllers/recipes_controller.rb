@@ -7,13 +7,22 @@ class RecipesController < ApplicationController
   end
 
   def new
+    # リファクタ：modelにクラスメソッドを作る
+    # def self.hoge
+    #   a = self.new
+    #   a.recipe_ingredients.new
+    #   a.recipe_steps.new
+    # end
     @recipe = Recipe.new
     @recipe.recipe_ingredients.new
     @recipe.recipe_steps.new
   end
 
   def create
-    if params[:from_new_api] == "true"
+    # privateに入れる（レシピのインスタンスを作る）
+    if params[:from_new_api]
+      #全部recipe_paramsで大丈夫※今回は使い回しなので
+      #以下3行がopenaiのクラス
       recipe_params_with_api = recipe_params
       api_resp = api(recipe_params_with_api)
       set_api_request_cookie
@@ -125,6 +134,7 @@ class RecipesController < ApplicationController
     response["choices"][0]["message"]["content"]
   end
 
+  # これも切り出せる
   def array_tag(params_with_api)
     tag_ids = params_with_api[:tag_ids].reject(&:blank?)
     tag_ids.map{ |id| Tag.find(id).name }.join(',')
@@ -135,8 +145,8 @@ class RecipesController < ApplicationController
     api_resp_ingredients = api_resp.match(/(?<=材料\(一人前\):\n)[\s\S]*(?=\n\n手順)/)[0]
     api_resp_steps = api_resp.match(/(?<=手順:\n)[\s\S]*/)[0]
 
+    # 以下はこのコントローラ内
     taste_tag_time = "#{recipe_params_with_api[:taste]}_#{recipe_params_with_api[:tag_ids].reject(&:blank?).join('')}_#{recipe_params_with_api[:time_required]}"
-
     Recipe.new(recipe_params_with_api.merge(api_resp: api_resp, title: api_resp_name, api_ingredients: api_resp_ingredients, api_steps: api_resp_steps, taste_tag_time: taste_tag_time))
   end
 
