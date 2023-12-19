@@ -1,7 +1,7 @@
 class BookmarkedRecipe < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
-  # ブックマークしているレシピを引っ張ってきたい
+
   enum status: { want_to_cook: 0, cooked: 1 }
 
   validates :user_id, uniqueness: { scope: :recipe_id }

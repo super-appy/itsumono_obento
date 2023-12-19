@@ -1,14 +1,13 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">レシピ一覧</h1>
-      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">気にいるレシピを見つけてね</p>
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">ブックマークしたレシピ一覧</h1>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">ブックマークしたレシピ</p>
     </div>
     <div class="flex flex-wrap -m-4">
       <% @bookmarked_recipes.each do |bookmarked_recipe| %>
         <%= render 'recipes/recipe', recipe: bookmarked_recipe.recipe %>
       <% end %>
     </div>
-
   </div>
 </section>
