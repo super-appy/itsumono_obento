@@ -5,6 +5,13 @@
     <% end%>
     <p>
       <%= link_to recipe.title, recipe_path(recipe), class: "text-gray-900 text-2xl py-5" %>
+      <%= link_to "作りたい", bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post} %>
+      <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>
+      <% if bookmarked_recipe %>
+        <%= link_to "作りたい削除", bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete} %>
+        <%= link_to "作った", edit_bookmarked_recipe_path(bookmarked_recipe) %>
+        <%= link_to "削除", bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete, turbo_confirm: '削除してもいいですか？'} %>
+      <% end %>
     </p>
     <div class= "flex mb-2">
       <div class="border-2 border-gray-200 px-1 py-1 rounded-lg flex justify-center">

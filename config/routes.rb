@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :recipe_ingredients
     resources :recipe_steps
   end
+  resources :bookmarked_recipes
+
 
   get 'login', to:'user_sessions#new'
   post 'login', to: 'user_sessions#create'
