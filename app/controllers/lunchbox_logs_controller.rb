@@ -1,6 +1,10 @@
 class LunchboxLogsController < ApplicationController
   before_action :set_select_lists, only: %i[new]
 
+  def index
+    @lunchbox_logs = LunchboxLog.all
+  end
+
   def new
     @lunchbox_log = LunchboxLog.new
   end

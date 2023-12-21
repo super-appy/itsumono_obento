@@ -1,0 +1,16 @@
+<div class="flex items-center lg:w-1/2 mx-auto sm:flex-row flex-col py-4 px-4 ring-2 ring-gray-300 my-3 rounded-2xl">
+  <div class="sm:px-4 border-r-2">
+    <div class="flex justify-center"><%= log.cooked_date.year %></div>
+    <div class="text-2xl flex justify-center"><%= log.cooked_date.month %></div>
+    <div class="text-2xl flex justify-center"><%= log.cooked_date.day %></div>
+  </div>
+  <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mx-5 inline-flex items-center justify-center  bg-indigo-100 flex-shrink-0 ring-1 ring-gray-300">
+    <%= image_tag 'icon_default.png', class: "object-contain"%>
+  </div>
+  <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+    <h2 class="text-gray-900 text-lg title-font font-medium mb-2"><%= log.user.name %></h2>
+    <p class="leading-relaxed text-base"><%= Recipe.find_by(id: log.cooked_recipe_ids).title %></p>
+    <p class="leading-relaxed text-base"><%= log.original_menu %></p>
+    <p class="leading-relaxed text-base"><%= log.comment %></p>
+  </div>
+</div>
