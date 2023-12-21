@@ -22,9 +22,8 @@
           </div>
         </div>
       </div>
-
-      <a href="#portfolio" class="hover:text-selected-text transition-all text-gray-800 duration-300">みんなのお弁当</a>
-      <a href="#portfolio" class="hover:text-selected-text transition-all text-gray-800 duration-300">お弁当ログ</a>
+      <%= link_to 'みんなのお弁当', lunchbox_logs_path, class:"hover:text-selected-text transition-all text-gray-800 duration-300" %>
+      <%= link_to 'お弁当ログ', new_lunchbox_log_path, class:"hover:text-selected-text transition-all text-gray-800 duration-300" %>
       <%# マイページのプルダウン %>
       <div class="group relative cursor-pointer">
         <div class="flex items-center justify-between">
