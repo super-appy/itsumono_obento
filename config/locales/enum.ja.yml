@@ -10,3 +10,8 @@ ja:
         japanese: "和食"
         chinese: "中華"
         western: "洋食"
+    lunchbox_log:
+      published_status:
+        private: "自分限定"
+        users_only: "ユーザー限定"
+        public: "全体公開"
