@@ -16,11 +16,13 @@
   </div>
   <div class="flex sm:flex-col flex-row items-end pt-4 pb-2 sm:pb-4">
     <%= link_to 'いいね', edit_lunchbox_log_path(log), class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" %>
-    <%= link_to edit_lunchbox_log_path(log), class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" do %>
-      <i class="fa-solid fa-pencil"></i>
-    <%end%>
-    <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600 py-2 px-4" do %>
-      <i class="fa-solid fa-trash-can"></i>
+    <% if current_user.own?(log) %>
+      <%= link_to edit_lunchbox_log_path(log), class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" do %>
+        <i class="fa-solid fa-pencil"></i>
+      <%end%>
+      <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
