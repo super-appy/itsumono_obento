@@ -1,0 +1,28 @@
+<div class="flex items-center lg:w-1/2 mx-auto sm:flex-row flex-col py-4 px-4 ring-2 ring-gray-300 my-3 rounded-2xl relative"> <!-- ここに relative を追加 -->
+  <div class="flex sm:flex-col flex-row px-4 sm:border-r-2 text-2xl">
+    <div class="sm:text-sm flex justify-center"><%= log.cooked_date.year %></div>
+    <div class="sm:text-2xl flex justify-center"><%= log.cooked_date.month %></div>
+    <div class="sm:text-2xl flex justify-center"><%= log.cooked_date.day %></div>
+  </div>
+  <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mx-5 inline-flex items-center justify-center bg-indigo-100 flex-shrink-0 ring-1 ring-gray-300">
+    <%= image_tag 'icon_default.png', class: "object-contain"%>
+  </div>
+  <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+    <h2 class="text-gray-900 text-lg title-font font-medium mb-2"><%= log.user.name %></h2>
+    <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
+    <%= link_to recipe.title, recipe_path(recipe), class:"leading-relaxed text-base" %>
+    <p class="leading-relaxed text-base"><%= log.original_menu %></p>
+    <p class="leading-relaxed text-base"><%= log.comment %></p>
+  </div>
+  <div class="flex sm:flex-col flex-row items-end pt-4 pb-2 sm:pb-4">
+    <%= link_to 'いいね', edit_lunchbox_log_path(log), class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" %>
+    <% if current_user.own?(log) %>
+      <%= link_to edit_lunchbox_log_path(log), class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" do %>
+        <i class="fa-solid fa-pencil"></i>
+      <%end%>
+      <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600 py-2 px-4 mb-2 sm:mb-0" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>

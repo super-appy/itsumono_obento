@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :recipe_steps
   end
   resources :bookmarked_recipes
+  resources :lunchbox_logs
 
 
   get 'login', to:'user_sessions#new'
