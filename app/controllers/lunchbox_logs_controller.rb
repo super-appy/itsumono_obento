@@ -1,5 +1,5 @@
 class LunchboxLogsController < ApplicationController
-  before_action :set_select_lists, only: %i[new]
+  before_action :set_select_lists, only: %i[new edit]
 
   def index
     @lunchbox_logs = LunchboxLog.all
@@ -12,11 +12,30 @@ class LunchboxLogsController < ApplicationController
   def create
     @lunchbox_log = current_user.lunchbox_logs.build(lunchbox_log_params)
     if @lunchbox_log.save
-      redirect_to root_path, success: '成功したよ'
+      redirect_to lunchbox_logs_path, success: '成功したよ'
     else
       flash.now[:error] = '失敗したよ'
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @lunchbox_log = current_user.lunchbox_logs.find(params[:id])
+  end
+
+  def update
+    @lunchbox_log = current_user.lunchbox_logs.find(params[:id])
+    if @lunchbox_log.update(lunchbox_log_params)
+      redirect_to lunchbox_logs_path, success: '更新完了'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    lunchbox_log = current_user.lunchbox_logs.find(params[:id])
+    lunchbox_log.destroy!
+    redirect_to lunchbox_logs_path, status: :see_other
   end
 
   private
