@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :recipe_steps
   end
   resources :bookmarked_recipes
-  resources :lunchbox_logs
+
+  resources :lunchbox_logs do
+    collection do
+      get :liked_lunchbox_logs
+    end
+  end
+  resources :like_lunchbox_logs, only: %i[create destroy]
 
 
   get 'login', to:'user_sessions#new'
