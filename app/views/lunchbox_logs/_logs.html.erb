@@ -37,9 +37,9 @@
       <% else %>
       <%# 他人の投稿であればいいねボタン %>
         <% if current_user.like?(log) %>
-          <%= render 'like_lunchbox_log/unlike', log: log%>
+          <%= render 'lunchbox_logs/unlike', log: log%>
         <% else %>
-          <%= render 'like_lunchbox_log/like', log: log%>
+          <%= render 'lunchbox_logs/like', log: log%>
         <% end %>
         <div class="pl-2">
           <%= log.like_lunchbox_logs.count %>
