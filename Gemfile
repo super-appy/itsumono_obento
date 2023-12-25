@@ -64,6 +64,10 @@ gem "dotenv-rails"
 # 画像投稿機能
 gem "image_processing"
 
+# 画像投稿のため
+gem 'carrierwave'
+gem 'fog-aws'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
