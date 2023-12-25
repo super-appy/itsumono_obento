@@ -41,6 +41,16 @@
             </div>
           </div>
 
+          <%# 画像添付 %>
+          <div class="p-2 w-full">
+            <div class="relative">
+              <%= form.label :image, class: "leading-7 text-sm text-gray-600"%>
+              <%= image_tag(@lunchbox_log.image_url) if @lunchbox_log.image? %>
+              <%= form.file_field :image, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+              <%= form.hidden_field :image_cache %>
+            </div>
+          </div>
+
           <%# 公開設定 %>
           <div class="relative">
             <%= form.label :published_status, class: "leading-7 text-sm text-gray-600" %>
