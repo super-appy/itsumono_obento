@@ -41,7 +41,7 @@ class LunchboxLogsController < ApplicationController
   private
 
   def lunchbox_log_params
-    params.require(:lunchbox_log).permit(:cooked_date, :cooked_recipe_ids, :original_menu, :comment, :published_status)
+    params.require(:lunchbox_log).permit(:cooked_date, :cooked_recipe_ids, :original_menu, :comment, :published_status, :image)
   end
 
   def set_select_lists

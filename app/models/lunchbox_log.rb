@@ -3,6 +3,8 @@ class LunchboxLog < ApplicationRecord
   has_many :like_lunchbox_logs
   has_many :bookmarked_recipes
 
+  mount_uploader :image, LunchboxImageUploader
+
   enum published_status: { private: 0, users_only: 1, public: 2 }, _prefix: true
 
   validates :cooked_date, presence: true
