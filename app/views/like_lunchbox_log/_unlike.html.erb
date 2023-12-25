@@ -1,0 +1,3 @@
+<%= link_to like_lunchbox_log_path(current_user.like_lunchbox_logs.find_by(lunchbox_log_id: log.id)), data: { turbo_method: :delete } do %>
+  <i class="fa-solid fa-heart text-lg"></i>
+<% end %>
