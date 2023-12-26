@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
     # @recipes = Recipe.all
     @tags = Tag.all
     @q = Recipe.ransack(params[:q])
+    @q.sorts = "created_at desc" if @q.sorts.empty?
     @recipes = @q.result.includes(:tags).distinct
     # binding.pry
   end
