@@ -68,6 +68,9 @@ gem "image_processing"
 gem 'carrierwave'
 gem 'fog-aws'
 
+# 検索機能
+gem 'ransack'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
