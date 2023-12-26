@@ -1,10 +1,43 @@
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">レシピ一覧</h1>
-      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">気にいるレシピを見つけてね</p>
+  <div class="container px-5 pt-24 pb-10 mx-auto">
+    <div class="flex flex-wrap w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">お弁当用レシピ一覧</h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">タイトルをクリックすると詳細が見れます。<br>気になるレシピはお気に入りに入れておくと見返す時に便利！</p>
     </div>
-    <div class="flex flex-wrap -m-4">
+      <%= search_form_for @q, class: "flex flex-wrap w-full items-end justify-center sm:mb-0 mb-5 sm:px-0 px-5" do |f| %>
+        <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
+        <%= f.label :time_required %>
+        <%= f.select :time_required_eq, Recipe.time_requireds_i18n.invert.map { |key, value| [key, Recipe.time_requireds[value]] },
+                    { include_blank: "未選択" },
+                    class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
+        </div>
+        <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
+        <%= f.label :taste %>
+        <%= f.select :taste_eq, Recipe.tastes_i18n.invert.map { |key, value| [key, Recipe.tastes[value]] },
+                    { include_blank: "未選択" },
+                    class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
+        </div>
+        <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
+        <%= f.label :tag %>
+        <%= f.select :tags_id_in, @tags.map { |tag| [tag.name, tag.id] },
+                    { include_blank: '未選択' },
+                    class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
+        </div>
+        <div class="flex space-x-2">
+          <%= f.button type: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+            <i class="fa-solid fa-magnifying-glass"> 検索</i>
+          <% end %>
+
+          <%= link_to recipes_path, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+            <i class="fa-solid fa-pen-to-square"> リセット</i>
+          <% end %>
+        </div>
+      <% end %>
+
+    <div class="flex flex-wrap -m-4 mt-10">
       <% @recipes.each do |recipe| %>
         <%= render 'recipe', recipe: recipe %>
       <% end %>

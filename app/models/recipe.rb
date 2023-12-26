@@ -15,6 +15,14 @@ class Recipe < ApplicationRecord
   enum time_required: { under_10: 0, minutes_10: 1, minutes_20: 2, over_20: 3 }
   enum taste: { japanese: 0, chinese: 1, western:2 }
 
+  def self.ransackable_attributes(*)
+    ["taste", "tag_ids", "time_required", "title", "created_at", ]
+  end
+
+  def self.ransackable_associations(*)
+    ["recipe_tags", "tags"]
+  end
+
   # validates :title, :time_required, :taste, :taste_tag_time, presence: true
   validates :title, :time_required, :taste, presence: true
   validates :title, length: { maximum: 50 }

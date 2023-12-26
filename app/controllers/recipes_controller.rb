@@ -3,7 +3,12 @@ class RecipesController < ApplicationController
   require "openai"
 
   def index
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
+    @tags = Tag.all
+    @q = Recipe.ransack(params[:q])
+    @q.sorts = "created_at desc" if @q.sorts.empty?
+    @recipes = @q.result.includes(:tags).distinct
+    # binding.pry
   end
 
   def new
@@ -27,11 +32,11 @@ class RecipesController < ApplicationController
       api_resp = api(recipe_params_with_api)
       set_api_request_cookie
       @recipe = data_change(recipe_params_with_api, api_resp)
-
     else
       @recipe = current_user.recipes.build(recipe_params)
       @recipe.tag_ids = recipe_params[:tag_ids].reject(&:blank?)
       @recipe.taste_tag_time = make_taste_tag_time(@recipe, @recipe.tag_ids)
+      # binding.pry
     end
 
     if @recipe.save
@@ -63,7 +68,9 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = current_user.recipes.find(params[:id])
-    if @recipe.update(recipe_params)
+    @recipe.assign_attributes(recipe_params)
+    @recipe.taste_tag_time = make_taste_tag_time(@recipe, @recipe.tag_ids)
+    if @recipe.save
       redirect_to recipe_path(@recipe), success: 'レシピ編集できた！'
     else
       render :edit, status: :unprocessable_entity
@@ -102,7 +109,8 @@ class RecipesController < ApplicationController
   end
 
   def make_taste_tag_time(recipe, tag_ids)
-    str_tags = tag_ids.map {|id| "0#{id}" if id.to_s.length==1}.join('')
+    formatted_tag_ids = tag_ids.map { |id| id.to_s.rjust(2, '0') }
+    str_tags = formatted_tag_ids.join('')
     "#{recipe.taste}_#{str_tags}_#{recipe.time_required}"
   end
 
@@ -146,7 +154,9 @@ class RecipesController < ApplicationController
     api_resp_steps = api_resp.match(/(?<=手順:\n)[\s\S]*/)[0]
 
     # 以下はこのコントローラ内
-    taste_tag_time = "#{recipe_params_with_api[:taste]}_#{recipe_params_with_api[:tag_ids].reject(&:blank?).join('')}_#{recipe_params_with_api[:time_required]}"
+    formatted_tag_ids = recipe_params_with_api[:tag_ids].reject(&:blank?).map { |id| id.to_s.rjust(2, '0') }
+    str_tags = formatted_tag_ids.join('')
+    taste_tag_time = "#{recipe_params_with_api[:taste]}_#{str_tags}_#{recipe_params_with_api[:time_required]}"
     Recipe.new(recipe_params_with_api.merge(api_resp: api_resp, title: api_resp_name, api_ingredients: api_resp_ingredients, api_steps: api_resp_steps, taste_tag_time: taste_tag_time))
   end
 
