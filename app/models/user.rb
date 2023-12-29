@@ -25,6 +25,13 @@ class User < ApplicationRecord
     liked_lunchbox_logs.include?(lunchbox_log)
   end
 
+  def want_to_cook_recipes
+    bookmarked_recipes.where(status: :want_to_cook).order(created_at: :desc).limit(3).map(&:recipe)
+  end
+
+  def cooked_recipes
+    bookmarked_recipes.where(status: :cooked).order(created_at: :desc).limit(3).map(&:recipe)
+  end
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 20 }

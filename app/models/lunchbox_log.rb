@@ -8,6 +8,10 @@ class LunchboxLog < ApplicationRecord
 
   enum published_status: { private: 0, users_only: 1, public: 2 }, _prefix: true
 
+  def start_time
+    self.cooked_date
+  end
+
   validates :cooked_date, presence: true
   validates :comment, length: { maximum: 500 }
   validates :original_menu, length: { maximum: 50 }
