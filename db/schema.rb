@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_25_004447) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_234241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_004447) do
   end
 
   create_table "lunchbox_logs", force: :cascade do |t|
-    t.date "cooked_date", null: false
+    t.datetime "cooked_date", null: false
     t.string "original_menu"
     t.text "comment"
     t.string "image"
