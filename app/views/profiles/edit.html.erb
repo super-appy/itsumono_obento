@@ -1,0 +1,35 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">プロフィール編集</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">お弁当を記録できるよ</p>
+    </div>
+    <div class="p-8 flex flex-col w-full max-w-md mx-auto">
+      <%= form_with model: @user, url: profile_url, local: true do |form| %>
+
+        <div class= "mb-3">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+        <div class= "mb-3">
+          <%= form.label :email %>
+          <%= form.email_field :email, class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'  %>
+        </div>
+
+        <%# 画像添付 %>
+        <div class="p-2 w-full">
+          <div class="relative">
+            <%= form.label :avator %>
+            <%= form.file_field :avator, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+            <div class="w-20 h-20">
+              <%= image_tag current_user.avator.url if current_user.avator? %>
+            </div>
+            <%= form.hidden_field :avator_cache %>
+          </div>
+        </div>
+
+        <%= form.submit class: 'text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mt-5'%>
+      <% end %>
+    </div>
+  </div>
+</section>

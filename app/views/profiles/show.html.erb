@@ -1,0 +1,35 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">あなたのプロフィール</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">お弁当を記録できるよ</p>
+    </div>
+    <div class="p-8 flex flex-col w-full max-w-md mx-auto">
+
+          <div class= "mb-5 pb-1 flex flex-row justify-between border-b-2 border-gray-200">
+            <p>名前</p>
+            <%= current_user.name %>
+          </div>
+
+          <div class= "mb-5 pb-1 flex flex-row justify-between border-b-2 border-gray-200">
+            <p>メールアドレス</p>
+            <%= current_user.email %>
+          </div>
+
+          <p>アイコン</p>
+          <div class= "mb-3 flex justify-center">
+            <% if current_user.avator %>
+              <%= image_tag current_user.avator_url %>
+            <% else %>
+              <%= image_tag 'icon_default.png' %>
+            <% end %>
+          </div>
+          <div class="mt-2 mx-3 flex justify-center">
+            <%= link_to edit_profile_path, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+              <i class="fa-solid fa-pen-to-square"> 編集</i>
+            <% end %>
+          </div>
+
+    </div>
+  </div>
+</section>

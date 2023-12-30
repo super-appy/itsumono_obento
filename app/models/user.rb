@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :like_lunchbox_logs, dependent: :destroy
   has_many :liked_lunchbox_logs, through: :like_lunchbox_logs, source: :lunchbox_log
 
-  enum line_registerd: { yet: 0, done: 1 }
+  enum line_registerd: { not_registerd: 0, done: 1 }, _prefix: true
 
   def own?(object)
     id == object&.user_id
@@ -39,4 +39,6 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   # avatorはpngかjpeg,jpgのみ
+
+  mount_uploader :avator, AvatorUploader
 end

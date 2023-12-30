@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :like_lunchbox_logs, only: %i[create destroy]
+  resource :profile, only: %i[show edit update]
 
 
   get 'login', to:'user_sessions#new'
