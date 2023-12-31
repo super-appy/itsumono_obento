@@ -1,0 +1,25 @@
+<div class="bg-gray-100 p-4 rounded-lg">
+  <div class="flex flex-row justify-between mb-2">
+    <div class="flex flex-col">
+      <div class="text-xs"><%= log.cooked_date.year %></div>
+      <div class="flex justify-centr font-semibold"><%= log.cooked_date.month %>.<%= log.cooked_date.day %></div>
+    </div>
+    <div id="closeModal<%= log.id%>" class="closeModal absolute right-4 cursor-pointer">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+  <div>
+    <div class="flex items-center justify-center w-full h-72 bg-white overflow-hidden mb-4">
+      <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
+    </div>
+    <p class="leading-relaxed text-xs mt-2">menu</p>
+    <% if log.cooked_recipe_ids %>
+      <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
+      <%= link_to recipe.title, recipe_path(recipe), class:"leading-relaxed text-base" %>
+    <% end %>
+    <p class="leading-relaxed text-base"><%= log.original_menu%></p>
+    <p class="leading-relaxed text-xs mt-2">comment</p>
+    <p class="leading-relaxed text-base"><%= log.comment%></p>
+  </div>
+</div>
+
