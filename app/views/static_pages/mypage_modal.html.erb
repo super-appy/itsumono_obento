@@ -5,14 +5,26 @@
       <div class="text-center md:text-lg text-base mb-2">
         <%= date.month %>/<%= date.day%>
       </div>
-      <% logs.each do |log| %>
-        <%= link_to lunchbox_log_path(log) do %>
-        <div class="flex items-center justify-center w-full md:h-32 h-50 bg-white overflow-hidden mb-4">
-          <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
+      <% logs.each_with_index do |log, index| %>
+        <div class="flex items-center justify-center w-full md:h-32 h-50 bg-white mb-4">
+          <%= image_tag log.image.url, id:"openModal#{index}", class:"max-w-full max-h-full cursor-pointer rounded-sm shadow-xl" %>
+
+          <!-- モーダルエリアここから -->
+          <section id="modalArea<%= index %>" class="modalArea hidden fixed inset-0 z-10 opacity-0 transition-opacity duration-400 ease-in-out">
+            <div id="modalBg<%= index %>" class="w-full h-full bg-black bg-opacity-50"></div>
+              <div class="modalWrapper absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-md">
+
+                <%= render 'modal', log: log, index: index %>
+              </div>
+            </div>
+          </section>
+          <!-- モーダルエリアここまで -->
         </div>
-        <% end %>
       <% end %>
     <% end %>
+
+
+
     <%# 作りたいレシピ %>
     <div class="flex flex-col text-center w-full mb-10">
       <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">WANT TO COOK</h2>
