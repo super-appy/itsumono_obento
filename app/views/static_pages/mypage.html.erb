@@ -6,9 +6,11 @@
         <%= date.month %>/<%= date.day%>
       </div>
       <% logs.each do |log| %>
+        <%= link_to lunchbox_log_path(log) do %>
         <div class="flex items-center justify-center w-full md:h-32 h-50 bg-white overflow-hidden mb-4">
           <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
         </div>
+        <% end %>
       <% end %>
     <% end %>
     <%# 作りたいレシピ %>

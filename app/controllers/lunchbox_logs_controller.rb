@@ -5,6 +5,13 @@ class LunchboxLogsController < ApplicationController
     @lunchbox_logs = LunchboxLog.all
   end
 
+  def show
+    @lunchbox_log = current_user.lunchbox_logs.find(params[:id])
+    @previous_log = current_user.lunchbox_logs.where('cooked_date < ?', @lunchbox_log.cooked_date).order(cooked_date: :desc).first
+    @next_log = current_user.lunchbox_logs.where('cooked_date > ?', @lunchbox_log.cooked_date).order(cooked_date: :asc).first
+    @recipe = Recipe.find_by(id: @lunchbox_log.cooked_recipe_ids)
+  end
+
   def new
     @lunchbox_log = LunchboxLog.new
   end
