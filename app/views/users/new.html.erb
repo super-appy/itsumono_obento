@@ -1,11 +1,13 @@
 <section class="text-gray-600 body-font">
-  <div class="container px-8 md:px-14 lg:px-24 w-full py-24 mx-auto flex flex-wrap items-center min-h-full">
-    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-      <h1 class="title-font font-medium text-3xl text-gray-900">なんかいい感じに文言を考える</h1>
-      <p class="leading-relaxed mt-4">お弁当に関するTipsでもいいかもしれない。ポケスリのご飯作る時みたいに</p>
+  <div class="container px-8 md:px-14 lg:px-24 w-full py-20 mx-auto flex flex-wrap items-center min-h-full">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 hidden md:block">
+      <p class="leading-relaxed mb-4">お弁当の豆知識 「五色の原則」</p>
+      <h1 class="title-font font-medium text-lg text-gray-900">赤、黄、緑、白、黒の5色をお弁当に取り入れることで、栄養バランスと見た目の美しさを両立させることができます。</h1>
     </div>
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">ユーザー登録</h2>
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
+          <i class="fa-solid fa-user-plus mx-2"></i>SIGN UP
+      </h2>
         <%= form_with model: @user, local: true do |form| %>
           <%= render 'shared/error_messages', object: form.object %>
 
@@ -32,7 +34,7 @@
           <div class="p-2 w-full">
             <div class="relative">
               <%= form.label :avator %>
-              <%= form.file_field :avator, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
+              <%= form.file_field :avator, class: "w-full px-3"%>
               <%= form.hidden_field :avator_cache %>
             </div>
           </div>
@@ -40,7 +42,6 @@
           <%= form.submit class: 'text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mt-5'%>
       <% end %>
 
-      <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
     </div>
   </div>
 </section>
