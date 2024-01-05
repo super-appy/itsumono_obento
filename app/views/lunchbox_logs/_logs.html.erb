@@ -1,4 +1,4 @@
-<div class="xl:w-1/4 md:w-1/2 p-4">
+<div class="xl:w-1/4 md:w-1/2 p-3">
   <div class="bg-gray-100 p-4 rounded-lg">
     <div class="flex flex-row justify-between mb-2">
       <div class="flex flex-col">
@@ -6,19 +6,22 @@
         <div class="flex justify-centr font-semibold"><%= log.cooked_date.month %>.<%= log.cooked_date.day %></div>
       </div>
       <div class="flex flex-row items-center">
-        <%= image_tag 'icon_default.png', class:"rounded-full h-8 w-8 flex items-center justify-center ring-1 ring-gray-400 mr-2"%>
+        <%= image_tag log.user.avator.url, class:"rounded-full h-8 w-8 flex items-center justify-center ring-1 ring-gray-200 mr-2"%>
         <h2 class="text-gray-900"><%= log.user.name%></h2>
       </div>
     </div>
     <div>
-      <div class="flex items-center justify-center w-full h-72 bg-white overflow-hidden mb-4">
+      <div class="flex items-center justify-center w-full h-64 bg-white overflow-hidden mb-4">
         <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
       </div>
-      <p class="leading-relaxed text-xs mt-2">menu</p>
       <% if log.cooked_recipe_ids %>
+        <p class="leading-relaxed text-xs mt-2">アプリ内メニュー</p>
         <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
         <%= link_to recipe.title, recipe_path(recipe), class:"leading-relaxed text-base" %>
+        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
       <% end %>
+
+      <p class="leading-relaxed text-xs mt-2">オリジナルメニュー</p>
       <p class="leading-relaxed text-base"><%= log.original_menu%></p>
       <p class="leading-relaxed text-xs mt-2">comment</p>
       <p class="leading-relaxed text-base"><%= log.comment%></p>
