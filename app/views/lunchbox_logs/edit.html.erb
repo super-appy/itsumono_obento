@@ -1,74 +1,18 @@
 <section class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto">
     <%# レシピ投稿と説明 %>
-    <div class="flex flex-col text-center w-full mb-12">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">お弁当の記録</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">お弁当を記録できるよ</p>
+    <div class="flex flex-wrap w-full md:mb-20 mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
+          <i class="fa-regular fa-pen-to-square mx-4"></i>お弁当を編集する
+        </h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+        <%# コメント入れるならここ %>
+      </p>
     </div>
     <%# 入力フォーム %>
-    <%= form_with model: @lunchbox_log do |form| %>
-      <div class="lg:w-1/2 md:w-2/3 mx-auto">
-          <div class="flex flex-wrap">
-            <div class="p-2 w-full md:w-1/2">
-
-            <%# 日付 %>
-              <div class="relative">
-                <%= form.label :cooked_date, class: "leading-5 text-sm text-gray-600" %>
-                <%= form.date_field :cooked_date, value: Date.today.to_s, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-1 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
-              </div>
-            </div>
-          </div>
-
-          <%# ブックマークしたレシピ %>
-          <div class="relative">
-            <%= form.label :cooked_recipe_ids, class: "leading-7 text-sm text-gray-600" %>
-            <%= form.select :cooked_recipe_ids, @cooked_recipes, {}, { class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out"} %>
-          </div>
-
-          <%# オリジナルメニュー %>
-          <div class="p-2 w-full">
-            <div class="relative">
-              <%= form.label :original_menu, class: "leading-7 text-sm text-gray-600"%>
-              <%= form.text_field :original_menu, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
-            </div>
-          </div>
-
-          <%# コメント %>
-          <div class="p-2 w-full">
-            <div class="relative">
-              <%= form.label :comment, class: "leading-7 text-sm text-gray-600"%>
-              <%= form.text_field :comment, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
-            </div>
-          </div>
-
-          <%# 画像添付 %>
-          <div class="p-2 w-full">
-            <div class="relative">
-              <%= form.label :image, class: "leading-7 text-sm text-gray-600"%>
-              <%= form.file_field :image, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
-              <div class="w-20 h-20">
-                <%= image_tag(@lunchbox_log.image_url) if @lunchbox_log.image? %>
-              </div>
-              <%= form.hidden_field :image_cache %>
-            </div>
-          </div>
-
-          <%# 公開設定 %>
-          <div class="relative">
-            <%= form.label :published_status, class: "leading-7 text-sm text-gray-600" %>
-            <%= form.select :published_status,
-                LunchboxLog.published_statuses.keys.map { |k| [I18n.t("enums.lunchbox_log.published_status.#{k}"), k] },
-                {},
-                class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
-          </div>
-
-          <div class="mt-10 mx-3 flex justify-center">
-            <%= form.button type: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-              <i class="fa-solid fa-magnifying-glass"> プレビュー</i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'form', log: @lunchbox_log%>
   </div>
 </section>

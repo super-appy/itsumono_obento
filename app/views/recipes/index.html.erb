@@ -2,7 +2,9 @@
   <div class="container px-5 pt-24 pb-10 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">お弁当用レシピ一覧</h1>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+          <i class="fa-solid fa-list mx-4"></i>レシピ一覧
+        </h1>
         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">タイトルをクリックすると詳細が見れます。<br>気になるレシピはお気に入りに入れておくと見返す時に便利！</p>
@@ -28,11 +30,11 @@
         </div>
         <div class="flex space-x-2">
           <%= f.button type: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-            <i class="fa-solid fa-magnifying-glass"> 検索</i>
+            <i class="fa-solid fa-magnifying-glass mx-1"></i>検索
           <% end %>
 
           <%= link_to recipes_path, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-            <i class="fa-solid fa-pen-to-square"> リセット</i>
+            <i class="fa-solid fa-rotate-left mx-1"></i>リセット
           <% end %>
         </div>
       <% end %>
