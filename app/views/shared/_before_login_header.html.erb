@@ -9,11 +9,11 @@
         <i class="fa-solid fa-caret-down"></i>
       </div>
       <div class="invisible absolute bg-white border border-gray-300 left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
-        <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
           <i class="fa-solid fa-utensils mr-1"></i>
           <%= link_to 'レシピ生成', new_api_recipes_path %>
         </div>
-        <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-900 hover:text-selected-text">
+        <div class="flex items-center my-1 px-4 py-1 text-gray-900 hover:text-selected-text">
           <i class="fa-solid fa-list mr-1"></i>
           <%= link_to 'レシピ一覧', recipes_path %>
         </div>
@@ -28,15 +28,26 @@
     <i class="fa-solid fa-bars menu-button fa-2x hover:cursor-pointer"></i>
     <div class="menu hidden group-hover:block absolute right-0 top-full mt-3 bg-white shadow-lg z-50 min-w-[200px]">
       <ul class="flex flex-col z-10 items-center">
-        <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
           <i class="fa-solid fa-utensils fa-fw"></i>
           <%= link_to 'レシピ生成', new_api_recipes_path %>
         </div>
-        <div class="flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text">
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
           <i class="fa-solid fa-list fa-fw"></i>
           <%= link_to 'レシピ一覧', recipes_path %>
         </div>
-        <%= link_to 'みんなのお弁当', lunchbox_logs_path, class:"flex items-center my-1 px-4 border-b border-gray-100 py-1 text-gray-700 hover:text-selected-text" %>
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
+          <i class="fa-regular fa-images mr-1"></i>
+          <%= link_to 'みんなのお弁当', lunchbox_logs_path %>
+        </div>
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
+          <i class="fa-solid fa-user-plus mr-1"></i>
+          <%= link_to 'ユーザー登録', new_user_path %>
+        </div>
+        <div class="flex items-center my-1 px-4 py-1 text-gray-700 hover:text-selected-text">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i>
+          <%= link_to 'ログイン', login_path %>
+        </div>
       </ul>
     </div>
   </div>
