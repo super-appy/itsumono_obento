@@ -13,7 +13,7 @@ class LunchboxLogsController < ApplicationController
   end
 
   def new
-    @lunchbox_log = LunchboxLog.new
+    @lunchbox_log = LunchboxLog.new(cooked_date: Date.today)
   end
 
   def create

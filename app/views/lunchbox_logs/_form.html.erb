@@ -5,7 +5,7 @@
         <div class="p-2 w-full md:w-1/2">
           <div class="relative">
             <%= form.label :cooked_date, class: "leading-5 text-sm text-gray-600" %>
-            <%= form.date_field :cooked_date, value: Date.today.to_s, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-1 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
+            <%= form.date_field :cooked_date, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-1 px-3 leading-6 transition-colors duration-200 ease-in-out" %>
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@
       <div class="p-2 w-full">
         <div class="relative">
           <%= form.label :cooked_recipe_ids, class: "leading-7 text-sm text-gray-600" %>
-          <%= form.select :cooked_recipe_ids, @cooked_recipes, {}, { class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out"} %>
+          <%= form.select :cooked_recipe_ids, @cooked_recipes, { include_blank: "未選択" }, { class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out"} %>
         </div>
       </div>
 
