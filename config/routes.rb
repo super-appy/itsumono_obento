@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     resources :recipe_ingredients
     resources :recipe_steps
   end
-  resources :bookmarked_recipes
+  resources :bookmarked_recipes do
+    collection do
+      get :want_to_cook
+      get :cooked
+    end
+  end
 
   resources :lunchbox_logs do
     collection do

@@ -1,7 +1,11 @@
 class BookmarkedRecipesController < ApplicationController
 
-  def index
-    @bookmarked_recipes = current_user.bookmarked_recipes
+  def cooked
+    @bookmarked_recipes = current_user.bookmarked_recipes.cooked
+  end
+
+  def want_to_cook
+    @bookmarked_recipes = current_user.bookmarked_recipes.want_to_cook
   end
 
   def create
