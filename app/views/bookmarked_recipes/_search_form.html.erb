@@ -1,22 +1,36 @@
     <%= search_form_for @q, url: url, class: "flex flex-wrap w-full items-end justify-center sm:mb-0 mb-5 sm:px-0 px-5" do |f| %>
+      <%# 調理時間 %>
       <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
       <%= f.label :time_required %>
       <%= f.select :recipe_time_required_eq, Recipe.time_requireds_i18n.invert.map { |key, value| [key, Recipe.time_requireds[value]] },
                   { include_blank: "未選択" },
                   class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
       </div>
+      <%# テイスト %>
       <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
       <%= f.label :taste %>
       <%= f.select :recipe_taste_eq, Recipe.tastes_i18n.invert.map { |key, value| [key, Recipe.tastes[value]] },
                   { include_blank: "未選択" },
                   class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
       </div>
+      <%# タグ %>
       <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
       <%= f.label :tag %>
       <%= f.select :recipe_tags_id_in, @tags.map { |tag| [tag.name, tag.id] },
                   { include_blank: '未選択' },
                   class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
       </div>
+
+      <%# 作ったの一覧のみ、リピートの有無 %>
+      <% if action_name == 'cooked' %>
+        <div class="flex flex-col mb-3 sm:mb-0 w-full sm:w-auto sm:mx-4">
+          <%= f.label :repeat %>
+          <%= f.select :repeat_eq, BookmarkedRecipe.repeats_i18n.invert.map { |key, value| [key, BookmarkedRecipe.repeats[value]] },
+                        { include_blank: "未選択" },
+                        class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
+        </div>
+      <% end %>
+
       <div class="flex space-x-2">
         <%= f.button type: 'submit', class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
           <i class="fa-solid fa-magnifying-glass mx-1"></i>検索

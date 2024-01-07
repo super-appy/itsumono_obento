@@ -45,30 +45,49 @@
       <% end %>
     </div>
 
-
-      <div class="mt-2 flex justify-center">
-        <div class="mt-2">
-          <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>
-          <% if bookmarked_recipe %>
-            <% if bookmarked_recipe.status === 'cooked' %>
-            <i class="fa-regular fa-comment"></i>
+    <div class="mt-2 w-full">
+      <div class="mt-2">
+        <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>
+        <% if bookmarked_recipe %>
+          <% if bookmarked_recipe.status === 'cooked' %>
+            <%# 「作った」でブックマークされている %>
+            <div class="bg-blue-300 rounded-full flex justify-center mx-auto w-1/2 my-2">
+              <div class="px-1 flex items-center">
+                <h2 class="text-gray-900"><%= bookmarked_recipe.repeat_i18n %></h2>
+              </div>
+            </div>
+            <div class= "flex justify-center items-center">
+              <i class="fa-regular fa-comment mr-3"></i>
               <%= bookmarked_recipe.comment %>
-            <% else %>
-              <div class="flex">
-              <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "inline-block text-gray-900 text-sm bg-white border border-gray-200 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded-full mx-2" do %>
-                <i class="fa-solid fa-xmark mr-1"></i>つくりたい取消
-              <% end %>
-                <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-                  <i class="fa-solid fa-pen-to-square mr-1"></i>つくった登録
+            </div>
+            <div class= "flex justify-end">
+              <div class="flex flex-row">
+                <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "text-gray-600 px-2" do %>
+                  <i class="fa-solid fa-pencil"></i>
+                <%end%>
+                <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600" do %>
+                  <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>
-              <% end %>
+            </div>
           <% else %>
-            <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-5 focus:outline-none hover:bg-blue-400 rounded-full mx-2" do %>
-                <i class="fa-regular fa-heart mr-1"></i>つくりたい
+            <%# 「作りたい」でブックマークされている %>
+            <div class="flex justify-center">
+            <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "inline-block text-gray-900 text-sm bg-white border border-gray-200 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded-full mx-2" do %>
+              <i class="fa-solid fa-xmark mr-1"></i>つくりたい取消
             <% end %>
+              <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+                <i class="fa-solid fa-pen-to-square mr-1"></i>つくった登録
+              <% end %>
+            </div>
+            <% end %>
+        <% else %>
+          <%# まだブックマークされていない %>
+          <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-5 focus:outline-none hover:bg-blue-400 rounded-full mx-2" do %>
+              <i class="fa-regular fa-heart mr-1"></i>つくりたい
           <% end %>
-        </div>
+        <% end %>
       </div>
+    </div>
   </div>
 </div>
