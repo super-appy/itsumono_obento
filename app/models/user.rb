@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def cooked_recipes
-    bookmarked_recipes.where(status: :cooked).order(created_at: :desc).map(&:recipe)
+    bookmarked_recipes.where(status: :cooked).order(updated_at: :desc).map(&:recipe)
   end
 
   validates :email, presence: true, uniqueness: true
