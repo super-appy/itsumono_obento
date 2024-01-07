@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :recipes do
     collection do
       get :new_api
+      get :posted
     end
     resources :recipe_ingredients
     resources :recipe_steps

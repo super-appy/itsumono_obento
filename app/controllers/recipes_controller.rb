@@ -11,6 +11,10 @@ class RecipesController < ApplicationController
     # binding.pry
   end
 
+  def posted
+    @posted_recipes = current_user.recipes
+  end
+
   def new
     # リファクタ：modelにクラスメソッドを作る
     # def self.hoge

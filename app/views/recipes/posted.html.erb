@@ -1,0 +1,21 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 pt-12 md:pt-24 pb-10 mx-auto">
+    <div class="flex flex-wrap w-full md:mb-20 mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+          <i class="fa-solid fa-utensils mx-4"></i>投稿したレシピ一覧
+        </h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+        <%# コメント入れるならここ %>
+      </p>
+    </div>
+    <%# <%= render 'search_form', url: cooked_bookmarked_recipes_path %>
+    <div class="flex flex-wrap -m-4 mt-10">
+      <% @posted_recipes.each do |posted_recipe| %>
+        <%= render 'recipes/recipe', recipe: posted_recipe %>
+      <% end %>
+    </div>
+  </div>
+</section>
