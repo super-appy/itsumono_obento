@@ -1,35 +1,71 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-10 mx-auto">
+    <div class="flex flex-wrap w-full mb-10 md:ml-18">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="text-2xl font-medium title-font mb-2 text-gray-900">
+          <i class="fa-solid fa-user mx-4"></i>マイページ
+        </h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+        あなただけのお弁当カレンダーを作って、毎週のお弁当を振り返りましょう。<br>
+        レシピもぜひ参考にしてみてくださいね。
+      </p>
+    </div>
     <%# 週のカレンダー %>
     <%= week_calendar events: @lunchbox_logs do |date, logs| %>
       <div class="text-center md:text-lg text-base mb-2">
-        <%= date.month %>/<%= date.day%>
+        <%= date.month %> / <%= date.day%>
       </div>
       <% logs.each do |log| %>
         <%= link_to lunchbox_log_path(log) do %>
-        <div class="flex items-center justify-center w-full md:h-32 h-50 bg-white overflow-hidden mb-4">
+        <div class="flex items-center justify-center w-11/12 mx-auto md:h-32 h-50 overflow-hidden rounded-3xl border border-gray-200hover:scale-105 hover:shadow-lg cursor-pointer transition-transform duration-300 ease-in-out">
           <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
         </div>
         <% end %>
       <% end %>
     <% end %>
     <%# 作りたいレシピ %>
-    <div class="flex flex-col text-center w-full mb-10">
+    <div class="flex flex-col text-center w-full mt-10 mb-5">
       <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">WANT TO COOK</h2>
-      <h1 class="text-2xl font-medium title-font text-gray-900">作りたいレシピ</h1>
+      <%= link_to want_to_cook_bookmarked_recipes_path do %>
+        <h1 class="text-2xl font-medium title-font text-gray-900">
+          作りたいレシピ
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </h1>
+      <% end %>
     </div>
-    <div class="flex flex-wrap -m-4 mt-10">
+    <div class="flex flex-wrap -m-4">
       <% @want_to_cook_recipes.each do |recipe| %>
         <%= render 'recipes/recipe', recipe: recipe %>
       <% end %>
     </div>
     <%# 作ったレシピ %>
-    <div class="flex flex-col text-center w-full my-10 ">
+    <div class="flex flex-col text-center w-full mt-10 mb-5">
       <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">COOKED</h2>
-      <h1 class="text-2xl font-medium title-font text-gray-900">作ったレシピ</h1>
+      <%= link_to cooked_bookmarked_recipes_path do %>
+        <h1 class="text-2xl font-medium title-font text-gray-900">
+          作ったレシピ
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </h1>
+      <% end %>
     </div>
-    <div class="flex flex-wrap -m-4 mt-10">
+    <div class="flex flex-wrap -m-4">
       <% @cooked_recipes.each do |recipe| %>
+        <%= render 'recipes/recipe', recipe: recipe %>
+      <% end %>
+    </div>
+    <%# 投稿したレシピ %>
+    <div class="flex flex-col text-center w-full mt-10 mb-5">
+      <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">MY RECIPE</h2>
+      <%= link_to posted_recipes_path do %>
+        <h1 class="text-2xl font-medium title-font text-gray-900">
+          投稿したレシピ
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </h1>
+      <% end %>    </div>
+    <div class="flex flex-wrap -m-4">
+      <% @posted_recipes.each do |recipe| %>
         <%= render 'recipes/recipe', recipe: recipe %>
       <% end %>
     </div>
