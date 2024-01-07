@@ -1,0 +1,58 @@
+<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 text-center"><%= recipe.title %></h1>
+<div class="md:flex md:justify-center mt-10">
+  <div class="md:w-1/3 mb-20 md:mb-0 px-10">
+    <%# カード %>
+    <div class="flex flex-wrap justify-center px-1">
+      <%# テイスト %>
+      <div class="p-1 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-1 py-3 rounded-lg flex justify-center items-center">
+          <div class="flex items-center">
+            <i class="fa-solid fa-bowl-rice mx-1"></i>
+            <h2 class="title-font text-gray-900 font-semibold"><%= recipe.taste_i18n %></h2>
+          </div>
+        </div>
+      </div>
+      <%# 調理時間 %>
+      <div class="p-1 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-1 py-3 rounded-lg flex justify-center items-center">
+          <div class="flex items-center">
+            <i class="fa-solid fa-clock-rotate-left mx-1"></i>
+            <h2 class="title-font text-gray-900 font-semibold"><%= recipe.time_required_i18n %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# 食材と分量 %>
+    <div class="mt-5 border-b border-gray-200">
+      <div class="flex py-2">
+        <span class="text-gray-500">食材の名前</span>
+        <span class="ml-auto text-gray-500">分量</span>
+      </div>
+      <%# 材料のパーシャルファイル %>
+      <% if recipe.api_ingredients %>
+      <%= simple_format(recipe.api_ingredients, {}, class: "break-words") %>
+      <% else %>
+        <% recipe.recipe_ingredients.each do |ingredient| %>
+          <%= render 'ingredient', ingredient: ingredient %>
+        <% end %>
+      <% end %>
+    </div>
+    <%# タグ付けした食材 %>
+    <div class="mt-5 flex flex-wrap justify-center">
+      <% tags.each do |tag| %>
+        <%= render 'recipes/tag', tag:tag  %>
+      <% end %>
+    </div>
+  </div>
+  <%# 料理手順 %>
+  <div class="md:w-1/3 px-10 ">
+    <%# STEP1 %>
+    <% if recipe.api_steps %>
+      <%= simple_format(recipe.api_steps, {}, class: "break-words") %>
+    <% else %>
+      <% recipe.recipe_steps.each do |step| %>
+        <%= render 'step', step: step, last: step == recipe.recipe_steps.last %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

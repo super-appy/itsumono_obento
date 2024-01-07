@@ -19,3 +19,6 @@ ja:
       status:
         want_to_cook: "つくりたい"
         cooked: "つくった"
+      repeat:
+        repeat: "また作りたい！！！"
+        not_repeat: "もういいかな..."
