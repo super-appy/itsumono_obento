@@ -47,11 +47,11 @@
       <% end %>
     </div>
 
-    <div class="mt-2 w-full">
+    <div class="w-full">
       <div class="mt-2">
       <% if current_user.own?(recipe) %>
         <div class="flex justify-center">
-          <%= link_to edit_recipe_path(recipe), class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+          <%= link_to edit_recipe_path(recipe), class: "inline-block text-white text-sm bg-gray-400 border-0 py-1 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
             <i class="fa-solid fa-pen-to-square mr-2"></i>レシピ編集
           <% end %>
         </div>
@@ -60,10 +60,10 @@
         <% if bookmarked_recipe %>
           <% if bookmarked_recipe.status === 'cooked' %>
             <%# 「作った」でブックマークされている %>
-            <div class="bg-blue-300 rounded-full flex justify-center mx-auto w-1/2 my-2">
-              <div class="px-1 flex items-center">
-                <h2 class="text-gray-900"><%= bookmarked_recipe.repeat_i18n %></h2>
-              </div>
+            <div class="w-full mt-2">
+              <h2 class="flex justify-center items-center text-gray-900 text-sm pt-2 pb-1 border-t border-gray-200">
+                <i class="fa-solid fa-repeat mr-2"></i><%= bookmarked_recipe.repeat_i18n %>
+              </h2>
             </div>
             <div class= "flex justify-center items-center">
               <i class="fa-regular fa-comment mr-3"></i>
