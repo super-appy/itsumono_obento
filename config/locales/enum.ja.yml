@@ -15,3 +15,7 @@ ja:
         private: "自分限定"
         users_only: "ユーザー限定"
         public: "全体公開"
+    bookmarked_recipe:
+      status:
+        want_to_cook: "つくりたい"
+        cooked: "つくった"
