@@ -1,6 +1,6 @@
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap w-full mb-20">
+  <div class="container px-5 pt-12 md:pt-24 pb-10 mx-auto">
+    <div class="flex flex-wrap w-full md:mb-20 mb-10">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
           <i class="fa-solid fa-utensils mx-4"></i>作ったレシピ一覧
@@ -11,7 +11,8 @@
         <%# コメント入れるならここ %>
       </p>
     </div>
-    <div class="flex flex-wrap -m-4">
+    <%= render 'search_form', url: cooked_bookmarked_recipes_path %>
+    <div class="flex flex-wrap -m-4 mt-10">
       <% @bookmarked_recipes.each do |bookmarked_recipe| %>
         <%= render 'recipes/recipe', recipe: bookmarked_recipe.recipe %>
       <% end %>
