@@ -6,6 +6,8 @@
     </div>
     <div class="p-8 flex flex-col w-full max-w-md mx-auto">
       <%= form_with model: @user, url: profile_url, local: true do |form| %>
+        <%= render 'shared/error_messages', object: form.object %>
+
 
         <div class= "mb-3">
           <%= form.label :name %>

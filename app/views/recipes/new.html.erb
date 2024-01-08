@@ -93,7 +93,7 @@
           <div class="flex justify-center">
             <% @tags.each do |category, tags| %>
               <div class="p-2 w-full md:w-1/6 px-2">
-                    <%= form.label :category, category.to_s.humanize, class: "leading-7 text-sm text-gray-600" %>
+                    <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "leading-7 text-sm text-gray-600" %>
                     <%= form.select :tag_ids, tags, {}, { multiple: true, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none py-2 px-3 leading-6 transition-colors duration-200 ease-in-out"} %>
               </div>
             <% end %>
