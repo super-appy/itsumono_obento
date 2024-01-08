@@ -23,8 +23,8 @@ class RecipesController < ApplicationController
     #   a.recipe_steps.new
     # end
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.new
-    @recipe.recipe_steps.new
+    3.times { @recipe.recipe_ingredients.build }
+    3.times { @recipe.recipe_steps.build }
   end
 
   def create
@@ -48,7 +48,8 @@ class RecipesController < ApplicationController
     else
       Rails.logger.info(@recipe.errors.full_messages)
       set_select_lists
-      render :new
+      (3 - @recipe.recipe_ingredients.size).times { @recipe.recipe_ingredients.build }
+      render :new, status: :unprocessable_entity
     end
   end
 

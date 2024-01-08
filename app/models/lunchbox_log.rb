@@ -12,8 +12,22 @@ class LunchboxLog < ApplicationRecord
     self.cooked_date
   end
 
+  validate :one_entry_per_day, on: :create
   validates :cooked_date, presence: true
-  validates :comment, length: { maximum: 500 }
-  validates :original_menu, length: { maximum: 50 }
-  # imageはpngかjpeg,jpgのみ
+  validates :comment, presence: true, length: { maximum: 150 }
+  validates :original_menu, presence: true, length: { maximum: 50 }
+  validates :published_status, presence: true
+
+  private
+
+  def one_entry_per_day
+    # 既に同じ日にログが存在するか確認
+    existing_log = user.lunchbox_logs.where(cooked_date: cooked_date.beginning_of_day..cooked_date.end_of_day).exists?
+    errors.add(:base, "お弁当のログは1日1つしか登録できません。") if existing_log
+  end
+
+  def tomorrow_log
+
+  end
+
 end

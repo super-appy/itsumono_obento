@@ -1,9 +1,13 @@
 <% if object.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul class="mb-0">
-      <% object.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <ul class="mb-0">
+    <% object.errors.each do |error| %>
+      <div class="flash_message container mx-auto w-full">
+        <div class="bg-red-100 border-red-400 text-red-700 py-2 my-2 rounded relative px-2" role="alert">
+          <span class="block sm:inline">
+            <%= error.full_message %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </ul>
 <% end %>
