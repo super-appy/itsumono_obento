@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :recipes do
     collection do
-      get :new_api
       get :posted
     end
     resources :recipe_ingredients
     resources :recipe_steps
+  end
+  namespace :api do
+    resources :recipes, only: %i[ new create ]
   end
   resources :bookmarked_recipes do
     collection do
