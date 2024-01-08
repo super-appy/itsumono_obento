@@ -21,7 +21,7 @@ class LunchboxLogsController < ApplicationController
     if @lunchbox_log.save
       redirect_to lunchbox_logs_path, success: '成功したよ'
     else
-      flash.now[:error] = '失敗したよ'
+      set_select_lists
       render :new, status: :unprocessable_entity
     end
   end
@@ -35,6 +35,7 @@ class LunchboxLogsController < ApplicationController
     if @lunchbox_log.update(lunchbox_log_params)
       redirect_to lunchbox_logs_path, success: '更新完了'
     else
+      set_select_lists
       render :edit, status: :unprocessable_entity
     end
   end
@@ -48,7 +49,7 @@ class LunchboxLogsController < ApplicationController
   private
 
   def lunchbox_log_params
-    params.require(:lunchbox_log).permit(:cooked_date, :cooked_recipe_ids, :original_menu, :comment, :published_status, :image)
+    params.require(:lunchbox_log).permit(:cooked_date, :cooked_recipe_ids, :original_menu, :comment, :published_status, :image, :image_cache)
   end
 
   def set_select_lists
