@@ -22,3 +22,8 @@ ja:
       repeat:
         repeat: "また作りたい！！！"
         not_repeat: "もういいかな..."
+    tag:
+      category:
+        vegetable: 野菜
+        meat_fish: 肉・魚
+        others: その他

@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      recipe: レシピ
+      lunchbox_log: お弁当のログ
+      recipe_step: 調理手順
+      recipe_ingredient: 材料
+      tag: 食材タグ
+      bookmarked_recipe: お気に入りのレシピ
+    attributes:
+      user:
+        email: メールアドレス
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+        avator: アバター
+      recipe:
+        title: タイトル
+        time_required: 調理時間
+        taste: 味のテイスト
+      recipe_step:
+          description: 手順の説明
+      lunchbox_log:
+        cooked_date: 作った日
+        original_menu: その他のメニュー
+        comment: コメント
+        image: お弁当の画像
+        published_status: 公開範囲
+      tag:
+        category: カテゴリ
+        name: 食材名
+      bookmarked_recipe:
+
+
