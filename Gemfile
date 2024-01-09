@@ -56,7 +56,8 @@ gem 'rails-i18n'
 gem 'enum_help'
 
 # OpenAIのAPI
-gem "ruby-openai"
+# gem "ruby-openai"
+gem "faraday"
 
 # APIのための環境変数の設定
 gem "dotenv-rails"

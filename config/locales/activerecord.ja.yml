@@ -19,8 +19,8 @@ ja:
         title: タイトル
         time_required: 調理時間
         taste: 味のテイスト
-      recipe_step:
-          description: 手順の説明
+      recipe_steps:
+        description: 手順の説明
       lunchbox_log:
         cooked_date: 作った日
         original_menu: その他のメニュー
@@ -30,6 +30,5 @@ ja:
       tag:
         category: カテゴリ
         name: 食材名
-      bookmarked_recipe:
 
 
