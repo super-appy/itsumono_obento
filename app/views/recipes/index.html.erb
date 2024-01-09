@@ -29,11 +29,11 @@
                     class: "border border-line-200 rounded-lg py-3 pl-6 w-full sm:w-52 h-12" %>
         </div>
         <div class="flex space-x-2">
-          <%= f.button type: 'submit', class: "inline-block text-theme bg-point border-0 py-2 px-5 focus:outline-none hover:shadow-lg rounded-full text-lg mx-2" do %>
+          <%= f.button type: 'submit', class: "text-theme bg-point border-0 py-2 px-5 hover:shadow-lg rounded-full text-lg mx-2" do %>
             <i class="fa-solid fa-magnifying-glass mx-1"></i>検索
           <% end %>
 
-          <%= link_to recipes_path, class: "inline-block text-white bg-secondary border-0 py-2 px-5 focus:outline-none hover:shadow-lg rounded-full text-lg mx-2" do %>
+          <%= link_to recipes_path, class: "text-white bg-secondary border-0 py-2 px-5 hover:shadow-lg rounded-full text-lg mx-2" do %>
             <i class="fa-solid fa-rotate-left mx-1"></i>リセット
           <% end %>
         </div>
