@@ -11,11 +11,11 @@
     </div>
   </div>
 
-  <table class="table-fixed border-collapse bg-transparent border border-gray-300 w-full">
+  <table class="table-fixed border-collapse bg-transparent border border-card-line w-full">
     <thead class="h-5">
       <tr class="border-collapse">
         <% date_range.slice(0, 7).each do |day| %>
-          <th class="border-b-2 border-gray-300 border-l border-r border-t-0 box-border text-center px-3">
+          <th class="border-b border-card-line border-l border-r border-t-0 box-border text-center px-3 bg-card-body">
             <%= t('date.abbr_day_names')[day.wday] %>
           </th>
         <% end %>
@@ -26,7 +26,7 @@
       <% date_range.each_slice(7) do |week| %>
         <tr>
           <% week.each do |day| %>
-            <%= content_tag :td, class: "#{calendar.td_classes_for(day)} border border-gray-300 p-1 align-top w-1/7 md:h-32 h-24" do %>
+            <%= content_tag :td, class: "#{calendar.td_classes_for(day)} border border-card-line p-1 align-top w-1/7 md:h-32 h-24 bg-card-body" do %>
               <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
             <% end %>
           <% end %>
