@@ -19,7 +19,7 @@ module.exports = {
         input: "#2a2a33",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        'noto-sans-jp': ['Noto Sans JP', 'sans-serif'],
         // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
