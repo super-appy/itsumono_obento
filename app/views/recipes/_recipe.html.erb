@@ -44,57 +44,8 @@
     </div>
 
     <div class="w-full mt-4">
-      <% if current_user.own?(recipe) %>
-        <div class="flex justify-center">
-          <%= link_to edit_recipe_path(recipe), class: "border border-secondary text-sm py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
-            <i class="fa-solid fa-pen-to-square mr-2"></i>レシピ編集
-          <% end %>
-        </div>
-      <% else %>
-        <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>
-        <% if bookmarked_recipe %>
-          <% if bookmarked_recipe.status === 'cooked' %>
-            <%# 「作った」でブックマークされている %>
-            <div class="flex items-center gap-4 my-2">
-              <div class="flex-grow border border-dashed border-secondary text-sm"></div>
-                <i class="fa-solid fa-repeat mr-2"></i><%= bookmarked_recipe.repeat_i18n %>
-              <div class="flex-grow border border-dashed border-secondary"></div>
-            </div>
-
-            <div class= "flex justify-center items-center">
-              <i class="fa-regular fa-comment mr-3"></i><%= bookmarked_recipe.comment %>
-            </div>
-            <div class= "flex justify-end">
-              <div class="flex flex-row text-sm">
-                <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: " px-2" do %>
-                  <i class="fa-solid fa-pencil"></i>
-                <%end%>
-                <%= link_to bookmarked_recipe_path(bookmarked_recipe),
-                      data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
-                  <i class="fa-solid fa-trash-can"></i>
-                <% end %>
-              </div>
-            </div>
-          <% else %>
-            <%# 「作りたい」でブックマークされている %>
-            <div class="flex justify-center items-center">
-              <p><i class="fa-solid fa-heart mr-2"></i>つくりたい</p>
-              <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "text-theme text-sm border border-secondary py-1 px-3 hover:shadow-lg rounded-full mx-2" do %>
-                <i class="fa-solid fa-xmark mr-1"></i>取消
-              <% end %>
-              <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "text-sm bg-point border border-secondary py-1 px-3 hover:shadow-lg rounded-full text-lg mx-2" do %>
-                <i class="fa-solid fa-pen-to-square mr-1"></i>つくった登録
-              <% end %>
-            </div>
-          <% end %>
-        <% else %>
-          <%# まだブックマークされていない %>
-          <div class= "flex justify-center">
-            <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "border border-secondary text-sm bg-point border-1 py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
-                <i class="fa-regular fa-heart mr-1"></i>つくりたい
-            <% end %>
-          </div>
-        <% end %>
+      <% if logged_in? %>
+        <%= render 'recipe_controls', recipe: recipe, current_user: current_user%>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_select_lists, only: :new
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     @tags = Tag.all

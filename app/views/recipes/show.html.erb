@@ -8,18 +8,20 @@
       <% end %>
     </div>
 
-    <% if current_user.own?(@recipe) %>
-      <div class="mt-10 mx-3 flex flex-row md:justify-end justify-center md:mt-0">
-        <%= link_to edit_recipe_path(@recipe),
-              class: "bg-card-body border border-secondary py-1 px-5 mr-2 hover:shadow-lg rounded-full" do %>
-          <i class="fa-solid fa-pen-to-square mr-2"></i>編集
-        <% end %>
-        <%= link_to recipe_path(@recipe),
-              data: { turbo_method: :delete, turbo_confirm: "「#{@recipe.title}」のレシピを削除しますか？"},
-              class: "bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
-          <i class="fa-solid fa-trash-can mr-2"></i>削除
-        <% end %>
-      </div>
+    <% if logged_in? %>
+      <% if current_user.own?(@recipe) %>
+        <div class="mt-10 mx-3 flex flex-row md:justify-end justify-center md:mt-0">
+          <%= link_to edit_recipe_path(@recipe),
+                class: "bg-card-body border border-secondary py-1 px-5 mr-2 hover:shadow-lg rounded-full" do %>
+            <i class="fa-solid fa-pen-to-square mr-2"></i>編集
+          <% end %>
+          <%= link_to recipe_path(@recipe),
+                data: { turbo_method: :delete, turbo_confirm: "「#{@recipe.title}」のレシピを削除しますか？"},
+                class: "bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
+            <i class="fa-solid fa-trash-can mr-2"></i>削除
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 
   </div>
