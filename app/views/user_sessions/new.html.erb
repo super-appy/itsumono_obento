@@ -1,26 +1,26 @@
-<section class="text-secondary body-font">
+<section class="text-card-body body-font">
   <div class="container px-8 md:px-14 lg:px-24 w-full py-12 md:py-24 lg:py-48 mx-auto flex flex-wrap items-center my-auto">
     <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 hidden md:block">
-      <p class="leading-relaxed mb-4">お弁当の豆知識　配置の工夫</p>
+      <p class="leading-relaxed mb-4 text-secondary">お弁当の豆知識　配置の工夫</p>
       <h1 class="title-font font-medium text-lg text-theme">揺れることでおかずが動かないように、ブロッコリーやミニトマト、小さいウインナーなどを使って上手に隙間を埋めましょう！</h1>
     </div>
-    <div class="lg:w-2/6 md:w-1/2 bg-theme opacity-75 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-      <h2 class="text-card-body text-lg font-medium title-font mb-5">
+    <div class="lg:w-2/6 md:w-1/2 bg-theme rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-lg font-semibold title-font mb-5">
         <i class="fa-solid fa-arrow-right-to-bracket mx-2 text-lg"></i>ログイン
       </h2>
-        <%= form_with url: login_path, method: :post do |form| %>
+      <%= form_with url: login_path, method: :post do |form| %>
 
-          <div class= "mb-3">
-            <%= form.label :email, 'メールアドレス', class:'text-card-body' %>
-            <%= form.email_field :email, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
-          </div>
+        <div class= "mb-3">
+          <%= form.label :email, 'メールアドレス', class:'ml-2' %>
+          <%= form.email_field :email, class: 'w-full bg-card-body text-secondary rounded-lg py-2 px-3'%>
+        </div>
 
-          <div class= "mb-3">
-            <%= form.label :password, 'パスワード', class:'text-card-body'%>
-            <%= form.password_field :password, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
-          </div>
+        <div class= "mb-3">
+          <%= form.label :password, 'パスワード', class:'ml-2'%>
+          <%= form.password_field :password, class: 'w-full bg-card-body text-secondary rounded-lg py-2 px-3'  %>
+        </div>
 
-          <%= form.submit 'ログイン', class: 'text-card-body bg-point border-0 mt-6 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2'%>
+        <%= form.submit 'ログイン', class: 'bg-point border-0 mt-8 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2 font-semibold'%>
       <% end %>
 
     </div>
