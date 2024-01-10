@@ -1,5 +1,5 @@
 <% if current_user.own?(recipe) %>
-  <%= render 'control_edit_button', recipe: recipe%>
+  <%= render 'control/control_edit_button', recipe: recipe%>
 <% else %>
   <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>
   <% if bookmarked_recipe %>
@@ -7,7 +7,7 @@
       <%# 「作った」でブックマークされている %>
 
       <%# リピートの有無 %>
-      <%= render 'control_cooked_repeat', bookmarked_recipe: bookmarked_recipe %>
+      <%= render 'control/control_cooked_repeat', bookmarked_recipe: bookmarked_recipe %>
 
       <%# コメント %>
       <div class= "flex justify-center items-center">
@@ -15,14 +15,14 @@
       </div>
 
       <%# 編集削除ボタン %>
-      <%= render 'control_cooked_buttons', bookmarked_recipe: bookmarked_recipe%>
+      <%= render 'control/control_cooked_buttons', bookmarked_recipe: bookmarked_recipe%>
 
     <% else %>
       <%# 「作りたい」でブックマークされている %>
-      <%= render 'control_want_to_cook', bookmarked_recipe: bookmarked_recipe %>
+      <%= render 'control/control_want_to_cook', bookmarked_recipe: bookmarked_recipe %>
     <% end %>
   <% else %>
     <%# まだブックマークされていない %>
-    <%= render 'control_not_bookmarked', recipe: recipe %>
+    <%= render 'control/control_not_bookmarked', recipe: recipe %>
   <% end %>
 <% end %>
