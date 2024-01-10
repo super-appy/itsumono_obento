@@ -1,6 +1,8 @@
 module Api
   class RecipesController < ApplicationController
     before_action :set_select_lists, only: :new
+    skip_before_action :require_login
+
 
     def new
       if api_request_allowed?

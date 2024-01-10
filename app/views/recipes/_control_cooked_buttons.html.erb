@@ -1,0 +1,13 @@
+<div class= "flex justify-end">
+  <div class="flex flex-row text-sm">
+    <%# 編集ボタン %>
+    <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "px-2" do %>
+      <i class="fa-solid fa-pencil"></i>
+    <%end%>
+    <%# 削除ボタン %>
+    <%= link_to bookmarked_recipe_path(bookmarked_recipe),
+          data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  </div>
+</div>

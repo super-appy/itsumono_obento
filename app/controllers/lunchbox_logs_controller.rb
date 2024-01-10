@@ -1,5 +1,6 @@
 class LunchboxLogsController < ApplicationController
   before_action :set_select_lists, only: %i[new edit]
+  skip_before_action :require_login, only: :index
 
   def index
     @lunchbox_logs = LunchboxLog.all
