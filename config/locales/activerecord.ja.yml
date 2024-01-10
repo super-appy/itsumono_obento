@@ -14,7 +14,7 @@ ja:
         name: 名前
         password: パスワード
         password_confirmation: パスワード確認
-        avator: アバター
+        avator: アイコン
       recipe:
         title: タイトル
         time_required: 調理時間

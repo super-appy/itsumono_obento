@@ -1,27 +1,26 @@
-<section class="text-gray-600 body-font">
+<section class="text-secondary body-font">
   <div class="container px-8 md:px-14 lg:px-24 w-full py-12 md:py-24 lg:py-48 mx-auto flex flex-wrap items-center my-auto">
     <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 hidden md:block">
       <p class="leading-relaxed mb-4">お弁当の豆知識　配置の工夫</p>
-      <h1 class="title-font font-medium text-lg text-gray-900">揺れることでおかずが動かないように、ブロッコリーやミニトマト、小さいウインナーなどを使って上手に隙間を埋めましょう！</h1>
+      <h1 class="title-font font-medium text-lg text-theme">揺れることでおかずが動かないように、ブロッコリーやミニトマト、小さいウインナーなどを使って上手に隙間を埋めましょう！</h1>
     </div>
-    <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">
-        <i class="fa-solid fa-arrow-right-to-bracket mx-2"></i>LOG IN
+    <div class="lg:w-2/6 md:w-1/2 bg-theme opacity-75 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-card-body text-lg font-medium title-font mb-5">
+        <i class="fa-solid fa-arrow-right-to-bracket mx-2 text-lg"></i>ログイン
       </h2>
         <%= form_with url: login_path, method: :post do |form| %>
 
           <div class= "mb-3">
-            <%= form.label :email %>
-            <%= form.email_field :email, class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'  %>
+            <%= form.label :email, 'メールアドレス', class:'text-card-body' %>
+            <%= form.email_field :email, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
           </div>
 
           <div class= "mb-3">
-            <%= form.label :password, class: 'form-label' %>
-            <%= form.password_field :password, class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'  %>
+            <%= form.label :password, 'パスワード', class:'text-card-body'%>
+            <%= form.password_field :password, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
           </div>
 
-
-          <%= form.submit class: 'text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mt-5'%>
+          <%= form.submit 'ログイン', class: 'text-card-body bg-point border-0 mt-6 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2'%>
       <% end %>
 
     </div>
