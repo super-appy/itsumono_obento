@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>いつものお弁当</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,9 +9,12 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <script src="https://kit.fontawesome.com/d78e08d846.js" crossorigin="anonymous"></script>
+    <%= favicon_link_tag 'logo_square.png' %>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
   </head>
 
-<body>
+<body class="bg-body font-noto-sans flex flex-col min-h-screen">
   <% if logged_in? %>
     <%= render 'shared/header' %>
   <% else %>
@@ -19,7 +22,9 @@
   <% end %>
 
   <%= render 'shared/flash_messages'%>
-  <%= yield %>
+  <div class="flex-grow">
+    <%= yield %>
+  </div>
   <%= render 'shared/footer' %>
 </body>
 

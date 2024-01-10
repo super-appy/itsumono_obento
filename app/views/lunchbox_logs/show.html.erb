@@ -1,48 +1,67 @@
-<section class="text-gray-600 body-font">
-  <div class="container py-10 mx-auto flex flex-row items-center justify-center min-h-full">
-    <div class="p-6 flex flex-col w-full max-w-md">
-      <div class="flex flex-row justify-between text-bold ">
-        <% if @previous_log %>
-          <%= link_to '〈 前の日', lunchbox_log_path(@previous_log) %>
-        <% else %>
-          <span class="inline-block" style="visibility: hidden; width:68px;"></span>
-        <% end %>
-
-        <%= link_to 'カレンダー', mypage_path %>
-
-        <% if @next_log %>
-          <%= link_to '次の日 〉', lunchbox_log_path(@next_log) %>
-        <% else %>
-          <span class="inline-block" style="visibility: hidden; width:68px;"></span>
-        <% end %>
-      </div>
-
-      <h1 class="text-2xl font-medium title-font text-gray-900 mt-6 mb-8  text-center">
-        <%= @lunchbox_log.cooked_date.strftime('%Y年%m月%d日') %> のお弁当
-      </h1>
-
-    <div>
-      <div class="flex items-center justify-center w-full h-72 bg-white overflow-hidden mb-4">
-        <%= image_tag @lunchbox_log.image.url, class:"max-w-full max-h-full" %>
-      </div>
-      <p class="leading-relaxed text-xs mt-2">ai_menu</p>
-      <% if @lunchbox_log.cooked_recipe_ids %>
-        <%= link_to @recipe.title, recipe_path(@recipe), class:"leading-relaxed text-base" %>
+<section class="text-secondary body-font">
+  <div class="container px-5 py-20 mx-auto">
+    <%# 前の日 %>
+    <div class="flex flex-row justify-between items-center text-bold max-w-md mx-auto">
+      <% if @previous_log %>
+        <%= link_to '◀︎ 前の日', lunchbox_log_path(@previous_log), class: "hover:text-point"%>
+      <% else %>
+        <span class="inline-block" style="visibility: hidden; width:68px;"></span>
       <% end %>
-      <p class="leading-relaxed text-xs mt-2">menu</p>
-      <p class="leading-relaxed text-base"><%= @lunchbox_log.original_menu %></p>
-      <p class="leading-relaxed text-xs mt-2">comment</p>
-      <p class="leading-relaxed text-base"><%= @lunchbox_log.comment %></p>
-      <p class="leading-relaxed text-xs mt-2">公開設定</p>
-      <p class="leading-relaxed text-base"><%= @lunchbox_log.published_status %></p>
+
+      <div class= "hover:text-point">
+        <%= link_to mypage_path do %>
+          <i class="fa-regular fa-calendar mr-2"></i>カレンダー
+        <% end %>
+      </div>
+
+      <% if @next_log %>
+        <%= link_to '次の日 ▶︎', lunchbox_log_path(@next_log), class: "hover:text-point" %>
+      <% else %>
+        <span class="inline-block" style="visibility: hidden; width:68px;"></span>
+      <% end %>
     </div>
 
-      <div class="mt-2 mx-3 flex justify-center">
-        <%= link_to edit_lunchbox_log_path(@lunchbox_log), class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-          <i class="fa-solid fa-pen-to-square"> 編集</i>
-        <% end %>
-      </div>
+    <div class="flex items-center justify-center min-h-full">
+      <div class="flex flex-col max-w-md bg-card-body border border-card-line rounded-lg px-5 py-5 w-full my-5">
 
+        <h1 class="text-lg font-medium title-font text-theme text-center border-b border-dashed border-card-line pb-2">
+          <%= @lunchbox_log.cooked_date.strftime('%Y年%m月%d日') %>
+        </h1>
+
+        <div class="flex items-center justify-center w-full h-72 bg-white overflow-hidden my-4">
+          <%= image_tag @lunchbox_log.image.url, class:"max-w-full max-h-full" %>
+        </div>
+        <%# アプリのメニュー %>
+        <% if @lunchbox_log.cooked_recipe_ids %>
+          <p class="text-xs mt-3">▼ アプリ内メニュー</p>
+          <% recipe = Recipe.find_by(id: @lunchbox_log.cooked_recipe_ids) %>
+          <%= link_to recipe.title, recipe_path(recipe), class: "hover:text-point" %>
+        <% end %>
+        <%# オリジナルメニュー %>
+        <% if @lunchbox_log.original_menu != "" %>
+          <p class="text-xs mt-3">▼ オリジナルメニュー</p>
+          <%= @lunchbox_log.original_menu%>
+        <% end %>
+        <%# コメント %>
+        <p class="text-xs mt-3">▼ コメント</p>
+        <%= @lunchbox_log.comment%>
+        <%# 公開設定 %>
+        <p class="text-xs mt-3">▼ 公開設定</p>
+        <%= @lunchbox_log.published_status_i18n %>
+      </div>
+    </div>
+
+    <%# 編集削除ボタン %>
+    <div class="mt-10 mx-3 flex flex-row md:justify-end justify-center md:mt-0">
+      <%= link_to edit_lunchbox_log_path(@lunchbox_log),
+            class: "bg-card-body border border-secondary py-1 px-5 mr-2 hover:shadow-lg rounded-full" do %>
+        <i class="fa-solid fa-pen-to-square mr-2"></i>編集
+      <% end %>
+      <%= link_to lunchbox_log_path(@lunchbox_log),
+            data: { turbo_method: :delete, turbo_confirm: "削除してもよろしいですか？\n公開範囲を「自分限定」にすることも可能です。"},
+            class: "bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
+        <i class="fa-solid fa-trash-can mr-2"></i>削除
+      <% end %>
     </div>
 
   </div>

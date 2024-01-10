@@ -1,29 +1,29 @@
-<h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 text-center"><%= recipe.title %></h1>
+<h1 class="sm:text-3xl text-2xl font-medium title-font text-theme text-center">
+  <%= recipe.title %>
+</h1>
 <div class="md:flex md:justify-center mt-10">
   <div class="md:w-1/3 mb-20 md:mb-0 px-10">
     <%# カード %>
     <div class="flex flex-wrap justify-center px-1">
       <%# テイスト %>
       <div class="p-1 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-1 py-3 rounded-lg flex justify-center items-center">
+        <div class="border border-secondary px-1 py-3 rounded-full flex justify-center items-center">
           <div class="flex items-center">
-            <i class="fa-solid fa-bowl-rice mx-1"></i>
-            <h2 class="title-font text-gray-900 font-semibold"><%= recipe.taste_i18n %></h2>
+            <i class="fa-solid fa-bowl-rice mr-2 text-secondary text-lg"></i><%= recipe.taste_i18n %>
           </div>
         </div>
       </div>
       <%# 調理時間 %>
       <div class="p-1 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-1 py-3 rounded-lg flex justify-center items-center">
+        <div class="border border-secondary px-1 py-3 rounded-full flex justify-center items-center">
           <div class="flex items-center">
-            <i class="fa-solid fa-clock-rotate-left mx-1"></i>
-            <h2 class="title-font text-gray-900 font-semibold"><%= recipe.time_required_i18n %></h2>
+            <i class="fa-solid fa-clock-rotate-left mr-2 text-lg"></i><%= recipe.time_required_i18n %>
           </div>
         </div>
       </div>
     </div>
     <%# 食材と分量 %>
-    <div class="mt-5 border-b border-gray-200">
+    <div class="mt-5 border-b border-dashed border-card-line pb-5">
       <div class="flex py-2">
         <span class="text-gray-500">食材の名前</span>
         <span class="ml-auto text-gray-500">分量</span>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <%# タグ付けした食材 %>
-    <div class="mt-5 flex flex-wrap justify-center">
+    <div class="mt-4 flex flex-wrap justify-center">
       <% tags.each do |tag| %>
         <%= render 'recipes/tag', tag:tag  %>
       <% end %>

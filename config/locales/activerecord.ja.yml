@@ -6,7 +6,7 @@ ja:
       lunchbox_log: お弁当のログ
       recipe_step: 調理手順
       recipe_ingredient: 材料
-      tag: 食材タグ
+      tag: 食材
       bookmarked_recipe: お気に入りのレシピ
     attributes:
       user:
@@ -14,11 +14,12 @@ ja:
         name: 名前
         password: パスワード
         password_confirmation: パスワード確認
-        avator: アバター
+        avator: アイコン
       recipe:
         title: タイトル
         time_required: 調理時間
         taste: 味のテイスト
+        tag: 食材
       recipe_steps:
         description: 手順の説明
       lunchbox_log:
@@ -30,5 +31,7 @@ ja:
       tag:
         category: カテゴリ
         name: 食材名
-
+      bookmarked_recipe:
+        repeat: リピート
+        comment: メモ
 

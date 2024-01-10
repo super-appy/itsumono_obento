@@ -1,23 +1,26 @@
-<section class="text-gray-600 body-font">
+<section class="text-secondary body-font">
   <div class="container px-5 py-24 mx-auto">
     <%= render 'recipe_detail', recipe: @recipe, tags: @tags%>
 
-    <div class="mt-2 mx-3 flex justify-center">
-      <%= link_to :back, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
+    <div class="mt-10 mx-3 flex justify-center">
+      <%= link_to :back, class: "bg-card-body border border-secondary py-2 px-5 hover:shadow-lg rounded-full text-lg mx-2" do %>
         <i class="fa-solid fa-arrow-rotate-left mr-2"></i>前のページに戻る
       <% end %>
     </div>
 
     <% if current_user.own?(@recipe) %>
-      <div class="mt-2 mx-3 flex justify-end">
+      <div class="mt-10 mx-3 flex flex-row md:justify-end justify-center md:mt-0">
+        <%= link_to edit_recipe_path(@recipe),
+              class: "bg-card-body border border-secondary py-1 px-5 mr-2 hover:shadow-lg rounded-full" do %>
+          <i class="fa-solid fa-pen-to-square mr-2"></i>編集
+        <% end %>
         <%= link_to recipe_path(@recipe),
-              data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？'},
-              class: "inline-block border py-1 px-3 rounded-full " do %>
-          <i class="fa-solid fa-trash-can mr-2"></i>レシピ削除
+              data: { turbo_method: :delete, turbo_confirm: "「#{@recipe.title}」のレシピを削除しますか？"},
+              class: "bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
+          <i class="fa-solid fa-trash-can mr-2"></i>削除
         <% end %>
       </div>
     <% end %>
-
 
   </div>
 </section>

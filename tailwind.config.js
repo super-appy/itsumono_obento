@@ -9,16 +9,17 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        body: "#fffffc",
-        "selected-text": "#faab78",
-        theme: "#d7e9b9",
-        secondary: "#fffbac",
-        badge: "#3f3f51",
+        body: "#f2f7f5", // 背景
+        "card-body": "#fffffe", // レシピなどの背景
+        "card-line": "#597371", // レシピの枠
+        theme: "#00473e", // メインの文字色
+        secondary: "#475d5b", //小さい文字などの色
+        point: "#faae2c", //綺麗な黄色
         inputBorder: "#565666",
         input: "#2a2a33",
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        'noto-sans-jp': ['Noto Sans JP', 'sans-serif'],
         // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },

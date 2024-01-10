@@ -1,39 +1,48 @@
 <div class="xl:w-1/4 md:w-1/2 p-3">
-  <div class="bg-gray-100 p-4 rounded-lg">
-    <div class="flex flex-row justify-between mb-2">
+  <div class="bg-card-body p-4 rounded-lg border border-secondary">
+    <%# 日付とユーザー %>
+    <div class="flex flex-row justify-between pb-2 border-b border-dashed border-secondary">
       <div class="flex flex-col">
         <div class="text-xs"><%= log.cooked_date.year %></div>
         <div class="flex justify-centr font-semibold"><%= log.cooked_date.month %>.<%= log.cooked_date.day %></div>
       </div>
       <div class="flex flex-row items-center">
-        <%= image_tag log.user.avator.url, class:"rounded-full h-8 w-8 flex items-center justify-center ring-1 ring-gray-200 mr-2"%>
-        <h2 class="text-gray-900"><%= log.user.name%></h2>
+        <%= image_tag log.user.avator.url, class:"rounded-full h-9 w-9 flex items-center justify-center border mr-2"%>
+        <%= log.user.name%>
       </div>
     </div>
-    <div>
-      <div class="flex items-center justify-center w-full h-64 bg-white overflow-hidden mb-4">
+
+    <div class="my-2">
+      <%# 画像 %>
+      <div class="flex items-center justify-center w-full h-64 bg-card-body overflow-hidden">
         <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
       </div>
+      <%# アプリのメニュー %>
       <% if log.cooked_recipe_ids %>
-        <p class="leading-relaxed text-xs mt-2">アプリ内メニュー</p>
+        <p class="text-xs mt-3">▼ アプリ内メニュー</p>
         <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
-        <%= link_to recipe.title, recipe_path(recipe), class:"leading-relaxed text-base" %>
+        <%= link_to recipe.title, recipe_path(recipe) %>
         <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
       <% end %>
-
-      <p class="leading-relaxed text-xs mt-2">オリジナルメニュー</p>
-      <p class="leading-relaxed text-base"><%= log.original_menu%></p>
-      <p class="leading-relaxed text-xs mt-2">comment</p>
-      <p class="leading-relaxed text-base"><%= log.comment%></p>
+      <%# オリジナルメニュー %>
+      <% if log.original_menu != "" %>
+        <p class="text-xs mt-3">▼ オリジナルメニュー</p>
+        <%= log.original_menu%>
+      <% end %>
+      <%# コメント %>
+      <p class="text-xs mt-3">▼ コメント</p>
+      <%= log.comment%>
     </div>
-    <div class="flex flex-row justify-end items-end border-t-2 border-gray-200 mt-2 pt-1">
+
+    <%# いいねと編集 %>
+    <div class="flex flex-row justify-end items-end border-t border-dashed border-secondary mt-2 pt-1">
       <% if current_user.own?(log) %>
       <%# 自分の投稿なら編集・削除 %>
         <div class="flex flex-row">
-          <%= link_to edit_lunchbox_log_path(log), class: "text-gray-600 px-2" do %>
+          <%= link_to edit_lunchbox_log_path(log), class: "px-2" do %>
             <i class="fa-solid fa-pencil"></i>
           <%end%>
-          <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600" do %>
+          <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
             <i class="fa-solid fa-trash-can"></i>
           <% end %>
         </div>
