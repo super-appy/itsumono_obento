@@ -33,4 +33,5 @@ ja:
         name: 食材名
       bookmarked_recipe:
         repeat: リピート
+        comment: メモ
 

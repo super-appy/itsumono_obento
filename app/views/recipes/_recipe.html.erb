@@ -1,9 +1,9 @@
-<div class="xl:w-1/3 md:w-1/2 p-4">
+<div class="xl:w-1/3 md:w-1/2 p-4 text-secondary">
   <div class="border border-card-line bg-card-body p-4 rounded-lg">
     <div class="flex flex-row w-full">
       <div class="flex-grow text-theme mb-2 ml-2">
         <%= link_to recipe.title, recipe_path(recipe),
-              class:"underline underline-offset-4 text-lg hover hover:text-point "%>
+              class:"text-lg font-semibold hover hover:text-point "%>
       </div>
       <div class= "flex justify-end">
         <%# いいねの数をカウントするならここに追加 %>
@@ -19,18 +19,18 @@
 
     <div class= "flex my-2 w-full">
       <div class="border rounded-full flex justify-center w-1/2 mx-2">
-        <div class="px-1 flex items-center text-secondary">
+        <div class="px-1 flex items-center ">
           <i class="fa-solid fa-clock-rotate-left pr-2"></i><%= recipe.time_required_i18n %>
         </div>
       </div>
       <div class="border rounded-full flex justify-center w-1/2 mx-2">
-        <div class="px-1 flex items-center text-secondary">
+        <div class="px-1 flex items-center ">
           <i class="fa-solid fa-bowl-rice pr-2"></i><%= recipe.taste_i18n %>
         </div>
       </div>
     </div>
 
-    <div class="text-secondary">
+    <div class="">
       <%# 通常の一覧なら食材を表示する %>
       <% if recipe.api_ingredients %>
         <%# APIで生成したレシピでの表示 %>
@@ -43,10 +43,10 @@
       <% end %>
     </div>
 
-    <div class="w-full mt-2">
+    <div class="w-full mt-4">
       <% if current_user.own?(recipe) %>
         <div class="flex justify-center">
-          <%= link_to edit_recipe_path(recipe), class: "text-secondary border border-secondary text-sm py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
+          <%= link_to edit_recipe_path(recipe), class: "border border-secondary text-sm py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
             <i class="fa-solid fa-pen-to-square mr-2"></i>レシピ編集
           <% end %>
         </div>
@@ -66,11 +66,11 @@
             </div>
             <div class= "flex justify-end">
               <div class="flex flex-row text-sm">
-                <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "text-gray-600 px-2" do %>
+                <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: " px-2" do %>
                   <i class="fa-solid fa-pencil"></i>
                 <%end%>
                 <%= link_to bookmarked_recipe_path(bookmarked_recipe),
-                      data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "text-gray-600" do %>
+                      data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>
@@ -79,10 +79,10 @@
             <%# 「作りたい」でブックマークされている %>
             <div class="flex justify-center items-center">
               <p><i class="fa-solid fa-heart mr-2"></i>つくりたい</p>
-              <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "text-theme text-sm  border border-secondary py-1 px-3 hover:shadow-lg rounded-full mx-2" do %>
+              <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "text-theme text-sm border border-secondary py-1 px-3 hover:shadow-lg rounded-full mx-2" do %>
                 <i class="fa-solid fa-xmark mr-1"></i>取消
               <% end %>
-              <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "inline-block text-secondary text-sm bg-point border-1 border-point py-1 px-3 hover:shadow-lg rounded-full text-lg mx-2" do %>
+              <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "text-sm bg-point border border-secondary py-1 px-3 hover:shadow-lg rounded-full text-lg mx-2" do %>
                 <i class="fa-solid fa-pen-to-square mr-1"></i>つくった登録
               <% end %>
             </div>
@@ -90,7 +90,7 @@
         <% else %>
           <%# まだブックマークされていない %>
           <div class= "flex justify-center">
-            <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "text-secondary text-sm bg-point border-1 py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
+            <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "border border-secondary text-sm bg-point border-1 py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
                 <i class="fa-regular fa-heart mr-1"></i>つくりたい
             <% end %>
           </div>
