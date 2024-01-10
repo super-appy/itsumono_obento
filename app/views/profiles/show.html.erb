@@ -1,32 +1,40 @@
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
-    <div class="flex flex-col text-center w-full mb-12">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">あなたのプロフィール</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">お弁当を記録できるよ</p>
+<section class="text-secondary body-font">
+  <div class="container px-5 py-20 mx-auto flex flex-wrap items-center justify-center min-h-full">
+    <div class="flex flex-wrap w-full mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-theme">
+          <i class="fa-regular fa-address-card mx-4"></i>プロフィール
+        </h1>
+        <div class="h-1 w-20 bg-point rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-secondary">
+        <%# コメント入れるならここ %>
+      </p>
     </div>
     <div class="p-8 flex flex-col w-full max-w-md mx-auto">
 
-          <div class= "mb-5 pb-1 flex flex-row justify-between border-b-2 border-gray-200">
-            <p>名前</p>
+          <div class= "mb-5 pb-1 flex flex-row justify-between border-b border-card-line">
+            <p class="text-sm">名前</p>
             <%= current_user.name %>
           </div>
 
-          <div class= "mb-5 pb-1 flex flex-row justify-between border-b-2 border-gray-200">
-            <p>メールアドレス</p>
+          <div class= "mb-5 pb-1 flex flex-row justify-between border-b border-card-line">
+            <p class="text-sm">メールアドレス</p>
             <%= current_user.email %>
           </div>
 
-          <p>アイコン</p>
+          <p class="text-sm">アイコン</p>
           <div class= "mb-3 flex justify-center">
             <% if current_user.avator %>
-              <%= image_tag current_user.avator_url %>
+              <%= image_tag current_user.avator_url, class: "rounded-full h-20 w-20" %>
             <% else %>
-              <%= image_tag 'icon_default.png' %>
+              <%= image_tag 'icon_default.png', class: "rounded-full h-20 w-20" %>
             <% end %>
           </div>
-          <div class="mt-2 mx-3 flex justify-center">
-            <%= link_to edit_profile_path, class: "inline-block text-white bg-gray-400 border-0 py-2 px-5 focus:outline-none hover:bg-blue-400 rounded-full text-lg mx-2" do %>
-              <i class="fa-solid fa-pen-to-square"> 編集</i>
+
+          <div class="mt-10 mx-3 flex justify-center">
+            <%= link_to edit_profile_path, class: "text-secondary bg-card-body border border-secondary rounded-full px-5 py-2 hover:shadow-lg" do %>
+              <i class="fa-solid fa-pen-to-square mr-2"></i>編集
             <% end %>
           </div>
 

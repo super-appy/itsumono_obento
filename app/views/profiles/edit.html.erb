@@ -1,8 +1,15 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
-    <div class="flex flex-col text-center w-full mb-12">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">プロフィール編集</h1>
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">お弁当を記録できるよ</p>
+    <div class="flex flex-wrap w-full mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-theme">
+          <i class="fa-regular fa-address-card mx-4"></i>プロフィール編集
+        </h1>
+        <div class="h-1 w-20 bg-point rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-secondary">
+        <%# コメント入れるならここ %>
+      </p>
     </div>
     <div class="p-8 flex flex-col w-full max-w-md mx-auto">
       <%= form_with model: @user, url: profile_url, local: true do |form| %>
@@ -11,26 +18,26 @@
 
         <div class= "mb-3">
           <%= form.label :name %>
-          <%= form.text_field :name, class: "w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+          <%= form.text_field :name, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3" %>
         </div>
         <div class= "mb-3">
           <%= form.label :email %>
-          <%= form.email_field :email, class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'  %>
+          <%= form.email_field :email, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
         </div>
 
         <%# 画像添付 %>
         <div class="p-2 w-full">
           <div class="relative">
             <%= form.label :avator %>
-            <%= form.file_field :avator, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-6 transition-colors duration-200 ease-in-out"%>
-            <div class="w-20 h-20">
-              <%= image_tag current_user.avator.url if current_user.avator? %>
-            </div>
+            <%= form.file_field :avator, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
+            <%= image_tag current_user.avator.url, class: "w-20 h-20 rounded-full mt-3" if current_user.avator? %>
             <%= form.hidden_field :avator_cache %>
           </div>
         </div>
 
-        <%= form.submit class: 'text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-full text-lg mt-5'%>
+        <div class= "flex justify-center">
+          <%= form.submit '更新する', class: "text-theme bg-point border-0 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" %>
+        </div>
       <% end %>
     </div>
   </div>
