@@ -1,0 +1,4 @@
+<%# ブックマーク %>
+<%= turbo_stream.replace "want_to_cook_area_for_bookmarked_recipe_#{@recipe.id}" do %>
+  <%= render 'recipes/control/bookmark_button', recipe: @recipe %>
+<% end %>
