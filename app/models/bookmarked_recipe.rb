@@ -3,7 +3,7 @@ class BookmarkedRecipe < ApplicationRecord
   belongs_to :recipe
 
   enum status: { want_to_cook: 0, cooked: 1 }
-  enum repeat: { repeat: 0, not_repeat: 1 }
+  enum repeat: { repeat: 0, no_repeat: 1 }
 
   def self.ransackable_attributes(*)
     ["repeat", "status", "updated_at", "user_id"]
