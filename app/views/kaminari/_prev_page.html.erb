@@ -1,0 +1,11 @@
+<%# Link to the "Previous" page
+  - available local variables
+    url:           url to the previous page
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+-%>
+<span class="prev bg-theme w-10 h-10 rounded-full text-card-body flex justify-center items-center mx-3 hover:shadow-lg">
+  <%= link_to_unless current_page.first?, content_tag(:i, '', class: 'fa-solid fa-chevron-left'), url, rel: 'prev', remote: remote %>
+</span>
