@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   end
 
   def posted
-    @posted_recipes = current_user.recipes
+    @posted_recipes = current_user.recipes.page(params[:page])
   end
 
   def new
