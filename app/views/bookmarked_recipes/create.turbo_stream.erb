@@ -1,0 +1,5 @@
+<%# レシピのブックマーク %>
+<%= turbo_stream.replace "bookmark-button-for-recipe-#{@recipe.id}" do %>
+  <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: @recipe.id)%>
+  <%= render 'recipes/control/want_to_cook', bookmarked_recipe: bookmarked_recipe, recipe: @recipe %>
+<% end %>
