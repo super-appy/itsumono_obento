@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "like-button-for-log-#{@lunchbox_log.id}" do %>
+  <%= render 'lunchbox_logs/unlike', log: @lunchbox_log %>
+<% end %>
+

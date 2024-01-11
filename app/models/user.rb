@@ -2,8 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :recipes
-  has_many :bookmarked_recipes
-  has_many :lunchbox_logs
+  has_many :bookmarked_recipes, dependent: :destroy
+  has_many :registered_bookmarked_recipes, through: :bookmarked_recipes, source: :recipe
   has_many :like_lunchbox_logs, dependent: :destroy
   has_many :liked_lunchbox_logs, through: :like_lunchbox_logs, source: :lunchbox_log
 
@@ -23,6 +23,14 @@ class User < ApplicationRecord
 
   def like?(lunchbox_log)
     liked_lunchbox_logs.include?(lunchbox_log)
+  end
+
+  def bookmark(recipe)
+    bookmarked_recipes.create(recipe: recipe, status:0)
+  end
+
+  def unbookmark(recipe)
+    registered_bookmarked_recipes.destroy(recipe)
   end
 
   def want_to_cook_recipes
