@@ -3,7 +3,11 @@ class LunchboxLogsController < ApplicationController
   skip_before_action :require_login, only: :index
 
   def index
-    @lunchbox_logs = LunchboxLog.all.page(params[:page])
+    if logged_in?
+      @lunchbox_logs = LunchboxLog.where(published_status: [:public, :users_only]).page(params[:page])
+    else
+      @lunchbox_logs = LunchboxLog.published_status_public.page(params[:page])
+    end
   end
 
   def show
