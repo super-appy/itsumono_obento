@@ -75,6 +75,9 @@ gem 'ransack'
 # カレンダー機能
 gem "simple_calendar"
 
+# ページネーション
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
