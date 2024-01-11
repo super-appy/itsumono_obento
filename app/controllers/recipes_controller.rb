@@ -5,11 +5,11 @@ class RecipesController < ApplicationController
   def index
     @tags = Tag.all
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result.includes(:tags).sorted_by_creation.distinct
+    @recipes = @q.result.includes(:tags).sorted_by_creation.distinct.page(params[:page])
   end
 
   def posted
-    @posted_recipes = current_user.recipes
+    @posted_recipes = current_user.recipes.page(params[:page])
   end
 
   def new

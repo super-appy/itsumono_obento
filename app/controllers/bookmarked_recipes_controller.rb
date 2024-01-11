@@ -4,14 +4,14 @@ class BookmarkedRecipesController < ApplicationController
     @tags = Tag.all
     @q = current_user.bookmarked_recipes.cooked.joins(:recipe).ransack(params[:q])
     @q.sorts = "updated_at desc" if @q.sorts.empty?
-    @bookmarked_recipes = @q.result.includes(recipe: :tags).distinct
+    @bookmarked_recipes = @q.result.includes(recipe: :tags).distinct.page(params[:page])
   end
 
   def want_to_cook
     @tags = Tag.all
     @q = current_user.bookmarked_recipes.want_to_cook.joins(:recipe).ransack(params[:q])
     @q.sorts = "updated_at desc" if @q.sorts.empty?
-    @bookmarked_recipes = @q.result.includes(recipe: :tags).distinct
+    @bookmarked_recipes = @q.result.includes(recipe: :tags).distinct.page(params[:page])
   end
 
   def create

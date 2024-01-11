@@ -59,18 +59,23 @@
     </div>
 
     <%# 投稿したレシピ %>
-    <div class="flex flex-col text-center w-full mt-16 mb-5">
-      <h2 class="text-xs text-point tracking-widest font-medium title-font mb-1">MY RECIPE</h2>
-      <%= link_to posted_recipes_path do %>
-        <h1 class="text-2xl font-medium title-font text-theme">
-          投稿したレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
-        </h1>
+      <div class="flex flex-col text-center w-full mt-16 mb-5">
+        <h2 class="text-xs text-point tracking-widest font-medium title-font mb-1">MY RECIPE</h2>
+        <%= link_to posted_recipes_path do %>
+          <h1 class="text-2xl font-medium title-font text-theme">
+            投稿したレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+          </h1>
+        <% end %>
+      </div>
+      <% if @posted_recipes.length != 0 %>
+
+        <div class="flex flex-wrap -m-4">
+          <% @posted_recipes.each do |recipe| %>
+            <%= render 'recipes/recipe', recipe: recipe %>
+          <% end %>
+        </div>
+      <% else %>
+        <%= render 'shared/no_want_to_cook'%>
       <% end %>
-    </div>
-    <div class="flex flex-wrap -m-4">
-      <% @posted_recipes.each do |recipe| %>
-        <%= render 'recipes/recipe', recipe: recipe %>
-      <% end %>
-    </div>
   </div>
 </section>

@@ -1,0 +1,15 @@
+<%# Link showing page number
+  - available local variables
+    page:          a page object for "this" page
+    url:           url to this page
+    current_page:  a page object for the currently displayed page
+    total_pages:   total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+-%>
+<span class="page<%= ' current bg-point w-10 h-10 rounded-full border border-theme text-theme flex justify-center items-center mx-2' if page.current? %>">
+  <%= link_to_unless page.current?, page, url, {
+      class: page.current? ? '' : 'bg-card-body w-10 h-10 rounded-full text-theme border border-theme flex justify-center items-center mx-2 hover:shadow-lg',
+      remote: remote, rel: page.rel
+    } %>
+</span>

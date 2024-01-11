@@ -3,7 +3,7 @@ class LunchboxLogsController < ApplicationController
   skip_before_action :require_login, only: :index
 
   def index
-    @lunchbox_logs = LunchboxLog.all
+    @lunchbox_logs = LunchboxLog.all.page(params[:page])
   end
 
   def show

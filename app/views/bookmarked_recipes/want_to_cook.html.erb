@@ -17,5 +17,8 @@
         <%= render 'recipes/recipe', recipe: bookmarked_recipe.recipe %>
       <% end %>
     </div>
+
+    <%= paginate @bookmarked_recipes %>
+
   </div>
 </section>
