@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  attr_accessor :controller_name
+
   belongs_to :user, optional: true
   has_many :bookmarked_recipes
 
@@ -71,12 +73,13 @@ class Recipe < ApplicationRecord
 
   scope :sorted_by_creation, -> { order(created_at: :desc) }
 
-  validates :title, :time_required, :taste, :taste_tag_time, presence: true
+  validates :time_required, :taste, presence: true
+  validates :title, :taste_tag_time, presence: true, unless: -> {controller_name == 'api/recipes'}
   validates :title, length: { maximum: 50 }
   validates :api_ingredients, :api_steps, length: { maximum: 500 }
 
-  validate :at_least_2_recipe_ingredients, :at_most_8_recipe_ingreditends, unless: :api_resp
-  validate :at_least_3_recipe_steps, :at_most_5_recipe_steps, unless: :api_resp
+  validate :at_least_2_recipe_ingredients, :at_most_8_recipe_ingreditends, unless: -> {controller_name == 'api/recipes'}
+  validate :at_least_3_recipe_steps, :at_most_5_recipe_steps, unless: -> {controller_name == 'api/recipes'}
 
   validate :only_one_tag_per_category
   validate :at_least_one_tag

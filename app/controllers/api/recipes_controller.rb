@@ -21,6 +21,8 @@ module Api
         begin
           api_response = Openai::ApiResponseService.new.call(recipe_params)
           @recipe = Recipe.create_from_api(recipe_params, api_response)
+          @recipe.controller_name = 'api/recipes'
+
           if @recipe.save
             set_api_request_cookie
             respond_to do |format|
