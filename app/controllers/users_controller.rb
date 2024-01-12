@@ -7,12 +7,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # binding.pry
     @user.line_registerd = 0
 
     if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = 'ユーザーを登録しました'
       redirect_to root_path
     else
+      flash.now[:alert] = 'ユーザーの登録に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end

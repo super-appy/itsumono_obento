@@ -16,7 +16,6 @@ class BookmarkedRecipesController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    # current_user.bookmarked_recipes.create!(recipe_id: recipe.id, status: 0)
     current_user.bookmark(@recipe)
   end
 
@@ -36,7 +35,6 @@ class BookmarkedRecipesController < ApplicationController
   def destroy
     @recipe = current_user.bookmarked_recipes.find(params[:id]).recipe
     current_user.unbookmark(@recipe) if @recipe.present?
-    # redirect_to bookmarked_recipes_path, status: :see_other
   end
 
   private

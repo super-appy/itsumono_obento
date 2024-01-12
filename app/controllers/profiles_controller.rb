@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, success: 'プロフィール更新完了'
+      redirect_to profile_path, success: 'プロフィールを更新しました'
     else
       render :edit, status: :unprocessable_entity
     end

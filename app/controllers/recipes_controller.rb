@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  include SelectListable
   before_action :set_select_lists, only: :new
   skip_before_action :require_login, only: [:index, :show]
 
@@ -22,7 +23,7 @@ class RecipesController < ApplicationController
     @recipe.taste_tag_time = @recipe.make_taste_tag_time(recipe_params[:tag_ids])
 
     if @recipe.save
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe), success: "#{@recipe.title}のレシピを投稿しました！ありがとうございます！"
     else
       set_select_lists
       (3 - @recipe.recipe_ingredients.size).times { @recipe.recipe_ingredients.build }
@@ -50,7 +51,7 @@ class RecipesController < ApplicationController
     @recipe.assign_attributes(recipe_params)
     @recipe.taste_tag_time = @recipe.make_taste_tag_time(recipe_params[:tag_ids])
     if @recipe.save
-      redirect_to recipe_path(@recipe), success: 'レシピ編集できた！'
+      redirect_to recipe_path(@recipe), success: "#{@recipe.title}のレシピを編集しました。"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -68,12 +69,6 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:title, :time_required, :taste, tag_ids:[],
       recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
       recipe_steps_attributes: [:id, :number, :description, :_destroy])
-  end
-
-  def set_select_lists
-    @tags = Tag.all.group_by(&:category).transform_values do |tags|
-      tags.map { |tag| [tag.name, tag.id] }
-    end
   end
 
 end
