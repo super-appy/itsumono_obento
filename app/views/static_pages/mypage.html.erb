@@ -29,53 +29,66 @@
     <% end %>
 
     <%# 作りたいレシピ %>
-    <div class="flex flex-col text-center w-full mt-16 mb-5">
-      <h2 class="text-xs text-point tracking-widest font-medium title-font mb-1">WANT TO COOK</h2>
-      <%= link_to want_to_cook_bookmarked_recipes_path do %>
-        <h1 class="text-2xl font-medium title-font text-theme">
-          作りたいレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
-        </h1>
-      <% end %>
+    <div class="flex items-center gap-4 mt-16 mb-5">
+      <div class="flex-grow border border-dashed border-secondary text-sm"></div>
+          <%= link_to want_to_cook_bookmarked_recipes_path do %>
+            <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
+              作りたいレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+            </h1>
+          <% end %>
+      <div class="flex-grow border border-dashed border-secondary"></div>
     </div>
-    <div class="flex flex-wrap -m-4">
-      <% @want_to_cook_recipes.each do |recipe| %>
-        <%= render 'recipes/recipe', recipe: recipe %>
-      <% end %>
-    </div>
+
+    <% if @want_to_cook_recipes.length != 0 %>
+      <div class="flex flex-wrap -m-4">
+        <% @want_to_cook_recipes.each do |recipe| %>
+          <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render 'shared/no_want_to_cook'%>
+    <% end %>
 
     <%# 作ったレシピ %>
-    <div class="flex flex-col text-center w-full mt-16 mb-5">
-      <h2 class="text-xs text-point tracking-widest font-medium title-font mb-1">COOKED</h2>
-      <%= link_to cooked_bookmarked_recipes_path do %>
-        <h1 class="text-2xl font-medium title-font text-theme">
-          作ったレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
-        </h1>
-      <% end %>
-    </div>
-    <div class="flex flex-wrap -m-4">
-      <% @cooked_recipes.each do |recipe| %>
-        <%= render 'recipes/recipe', recipe: recipe %>
-      <% end %>
+    <div class="flex items-center gap-4 mt-16 mb-5">
+      <div class="flex-grow border border-dashed border-secondary text-sm"></div>
+        <%= link_to cooked_bookmarked_recipes_path do %>
+          <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
+            作ったレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+          </h1>
+        <% end %>
+      <div class="flex-grow border border-dashed border-secondary"></div>
     </div>
 
+    <% if @cooked_recipes.length != 0 %>
+      <div class="flex flex-wrap -m-4">
+        <% @cooked_recipes.each do |recipe| %>
+          <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render 'shared/no_cooked'%>
+    <% end %>
+
     <%# 投稿したレシピ %>
-      <div class="flex flex-col text-center w-full mt-16 mb-5">
-        <h2 class="text-xs text-point tracking-widest font-medium title-font mb-1">MY RECIPE</h2>
+    <div class="flex items-center gap-4 mt-16 mb-5">
+      <div class="flex-grow border border-dashed border-secondary text-sm"></div>
         <%= link_to posted_recipes_path do %>
-          <h1 class="text-2xl font-medium title-font text-theme">
+          <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
             投稿したレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
           </h1>
         <% end %>
-      </div>
-      <% if @posted_recipes.length != 0 %>
+      <div class="flex-grow border border-dashed border-secondary"></div>
+    </div>
 
-        <div class="flex flex-wrap -m-4">
-          <% @posted_recipes.each do |recipe| %>
-            <%= render 'recipes/recipe', recipe: recipe %>
-          <% end %>
-        </div>
-      <% else %>
-        <%= render 'shared/no_want_to_cook'%>
-      <% end %>
+    <% if @posted_recipes.length != 0 %>
+      <div class="flex flex-wrap -m-4">
+        <% @posted_recipes.each do |recipe| %>
+          <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render 'shared/no_post'%>
+    <% end %>
   </div>
 </section>
