@@ -1,7 +1,8 @@
 module Api
   class RecipesController < ApplicationController
+    include SelectListable
     before_action :set_select_lists, only: :new
-    skip_before_action :require_login
+    skip_before_action :require_login, only: [:new, :create]
 
 
     def new
@@ -14,22 +15,32 @@ module Api
 
     def create
       @recipe = Recipe.new(recipe_params)
-      begin
-        api_response = Openai::ApiResponseService.new.call(recipe_params)
-        @recipe = Recipe.create_from_api(recipe_params, api_response)
-        if @recipe.save
-          set_api_request_cookie
-          redirect_to recipe_path(@recipe)
-        else
+      @recipe.controller_name = 'api/recipes'
+
+      if @recipe.valid?
+        begin
+          api_response = Openai::ApiResponseService.new.call(recipe_params)
+          @recipe = Recipe.create_from_api(recipe_params, api_response)
+          if @recipe.save
+            set_api_request_cookie
+            respond_to do |format|
+              format.js { render js: "window.hideModal(document.getElementById('modalArea'));" }
+              format.html { redirect_to recipe_path(@recipe), notice: 'レシピが生成されました。' }
+            end
+          else
+            set_select_lists
+            render :new, status: :unprocessable_entity
+          end
+        rescue Openai::UnauthorizedError,
+              Openai::TooManyRequestsError,
+              Openai::InternalServerError,
+              Openai::ServiceUnavailableError,
+              Openai::TimeoutError => e
+          @error_message = e.message
           set_select_lists
           render :new, status: :unprocessable_entity
         end
-      rescue Openai::UnauthorizedError,
-            Openai::TooManyRequestsError,
-            Openai::InternalServerError,
-            Openai::ServiceUnavailableError,
-            Openai::TimeoutError => e
-        @error_message = e.message
+      else
         set_select_lists
         render :new, status: :unprocessable_entity
       end
@@ -39,12 +50,6 @@ module Api
 
     def recipe_params
       params.require(:recipe).permit(:time_required, :taste, tag_ids:[])
-    end
-
-    def set_select_lists
-      @tags = Tag.all.group_by(&:category).transform_values do |tags|
-        tags.map { |tag| [tag.name, tag.id] }
-      end
     end
 
     def api_request_allowed?
