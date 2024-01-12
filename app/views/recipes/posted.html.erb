@@ -11,11 +11,15 @@
         <%# コメント入れるならここ %>
       </p>
     </div>
-    <div class="flex flex-wrap -m-4 mt-10">
-      <% @posted_recipes.each do |posted_recipe| %>
-        <%= render 'recipes/recipe', recipe: posted_recipe %>
-      <% end %>
-    </div>
+    <% if @posted_recipes.length != 0%>
+      <div class="flex flex-wrap -m-4 mt-10">
+        <% @posted_recipes.each do |posted_recipe| %>
+          <%= render 'recipes/recipe', recipe: posted_recipe %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render 'shared/no_post'%>
+    <% end %>
     <%= paginate @posted_recipes %>
 
   </div>
