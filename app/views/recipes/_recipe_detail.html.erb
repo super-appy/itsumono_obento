@@ -1,6 +1,10 @@
-<h1 class="sm:text-3xl text-2xl font-medium title-font text-theme text-center">
-  <%= recipe.title %>
-</h1>
+<% if recipe.api_resp%>
+  <%= render 'recipe_title_ai', recipe: recipe%>
+<% else %>
+  <h1 class="sm:text-3xl text-2xl font-medium title-font text-theme text-center">
+    <%= recipe.title %>
+  </h1>
+<% end %>
 <div class="md:flex md:justify-center mt-10">
   <div class="md:w-1/3 mb-20 md:mb-0 px-10">
     <%# カード %>

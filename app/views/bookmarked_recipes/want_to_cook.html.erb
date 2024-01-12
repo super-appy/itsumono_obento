@@ -11,12 +11,18 @@
         <%# コメント入れるならここ %>
       </p>
     </div>
-    <%= render 'search_form', url: want_to_cook_bookmarked_recipes_path %>
-    <div class="flex flex-wrap -m-4 mt-10">
-      <% @bookmarked_recipes.each do |bookmarked_recipe| %>
-        <%= render 'recipes/recipe', recipe: bookmarked_recipe.recipe %>
-      <% end %>
-    </div>
+    <% if @bookmarked_recipes.length != 0%>
+      <%= render 'search_form', url: want_to_cook_bookmarked_recipes_path %>
+      <div class="flex flex-wrap -m-4 mt-10">
+        <% @bookmarked_recipes.each do |bookmarked_recipe| %>
+          <%= render 'recipes/recipe', recipe: bookmarked_recipe.recipe %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class= "mt-10">
+        <%= render 'shared/no_want_to_cook' %>
+      </div>
+    <% end %>
 
     <%= paginate @bookmarked_recipes %>
 

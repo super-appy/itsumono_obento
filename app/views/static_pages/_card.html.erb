@@ -1,0 +1,18 @@
+<section class="text-theme body-font w-1/2">
+  <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+      <div class="flex items-center justify-center md:w-1/2 w-full h-64 overflow-hidden">
+        <%= image_tag 'cooking.png', class:"max-w-full max-h-full" %>
+      </div>
+
+    <div class="md:w-1/2 md:pl-16 flex flex-col items-start justify-start text-left mx-5">
+      <h1 class="md:text-2xl mb-4 font-medium">
+        まだ登録がありません...<br>
+        新しいレシピに挑戦してみましょう！
+      </h1>
+      <%= link_to want_to_cook_bookmarked_recipes_path, class: "text-white bg-secondary border-0 py-2 px-5 hover:shadow-lg rounded-full text-lg md:mx-2 max-w-1/5 mx-auto" do %>
+        <i class="fa-solid fa-heart mr-2"></i>作りたいレシピ一覧
+      <% end %>
+
+    </div>
+  </div>
+</section>

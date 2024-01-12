@@ -22,6 +22,9 @@ ja:
         tag: 食材
       recipe_steps:
         description: 手順の説明
+      recipe_ingredients:
+        name: 材料名
+        quantity: 分量
       lunchbox_log:
         cooked_date: 作った日
         original_menu: その他のメニュー

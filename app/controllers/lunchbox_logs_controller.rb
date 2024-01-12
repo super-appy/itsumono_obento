@@ -24,7 +24,7 @@ class LunchboxLogsController < ApplicationController
   def create
     @lunchbox_log = current_user.lunchbox_logs.build(lunchbox_log_params)
     if @lunchbox_log.save
-      redirect_to lunchbox_logs_path, success: '成功したよ'
+      redirect_to lunchbox_logs_path, success: "#{@lunchbox_log.cooked_date.strftime('%m/%d')}のお弁当を登録しました"
     else
       set_select_lists
       render :new, status: :unprocessable_entity
@@ -38,7 +38,7 @@ class LunchboxLogsController < ApplicationController
   def update
     @lunchbox_log = current_user.lunchbox_logs.find(params[:id])
     if @lunchbox_log.update(lunchbox_log_params)
-      redirect_to lunchbox_logs_path, success: '更新完了'
+      redirect_to lunchbox_logs_path, success: "#{@lunchbox_log.cooked_date.strftime('%m/%d')}のお弁当を更新しました"
     else
       set_select_lists
       render :edit, status: :unprocessable_entity

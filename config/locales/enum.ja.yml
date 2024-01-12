@@ -21,7 +21,7 @@ ja:
         cooked: "つくった"
       repeat:
         repeat: "また作りたい！！！"
-        not_repeat: "もういいかな..."
+        no_repeat: "もういいかな..."
     tag:
       category:
         vegetable: 野菜
