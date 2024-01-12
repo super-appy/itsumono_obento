@@ -31,6 +31,10 @@
             <i class="fa-solid fa-pen-to-square mr-1"></i>
             <%= link_to 'レシピ投稿', new_recipe_path %>
           </div>
+          <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+            <i class="fa-regular fa-circle-up mr-1"></i>
+            <%= link_to '投稿したレシピ', posted_recipes_path %>
+          </div>
         </div>
       </div>
       <div class="group relative cursor-pointer">
@@ -55,7 +59,7 @@
       <%# マイページのプルダウン %>
       <div class="group relative cursor-pointer">
         <div class="flex items-center justify-between">
-          <a class="menu-hover lg:mr-8">
+          <a class="menu-hover">
             <%= image_tag current_user.avator.url, class: "rounded-full h-12 w-12 border border-card-line flex items-center justify-center mb-2" %>
           </a>
         </div>
@@ -76,6 +80,7 @@
       <i class="fa-solid fa-bars menu-button fa-2x hover:cursor-pointer"></i>
       <div class="menu hidden group-hover:block absolute right-0 top-full mt-5 bg-card-body shadow-lg z-50 min-w-[200px]">
         <ul class="flex flex-col z-10 items-center border border-card-line">
+
           <div class="flex items-center my-1 px-4 py-1 hover:text-point">
             <i class="fa-solid fa-robot fa-fw mr-1"></i>
             <%= link_to 'レシピ生成', new_api_recipe_path %>
@@ -85,16 +90,20 @@
             <%= link_to 'レシピ一覧', api_recipes_path %>
           </div>
           <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-            <i class="fa-solid fa-pen-to-square fa-fw mr-1"></i>
-            <%= link_to 'レシピ投稿', new_recipe_path %>
-          </div>
-          <div class="flex items-center my-1 px-4 py-1 hover:text-point">
             <i class="fa-solid fa-heart mr-1"></i>
             <%= link_to '作りたいレシピ', want_to_cook_bookmarked_recipes_path %>
           </div>
           <div class="flex items-center my-1 px-4 py-1 hover:text-point">
             <i class="fa-solid fa-utensils mr-1"></i>
             <%= link_to '作ったレシピ', cooked_bookmarked_recipes_path %>
+          </div>
+          <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+            <i class="fa-solid fa-pen-to-square fa-fw mr-1"></i>
+            <%= link_to 'レシピ投稿', new_recipe_path %>
+          </div>
+          <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+            <i class="fa-regular fa-circle-up mr-1"></i>
+            <%= link_to '投稿したレシピ', posted_recipes_path %>
           </div>
           <div class="flex items-center my-1 px-4 py-1 hover:text-point">
             <i class="fa-regular fa-images mr-1"></i>
