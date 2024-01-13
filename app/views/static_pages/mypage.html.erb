@@ -29,13 +29,14 @@
     <% end %>
 
     <%# 作りたいレシピ %>
-    <div class="flex items-center gap-4 mt-16 mb-5">
+    <p class="text-sm title-font text-point mt-16 flex justify-center tracking-widest">
+      最近追加した
+    </p>
+    <div class="flex items-center gap-4 mb-10">
       <div class="flex-grow border border-dashed border-secondary text-sm"></div>
-          <%= link_to want_to_cook_bookmarked_recipes_path do %>
-            <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
-              作りたいレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
-            </h1>
-          <% end %>
+        <h1 class="text-2xl title-font text-them">
+          <i class="fa-solid fa-heart mr-1"></i>作りたいレシピ
+        </h1>
       <div class="flex-grow border border-dashed border-secondary"></div>
     </div>
 
@@ -45,16 +46,26 @@
           <%= render 'recipes/recipe', recipe: recipe %>
         <% end %>
       </div>
+      <div class="flex justify-center">
+        <%= link_to want_to_cook_bookmarked_recipes_path do %>
+          <div class= "bg-point border border-secondary py-2 px-10 mt-4 hover:shadow-lg rounded-full">
+            <i class="fa-solid fa-heart mr-1"></i>作りたいレシピをもっとみる
+          </div>
+        <% end %>
+      </div>
     <% else %>
       <%= render 'shared/no_want_to_cook'%>
     <% end %>
 
+
     <%# 作ったレシピ %>
-    <div class="flex items-center gap-4 mt-16 mb-5">
+    <p class="text-sm title-font text-point mt-20 flex justify-center tracking-widest">最近追加した</p>
+
+    <div class="flex items-center gap-4 mb-10">
       <div class="flex-grow border border-dashed border-secondary text-sm"></div>
         <%= link_to cooked_bookmarked_recipes_path do %>
-          <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
-            作ったレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+          <h1 class="text-2xl title-font text-theme">
+            <i class="fa-solid fa-utensils mr-1"></i>作ったレシピ
           </h1>
         <% end %>
       <div class="flex-grow border border-dashed border-secondary"></div>
@@ -66,16 +77,29 @@
           <%= render 'recipes/recipe', recipe: recipe %>
         <% end %>
       </div>
+      <%# 一覧へのボタン %>
+      <div class="flex justify-center">
+        <%= link_to cooked_bookmarked_recipes_path do %>
+          <div class= "bg-point border border-secondary py-2 px-10 mt-4 hover:shadow-lg rounded-full">
+            <i class="fa-solid fa-utensils mr-1"></i>作ったレシピをもっとみる
+          </div>
+        <% end %>
+      </div>
     <% else %>
       <%= render 'shared/no_cooked'%>
     <% end %>
 
+
     <%# 投稿したレシピ %>
-    <div class="flex items-center gap-4 mt-16 mb-5">
+    <p class="text-sm title-font text-point mt-20 flex justify-center tracking-widest">
+      最近追加した
+    </p>
+
+    <div class="flex items-center gap-4 mb-10">
       <div class="flex-grow border border-dashed border-secondary text-sm"></div>
         <%= link_to posted_recipes_path do %>
-          <h1 class="text-2xl font-semibold title-font text-theme hover:text-point">
-            投稿したレシピ<i class="fa-solid fa-arrow-up-right-from-square text-xs ml-2"></i>
+          <h1 class="text-2xl title-font text-theme">
+            <i class="fa-regular fa-circle-up mr-1"></i>投稿したレシピ
           </h1>
         <% end %>
       <div class="flex-grow border border-dashed border-secondary"></div>
@@ -85,6 +109,14 @@
       <div class="flex flex-wrap -m-4">
         <% @posted_recipes.each do |recipe| %>
           <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+      <%# 一覧へのボタン %>
+      <div class="flex justify-center">
+        <%= link_to posted_recipes_path do %>
+          <div class= "bg-point border border-secondary py-2 px-10 mt-4 hover:shadow-lg rounded-full">
+            <i class="fa-regular fa-circle-up mr-1"></i>投稿したレシピをもっとみる
+          </div>
         <% end %>
       </div>
     <% else %>
