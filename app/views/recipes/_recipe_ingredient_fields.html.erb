@@ -2,12 +2,15 @@
   <div class="flex flex-wrap items-center">
     <div class="p-2 w-full md:w-6/12">
       <div class="relative">
-        <%= f.text_field :name, class: "w-full rounded-lg border border-card-line py-1 px-3"%>
+        <%= f.text_field :name, placeholder: "材料名", class: "w-full rounded-lg border border-card-line py-1 px-3"%>
       </div>
     </div>
-    <div class="p-2 w-full md:w-5/12">
+    <div class="p-2 w-full md:w-1/12 items-center text-center hidden md:block">
+      - - -
+    </div>
+    <div class="p-2 w-full md:w-4/12">
       <div class="relative">
-        <%= f.text_field :quantity, class: "w-full rounded-lg border border-card-line py-1 px-3"%>
+        <%= f.text_field :quantity, placeholder: "分量",class: "w-full rounded-lg border border-card-line py-1 px-3"%>
       </div>
     </div>
     <div class="p-2 w-full md:w-1/12 flex justify-center">

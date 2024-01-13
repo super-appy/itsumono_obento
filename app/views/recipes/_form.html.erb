@@ -13,8 +13,9 @@
           <%# ここから材料 %>
           <div class="mt-5">
             <div class="flex flex-wrap">
-              <p class="p-2 w-full md:w-6/12 flex justify-center items-center ">材料</p>
-              <p class="p-2 w-full md:w-5/12 flex justify-center items-center">分量</p>
+              <p class="p-2 w-full md:w-6/12 flex justify-center items-center ">材料名</p>
+              <p class="p-2 w-full md:w-1/12 hidden md:block"></p>
+              <p class="p-2 w-full md:w-4/12 flex justify-center items-center">分量</p>
             </div>
               <%= form.fields_for :recipe_ingredients do |ing| %>
                 <%= render 'recipe_ingredient_fields', f: ing %>
