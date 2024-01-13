@@ -1,0 +1,72 @@
+<div class="space-x-12 items-center hidden md:flex">
+  <%# レシピのプルダウン %>
+  <div class="group relative cursor-pointer">
+    <div class="flex items-center justify-center">
+      <a class="menu-hover py-2 mr-3">レシピ </a>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <div class="invisible absolute items-center bg-card-body border border-card-line left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-robot mr-1"></i>
+        <%= link_to 'レシピ生成', new_api_recipe_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-list mr-1"></i>
+        <%= link_to 'レシピ一覧', recipes_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-heart mr-1"></i>
+        <%= link_to '作りたいレシピ', want_to_cook_bookmarked_recipes_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-utensils mr-1"></i>
+        <%= link_to '作ったレシピ', cooked_bookmarked_recipes_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-pen-to-square mr-1"></i>
+        <%= link_to 'レシピ投稿', new_recipe_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-regular fa-circle-up mr-1"></i>
+        <%= link_to '投稿したレシピ', posted_recipes_path %>
+      </div>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <div class="flex items-center justify-center">
+      <a class="menu-hover py-2 mr-3">お弁当</a>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <div class="invisible absolute items-center bg-card-body border border-card-line left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-regular fa-images mr-1"></i>
+        <%= link_to 'みんなの投稿', lunchbox_logs_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-regular fa-pen-to-square mr-1"></i>
+        <%= link_to '記録する', new_lunchbox_log_path %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center hover:text-point">
+    <%= link_to 'マイページ', mypage_path %>
+  </div>
+  <%# マイページのプルダウン %>
+  <div class="group relative cursor-pointer">
+    <div class="flex items-center justify-between">
+      <a class="menu-hover">
+        <%= image_tag current_user.avator.url, class: "rounded-full h-12 w-12 border border-card-line flex items-center justify-center mb-2" %>
+      </a>
+    </div>
+    <div class="invisible absolute items-center bg-card-body border border-card-line left-1/4 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-regular fa-address-card mr-1"></i>
+        <%= link_to "プロフィール", profile_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-right-from-bracket mr-1"></i>
+        <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+      </div>
+    </div>
+  </div>
+</div>

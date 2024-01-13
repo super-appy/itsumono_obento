@@ -3,54 +3,9 @@
   <%= link_to root_path, class: "hover:shadow-lg" do %>
     <%= image_tag 'logo.png', class: "h-14 w-auto max-w-full"%>
   <% end %>
-  <div class="items-center hidden md:flex">
-    <%# レシピのプルダウン %>
-    <div class="group relative cursor-pointer mx-5">
-      <div class="flex items-center justify-center">
-        <a class="menu-hover py-2 mr-3">レシピ </a>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
-      <div class="invisible absolute bg-card-body border border-card-line left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-robot mr-1"></i>
-          <%= link_to 'レシピ生成', new_api_recipe_path %>
-        </div>
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-list mr-1"></i>
-          <%= link_to 'レシピ一覧', recipes_path %>
-        </div>
-      </div>
-    </div>
-    <%= link_to 'みんなのお弁当', lunchbox_logs_path, class:"flex items-center hover:text-point mx-5" %>
-    <%= link_to 'ログイン', login_path, class: "text-theme bg-point border border-card-line py-2 px-8 hover:shadow-lg rounded-full mx-2"%>
-    <%= link_to 'ユーザー登録', new_user_path, class: "text-theme bg-card-body border border-card-line py-2 px-8 hover:shadow-lg rounded-full mx-2"%>
-  </div>
+  <%# PC %>
+  <%= render 'shared/before_login/pc'%>
   <%# スマホで見た時のハンバーガーメニュー %>
-  <div class="md:hidden group relative z-40">
-    <i class="fa-solid fa-bars menu-button fa-2x hover:cursor-pointer"></i>
-    <div class="menu hidden group-hover:block absolute right-0 top-full mt-5 bg-white shadow-lg z-50 min-w-[200px]">
-      <ul class="flex flex-col z-10 items-center border border-card-line">
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-utensils fa-fw"></i>
-          <%= link_to 'レシピ生成', new_api_recipe_path %>
-        </div>
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-list fa-fw"></i>
-          <%= link_to 'レシピ一覧', recipes_path %>
-        </div>
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-regular fa-images mr-1"></i>
-          <%= link_to 'みんなのお弁当', lunchbox_logs_path %>
-        </div>
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-user-plus mr-1"></i>
-          <%= link_to 'ユーザー登録', new_user_path %>
-        </div>
-        <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-          <i class="fa-solid fa-right-from-bracket mr-1"></i>
-          <%= link_to 'ログイン', login_path %>
-        </div>
-      </ul>
-    </div>
-  </div>
+  <%= render 'shared/before_login/phone'%>
+
 </header>
