@@ -1,23 +1,171 @@
-<h1 class="flex justify-center items-center">TOP</h1>
-<%= render 'card' %>
-<section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto flex flex-col">
-    <div class="lg:w-4/6 mx-auto">
-      <div class="flex flex-col sm:flex-row mt-10">
-        <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-          <div class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-            ああああ
-          </div>
+<section class="text-secondary body-font">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="flex items-center justify-center md:w-1/2 w-full h-80 overflow-hidden">
+      <%= image_tag 'top.png', class:"max-w-full max-h-full" %>
+    </div>
+    <div class="md:w-1/2 flex flex-col items-start justify-start text-left md:mx-5 text-theme">
+      <h1 class="mb-4 font-medium">
+        今ある材料でつくれるAIレシピと、お弁当のログカレンダーで
+      </h1>
+      <p class="text-2xl">あなたのお弁当作りをサポートします</p>
+      <p class="mt-10 mb-3 mx-2 py-1 px-5 bg-secondary text-card-body rounded-full">
+        たとえば、こんな時
+      </p>
+      <div class="flex flex-col justify-start items-start ml-3">
+        <p class="py-1 px-1">
+          <i class="fa-regular fa-circle-check mr-1"></i>明日のおかずは何を作ろうかな😕❓
+        </p>
+        <p class="py-1 px-1">
+          <i class="fa-regular fa-circle-check mr-1"></i>ほうれん草が余ってるけど何にしよう...🥬
+        </p>
+        <p class="py-1 px-1">
+          <i class="fa-regular fa-circle-check mr-1"></i>先週のお弁当は何を入れたっけ🤔💭
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="w-full px-5 pt-10 pb-16 flex flex-col bg-theme">
+    <p class="text-center text-3xl font-semibold text-card-body pb-2">
+      <i class="fa-solid fa-magnifying-glass mr-2"></i>HOW TO USE
+    </p>
+    <div class="flex justify-center pb-8">
+      <%= image_tag 'logo.png', class: "h-14" %>
+    </div>
+
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
         </div>
-        <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-          <p class="leading-relaxed text-lg mb-4">Meggings portland fingerstache lyft, post-ironic fixie man bun banh mi umami every</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
         </div>
       </div>
+    </div>
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
+        </div>
+      </div>
+    </div>
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
+        </div>
+      </div>
+    </div>
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
+        </div>
+      </div>
+    </div>
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
+        </div>
+      </div>
+    </div>
+    <%# カードのまとまり %>
+    <div class="lg:w-4/6 mx-auto border bg-card-body rounded-lg my-2">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="Image from Gyazo" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-center sm:text-left flex flex-col justify-center">
+          <p class="leading-relaxed text-lg">
+            お弁当カレンダー
+          </p>
+          <p>
+            マイページから作ったお弁当を週ごとに確認できます
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container mx-auto px-5 py-8">
+    <p class="text-center text-3xl font-semibold text-theme pt-4 pb-2">
+      LET'S GET USING
+    </p>
+
+    <div class="flex justify-center pb-8">
+      <%= image_tag 'logo.png', class: "h-14" %>
+    </div>
+
+
+    <div class="flex md:flex-row flex-col items-center justify-center">
+      <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-theme text-theme mx-2 my-2 hover:bg-point">
+        <%= link_to new_user_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
+          <p class="text-xl font-semibold">ユーザー登録</p>
+          <i class="fa-solid fa-user-plus text-4xl my-2"></i>
+          <p class="text-sm text-center">すべての機能を<br>使いたい方</p>
+        <% end %>
+      </div>
+      <div class="md:mx-5 bg-theme rounded-full w-48 h-48 flex justify-center items-center border border-theme text-card-body mx-2 my-2 hover:bg-point">
+        <%= link_to login_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
+          <p class="text-xl font-semibold">ログイン</p>
+          <i class="fa-solid fa-right-to-bracket text-4xl my-2"></i>
+          <p class="text-sm text-center">ユーザー登録済みの方</p>
+        <% end %>
+      </div>
+      <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-secondary text-secondary mx-2 my-2 hover:bg-point">
+        <div id= "scrollToTopBtn", class="flex flex-col justify-center items-center h-full w-full">
+          <p class="text-xl font-semibold">お試し</p>
+          <i class="fa-solid fa-laptop text-4xl my-2"></i>
+          <p class="text-sm text-center">まずは使ってみたい方<br>ページトップに<br>戻ります</p>
+        </div>
+      </div>
+
+
+
     </div>
   </div>
 </section>
