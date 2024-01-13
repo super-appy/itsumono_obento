@@ -26,7 +26,7 @@ class BookmarkedRecipesController < ApplicationController
   def update
     @bookmarked_recipe = current_user.bookmarked_recipes.find(params[:id])
     if @bookmarked_recipe.update(bookmarked_recipe_params)
-      redirect_to recipes_path
+      redirect_to cooked_bookmarked_recipes_path
     else
       render :edit, status: :unprocessable_entity
     end
