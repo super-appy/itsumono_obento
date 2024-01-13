@@ -1,5 +1,5 @@
 <% if recipe.api_resp%>
-  <%= render 'recipe_title_ai', recipe: recipe%>
+  <%= render 'recipes/recipe_title_ai', recipe: recipe%>
 <% else %>
   <h1 class="sm:text-3xl text-2xl font-medium title-font text-theme text-center">
     <%= recipe.title %>
@@ -37,7 +37,7 @@
       <%= simple_format(recipe.api_ingredients, {}, class: "break-words") %>
       <% else %>
         <% recipe.recipe_ingredients.each do |ingredient| %>
-          <%= render 'ingredient', ingredient: ingredient %>
+          <%= render 'recipes/ingredient', ingredient: ingredient %>
         <% end %>
       <% end %>
     </div>
@@ -55,7 +55,7 @@
       <%= simple_format(recipe.api_steps, {}, class: "break-words") %>
     <% else %>
       <% recipe.recipe_steps.each do |step| %>
-        <%= render 'step', step: step, last: step == recipe.recipe_steps.last %>
+        <%= render 'recipes/step', step: step, last: step == recipe.recipe_steps.last %>
       <% end %>
     <% end %>
   </div>

@@ -1,16 +1,14 @@
 document.addEventListener("turbo:load", () => {
-  setupModal();
-});
-
-function setupModal(){
+  // 特定のページ特有の要素をチェック
   const submitButton = document.getElementById('openModal');
+  if (!submitButton) return; // 要素が存在しなければ以降のコードは実行しない
+
   const modalArea = document.getElementById('modalArea');
 
   // フォーム送信時にモーダルを表示
   submitButton.addEventListener('click', function (e) {
     showModal(modalArea);
   });
-  }
 
   function showModal(modal) {
     // モーダル表示の処理
@@ -27,4 +25,4 @@ function setupModal(){
       modal.removeEventListener('transitionend', handler);
     });
   };
-
+});

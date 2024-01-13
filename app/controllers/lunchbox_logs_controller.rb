@@ -4,9 +4,9 @@ class LunchboxLogsController < ApplicationController
 
   def index
     if logged_in?
-      @lunchbox_logs = LunchboxLog.where(published_status: [:public, :users_only]).page(params[:page])
+      @lunchbox_logs = LunchboxLog.where(published_status: [:public, :users_only]).order(cooked_date: :desc).page(params[:page])
     else
-      @lunchbox_logs = LunchboxLog.published_status_public.page(params[:page])
+      @lunchbox_logs = LunchboxLog.published_status_public.order(cooked_date: :desc).page(params[:page])
     end
   end
 
@@ -24,7 +24,7 @@ class LunchboxLogsController < ApplicationController
   def create
     @lunchbox_log = current_user.lunchbox_logs.build(lunchbox_log_params)
     if @lunchbox_log.save
-      redirect_to lunchbox_logs_path, success: "#{@lunchbox_log.cooked_date.strftime('%m/%d')}のお弁当を登録しました"
+      redirect_to mypage_path, success: "#{@lunchbox_log.cooked_date.strftime('%m/%d')}のお弁当を登録しました"
     else
       set_select_lists
       render :new, status: :unprocessable_entity
