@@ -1,0 +1,22 @@
+<div class="items-center hidden md:flex">
+  <%# レシピのプルダウン %>
+  <div class="group relative cursor-pointer mx-5">
+    <div class="flex items-center justify-center">
+      <a class="menu-hover py-2 mr-3">レシピ </a>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <div class="invisible absolute bg-card-body border border-card-line left-1/2 z-50 flex w-auto min-w-max flex-col py-1 transform -translate-x-1/2 group-hover:visible">
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-robot mr-1"></i>
+        <%= link_to 'レシピ生成', new_api_recipe_path %>
+      </div>
+      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+        <i class="fa-solid fa-list mr-1"></i>
+        <%= link_to 'レシピ一覧', recipes_path %>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'みんなのお弁当', lunchbox_logs_path, class:"flex items-center hover:text-point mx-5" %>
+  <%= link_to 'ログイン', login_path, class: "text-theme bg-point border border-card-line py-2 px-8 hover:shadow-lg rounded-full mx-2"%>
+  <%= link_to 'ユーザー登録', new_user_path, class: "text-theme bg-card-body border border-card-line py-2 px-8 hover:shadow-lg rounded-full mx-2"%>
+</div>

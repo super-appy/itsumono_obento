@@ -1,5 +1,5 @@
-<div class="xl:w-1/4 md:w-1/2 p-3">
-  <div class="bg-card-body p-4 rounded-lg border border-secondary">
+<div class="w-full lg:w-1/4 md:w-1/2 p-3">
+  <div class="bg-card-body w-full p-4 rounded-lg border border-secondary">
     <%# 日付とユーザー %>
     <div class="flex flex-row justify-between pb-2 border-b border-dashed border-secondary">
       <div class="flex flex-col">
@@ -38,7 +38,7 @@
     <% if logged_in? %>
       <div class="flex flex-row justify-end items-end border-t border-dashed border-secondary mt-2 pt-1">
         <% if current_user.own?(log) %>
-        <%# 自分の投稿なら編集・削除 %>
+          <%# 自分の投稿なら編集・削除 %>
           <div class="flex flex-row">
             <%= link_to edit_lunchbox_log_path(log), class: "px-2" do %>
               <i class="fa-solid fa-pencil"></i>
@@ -54,9 +54,6 @@
           <% else %>
             <%= render 'lunchbox_logs/like', log: log%>
           <% end %>
-          <div class="pl-2">
-            <%= log.like_lunchbox_logs.count %>
-          </div>
         <% end %>
       </div>
     <% end %>

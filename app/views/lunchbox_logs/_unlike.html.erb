@@ -1,3 +1,8 @@
 <%= link_to like_lunchbox_log_path(current_user.like_lunchbox_logs.find_by(lunchbox_log_id: log.id)), id: "unlike-button-for-log-#{log.id}", data: { turbo_method: :delete } do %>
-  <i class="fa-solid fa-heart text-lg"></i>
+  <div class="flex flex-row justify-center items-center pt-1">
+    <i class="fa-solid fa-heart text-lg"></i>
+    <div class="pl-2">
+      <%= log.like_lunchbox_logs.count %>
+    </div>
+  </div>
 <% end %>

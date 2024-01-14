@@ -14,7 +14,7 @@ module Api
     end
 
     def create
-      @recipe = Recipe.new(recipe_params)
+      @recipe = current_user.recipes.build(recipe_params)
       @recipe.controller_name = 'api/recipes'
 
       if @recipe.valid?

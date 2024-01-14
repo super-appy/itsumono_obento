@@ -2,6 +2,13 @@
   <div class="container px-5 py-24 mx-auto">
     <%= render 'recipe_detail', recipe: @recipe, tags: @tags%>
 
+    <% unless logged_in? %>
+    <div class="mt-10 mx-3 flex justify-center items-center md:text-2xl text-lg">
+      <i class="fa-solid fa-bullhorn mr-3"></i>
+      <%= link_to 'ユーザー登録', new_user_path, class: "font-semibold hover:text-point" %>するとメニューを作りたいリストに追加できます
+    </div>
+    <% end %>
+
     <div class="mt-10 mx-3 flex justify-center">
       <%= link_to :back, class: "bg-card-body border border-secondary py-2 px-5 hover:shadow-lg rounded-full text-lg mx-2" do %>
         <i class="fa-solid fa-arrow-rotate-left mr-2"></i>前のページに戻る
