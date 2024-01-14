@@ -1,15 +1,16 @@
+<% content_for(:title, t('.title')) %>
 <section class="text-secondary body-font relative">
   <div class="container px-5 py-24 mx-auto">
     <%# レシピ投稿と説明 %>
     <div class="flex flex-wrap w-full mb-10">
       <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
         <h1 class="text-2xl font-medium title-font mb-">
-          <i class="fa-regular fa-pen-to-square mx-4"></i>作ったレシピを登録
+          <i class="fa-regular fa-pen-to-square mx-4"></i>作ったレシピを記録
         </h1>
         <div class="h-1 w-20 bg-point rounded"></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed">
-        作ったレシピについて登録しましょう！<br>
+        作ったレシピについて記録しましょう！<br>
         調味料を調整した時などはコメントを残しておくと、振り返るときに便利です
       </p>
     </div>
@@ -40,9 +41,14 @@
         </div>
 
       <div class="mt-10 mx-3 flex justify-center">
-        <%= form.button type: 'submit', class: "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" do %>
-          <i class="fa-solid fa-magnifying-glass"> 登録</i>
-        <% end %>
+        <div class= "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2">
+          <i class="fa-regular fa-pen-to-square mr-2"></i>
+          <% if @bookmarked_recipe.comment == nil %>
+            <%= form.submit '登録する' %>
+          <% else %>
+            <%= form.submit '更新する' %>
+          <% end %>
+        </div>
       </div>
     </div>
     <% end %>

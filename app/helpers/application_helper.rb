@@ -8,4 +8,9 @@ module ApplicationHelper
     else "bg-gray-100 border-gray-400 text-gray-700"
     end
   end
+
+  def page_title(page_title= '')
+    base_title = 'いつものお弁当'
+    page_title.empty? ? base_title : page_title + ' | ' + base_title
+  end
 end

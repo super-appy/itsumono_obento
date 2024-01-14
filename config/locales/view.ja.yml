@@ -1,0 +1,45 @@
+ja:
+  api:
+    recipes:
+      new:
+        title: レシピ生成
+  recipes:
+    new:
+      title: レシピ投稿
+    index:
+      title: レシピ一覧
+    edit:
+      title: レシピ編集
+    posted:
+      title: 投稿したレシピ一覧
+  bookmarked_recipes:
+    cooked:
+      title: 作ったレシピ一覧
+    want_to_cook:
+      title: 作りたいレシピ一覧
+    edit:
+      title: 作ったレシピを記録
+  lunchbox_logs:
+    new:
+      title: お弁当を記録
+    edit:
+      title: お弁当記録の編集
+    index:
+      title: みんなのお弁当
+  profiles:
+    edit:
+      title: プロフィール編集
+    show:
+      title: プロフィール
+  static_pages:
+    mypage:
+      title: マイページ
+  user_sessions:
+    new:
+      title: ログイン
+  users:
+    new:
+      title: ユーザー登録
+
+
+
