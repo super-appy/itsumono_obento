@@ -11,7 +11,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
   accepts_nested_attributes_for :recipe_ingredients, reject_if: :all_blank, allow_destroy: true
 
-  has_many :recipe_steps, dependent: :destroy
+  has_many :recipe_steps, -> { order(number: :asc) }, dependent: :destroy
   accepts_nested_attributes_for :recipe_steps, reject_if: :all_blank, allow_destroy: true
 
   enum time_required: { under_10: 0, minutes_10: 1, minutes_20: 2, over_20: 3 }
