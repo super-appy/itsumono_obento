@@ -86,7 +86,7 @@
             食　材<p class="text-point mx-1">＊</p>
           </div>
           <div class="flex justify-center">
-            <% if tag.present? %>
+            <% if tags.present? %>
               <% tags.each do |category, tags| %>
                 <div class="w-full md:w-1/6 px-2">
                       <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "text-sm ml-2" %>
