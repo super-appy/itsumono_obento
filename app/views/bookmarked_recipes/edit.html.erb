@@ -20,14 +20,18 @@
         <%# コメント %>
         <div class="p-2 w-full">
           <div class="relative">
-            <%= form.label :comment, class: "eading-6 text-sm ml-2"%>
+            <div class= 'flex flex-row text-sm'>
+              <%= form.label :comment, class: "ml-2"%><p class="text-point mx-1">＊</p>
+            </div>
             <%= form.text_area :comment, placeholder: "・醤油は分量より少なめにする...など", class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
           </div>
         </div>
         <%# リピートの有無 %>
         <div class="p-2 w-full">
           <div class="relative">
-            <%= form.label :repeat, class: "leading-7 text-sm ml-2" %>
+            <div class= 'flex flex-row text-sm'>
+              <%= form.label :repeat, class: "ml-2" %><p class="text-point mx-1">＊</p>
+            </div>
             <%= form.select :repeat,
                 BookmarkedRecipe.repeats.keys.map { |k| [I18n.t("enums.bookmarked_recipe.repeat.#{k}"), k] },
                 { include_blank: "リピートの有無を選択"},
