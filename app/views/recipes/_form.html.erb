@@ -86,12 +86,14 @@
             食　材<p class="text-point mx-1">＊</p>
           </div>
           <div class="flex justify-center">
-            <% tags.each do |category, tags| %>
-              <div class="w-full md:w-1/6 px-2">
-                    <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "text-sm ml-2" %>
-                    <%= form.select :tag_ids, tags, {include_blank: "選択しない"},
-                          { multiple: true, class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3"} %>
-              </div>
+            <% if tag.present? %>
+              <% tags.each do |category, tags| %>
+                <div class="w-full md:w-1/6 px-2">
+                      <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "text-sm ml-2" %>
+                      <%= form.select :tag_ids, tags, {include_blank: "選択しない"},
+                            { multiple: true, class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3"} %>
+                </div>
+              <% end %>
             <% end %>
           </div>
 
