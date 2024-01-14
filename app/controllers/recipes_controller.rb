@@ -34,6 +34,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @tags = @recipe.tags
+    # binding.pry
     @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:recipe_id])
     @recipe_steps = RecipeStep.where(recipe_id: params[:recipe_id])
   end
