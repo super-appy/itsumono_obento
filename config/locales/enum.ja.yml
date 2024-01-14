@@ -3,9 +3,9 @@ ja:
     recipe:
       time_required:
         under_10: "10分未満"
-        minutes_10: "10分"
-        minutes_20: "20分"
-        over_20: "20分以上"
+        minutes_10: "約10分"
+        minutes_20: "約20分"
+        over_20: "25分以上"
       taste:
         japanese: "和食"
         chinese: "中華"
@@ -13,15 +13,15 @@ ja:
     lunchbox_log:
       published_status:
         private: "自分限定"
-        users_only: "ユーザー限定"
+        users_only: "ログイン限定"
         public: "全体公開"
     bookmarked_recipe:
       status:
         want_to_cook: "つくりたい"
         cooked: "つくった"
       repeat:
-        repeat: "また作りたい！！！"
-        no_repeat: "もういいかな..."
+        repeat: "また作りたい！！"
+        no_repeat: "もういいかな"
     tag:
       category:
         vegetable: 野菜

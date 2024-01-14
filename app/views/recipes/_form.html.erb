@@ -5,7 +5,9 @@
           <%# タイトル %>
           <div class="p-2 w-full">
             <div class="relative">
-              <%= form.label :title, class: "text-sm ml-2"%>
+              <div class= 'flex flex-row text-sm'>
+                <%= form.label :title, class: "ml-2"%><p class="text-point mx-1">＊</p>
+              </div>
               <%= form.text_field :title, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
             </div>
           </div>
@@ -13,9 +15,13 @@
           <%# ここから材料 %>
           <div class="mt-5">
             <div class="flex flex-wrap">
-              <p class="p-2 w-full md:w-6/12 flex justify-center items-center ">材料名</p>
+              <div class="p-2 w-full md:w-6/12 flex justify-center items-center ">
+                材料名 (最低2つ、最大8つ)<p class="text-point mx-1">＊</p>
+              </div>
               <p class="p-2 w-full md:w-1/12 hidden md:block"></p>
-              <p class="p-2 w-full md:w-4/12 flex justify-center items-center">分量</p>
+              <div class="p-2 w-full md:w-4/12 flex justify-center items-center">
+                分量<p class="text-point mx-1">＊</p>
+              </div>
             </div>
               <%= form.fields_for :recipe_ingredients do |ing| %>
                 <%= render 'recipe_ingredient_fields', f: ing %>
@@ -31,7 +37,9 @@
             <div class="mt-5">
               <div class="flex flex-wrap">
                 <div class="p-2 w-full md:w-1/12 flex justify-center items-center ">手順</div>
-                <div class="p-2 w-full md:w-10/12 flex justify-center items-center">内容</div>
+                <div class="p-2 w-full md:w-10/12 flex justify-center items-center">
+                  内容<p class="text-point mx-1">＊</p>
+                </div>
               </div>
                 <%= form.fields_for :recipe_steps do |step| %>
                   <%= render 'recipe_step_fields', f: step %>
@@ -49,7 +57,9 @@
             <%# 調理時間 %>
             <div class="p-2 w-full md:w-1/4">
               <div class="relative">
-                <%= form.label :time_required, class: "text-sm ml-2" %>
+                <div class= 'flex flex-row text-sm'>
+                  <%= form.label :time_required, class: "ml-2" %><p class="text-point mx-1">＊</p>
+                </div>
                 <%= form.select :time_required,
                                 Recipe.time_requireds.keys.map { |k| [I18n.t("enums.recipe.time_required.#{k}"), k] },
                                 { include_blank: "未選択" },
@@ -59,7 +69,9 @@
             <%# テイスト %>
             <div class="p-2 w-full md:w-1/4">
               <div class="relative">
-                <%= form.label :taste, class: "text-sm ml-2" %>
+                <div class= 'flex flex-row text-sm'>
+                  <%= form.label :taste, class: "ml-2" %><p class="text-point mx-1">＊</p>
+                </div>
                 <%= form.select :taste,
                                 Recipe.tastes.keys.map {|k| [I18n.t("enums.recipe.taste.#{k}"), k]},
                                 { include_blank: "未選択" },
@@ -69,7 +81,10 @@
           </div>
 
           <%# タグ %>
-          <div class="mt-5 text-center">食 材</div>
+
+          <div class="flex justify-center items-center mt-6">
+            食　材<p class="text-point mx-1">＊</p>
+          </div>
           <div class="flex justify-center">
             <% tags.each do |category, tags| %>
               <div class="w-full md:w-1/6 px-2">
@@ -81,9 +96,9 @@
           </div>
 
           <div class="mt-10 mx-3 flex justify-center">
-            <%= form.button type: '', class: "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" do %>
-              <i class="fa-solid fa-pen-to-square mr-2"></i>投稿する
-            <% end %>
+            <div class= "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2">
+              <i class="fa-solid fa-pen-to-square mr-2"></i><%= form.submit %>
+            </div>
           </div>
         </div>
       </div>

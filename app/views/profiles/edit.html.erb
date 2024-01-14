@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
     <div class="flex flex-wrap w-full mb-10">
@@ -17,25 +19,22 @@
 
 
         <div class= "mb-3">
-          <%= form.label :name %>
-          <%= form.text_field :name, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3" %>
+          <div class= 'flex flex-row text-sm ml-2'>
+            <%= form.label :name %><p class="text-point mx-1">＊</p>
+          </div>
+          <%= form.text_field :name, class: "w-full bg-card-body rounded-lg border border-card-line py-2 px-3" %>
         </div>
-        <div class= "mb-3">
-          <%= form.label :email %>
-          <%= form.email_field :email, class: 'w-full bg-card-body rounded-lg border border-card-line py-1 px-3'  %>
-        </div>
+
 
         <%# 画像添付 %>
-        <div class="p-2 w-full">
-          <div class="relative">
-            <%= form.label :avator %>
-            <%= form.file_field :avator, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
-            <%= image_tag current_user.avator.url, class: "w-20 h-20 rounded-full mt-3" if current_user.avator? %>
-            <%= form.hidden_field :avator_cache %>
-          </div>
+        <div class="relative">
+          <%= form.label :avator, class: "text-sm ml-2" %>
+          <%= form.file_field :avator, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
+          <%= image_tag current_user.avator.url, class: "w-20 h-20 rounded-full mt-3" if current_user.avator? %>
+          <%= form.hidden_field :avator_cache %>
         </div>
 
-        <div class= "flex justify-center">
+        <div class= "flex justify-center mt-16">
           <%= form.submit '更新する', class: "text-theme bg-point border-0 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" %>
         </div>
       <% end %>

@@ -9,13 +9,16 @@
       <%# リピートの有無 %>
       <%= render 'recipes/control/control_cooked_repeat', bookmarked_recipe: bookmarked_recipe %>
 
-      <%# コメント %>
-      <div class= "flex justify-center items-center">
-        <i class="fa-regular fa-comment mr-3"></i><%= bookmarked_recipe.comment %>
-      </div>
+      <%# コメントと編集削除ボタンは作ったの一覧でのみ表示 %>
+      <% if current_page?(cooked_bookmarked_recipes_path) %>
+        <div class= "flex justify-center items-center mt-3">
+          <i class="fa-regular fa-comment mr-3"></i><%= bookmarked_recipe.comment %>
+        </div>
 
-      <%# 編集削除ボタン %>
-      <%= render 'recipes/control/control_cooked_buttons', bookmarked_recipe: bookmarked_recipe%>
+        <%# 編集削除ボタン %>
+        <%= render 'recipes/control/control_cooked_buttons', bookmarked_recipe: bookmarked_recipe%>
+      <% end %>
+
 
     <% else %>
       <%# 「作りたい」でブックマークされている %>
