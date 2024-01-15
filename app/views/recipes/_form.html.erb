@@ -1,107 +1,107 @@
-    <%= form_with model: recipe do |form| %>
-      <div class="lg:w-1/2 md:w-2/3 mx-auto">
-          <%= render 'shared/error_messages', object: form.object %>
+<%= form_with model: recipe do |form| %>
+  <div class="lg:w-1/2 md:w-2/3 mx-auto">
+      <%= render 'shared/error_messages', object: form.object %>
 
-          <%# タイトル %>
-          <div class="p-2 w-full">
-            <div class="relative">
-              <div class= 'flex flex-row text-sm'>
-                <%= form.label :title, class: "ml-2"%><p class="text-point mx-1">＊</p>
-              </div>
-              <%= form.text_field :title, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
+      <%# タイトル %>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <div class= 'flex flex-row text-sm'>
+            <%= form.label :title, class: "ml-2"%><p class="text-point mx-1">＊</p>
+          </div>
+          <%= form.text_field :title, class: "w-full bg-card-body rounded-lg border border-card-line py-1 px-3"%>
+        </div>
+      </div>
+
+      <%# ここから材料 %>
+      <div class="mt-5">
+        <div class="flex flex-wrap">
+          <div class="p-2 w-full md:w-6/12 flex justify-center items-center ">
+            材料名 (最低2つ、最大8つ)<p class="text-point mx-1">＊</p>
+          </div>
+          <p class="p-2 w-full md:w-1/12 hidden md:block"></p>
+          <div class="p-2 w-full md:w-4/12 flex justify-center items-center">
+            分量<p class="text-point mx-1">＊</p>
+          </div>
+        </div>
+          <%= form.fields_for :recipe_ingredients do |ing| %>
+            <%= render 'recipe_ingredient_fields', f: ing %>
+          <% end %>
+        <div class="mt-2 flex justify-center">
+          <%= link_to_add_association form, :recipe_ingredients, class: "text-card-body bg-secondary py-2 px-5 hover:shadow-lg rounded-full" do %>
+            <i class="fa-solid fa-plus"> 材料を追加</i>
+          <% end %>
+        </div>
+      </div>
+
+      <%# 手順 %>
+        <div class="mt-5">
+          <div class="flex flex-wrap">
+            <div class="p-2 w-full md:w-1/12 flex justify-center items-center ">手順</div>
+            <div class="p-2 w-full md:w-10/12 flex justify-center items-center">
+              内容<p class="text-point mx-1">＊</p>
             </div>
           </div>
-
-          <%# ここから材料 %>
-          <div class="mt-5">
-            <div class="flex flex-wrap">
-              <div class="p-2 w-full md:w-6/12 flex justify-center items-center ">
-                材料名 (最低2つ、最大8つ)<p class="text-point mx-1">＊</p>
-              </div>
-              <p class="p-2 w-full md:w-1/12 hidden md:block"></p>
-              <div class="p-2 w-full md:w-4/12 flex justify-center items-center">
-                分量<p class="text-point mx-1">＊</p>
-              </div>
-            </div>
-              <%= form.fields_for :recipe_ingredients do |ing| %>
-                <%= render 'recipe_ingredient_fields', f: ing %>
-              <% end %>
-            <div class="mt-2 flex justify-center">
-              <%= link_to_add_association form, :recipe_ingredients, class: "text-card-body bg-secondary py-2 px-5 hover:shadow-lg rounded-full" do %>
-                <i class="fa-solid fa-plus"> 材料を追加</i>
-              <% end %>
-            </div>
-          </div>
-
-          <%# 手順 %>
-            <div class="mt-5">
-              <div class="flex flex-wrap">
-                <div class="p-2 w-full md:w-1/12 flex justify-center items-center ">手順</div>
-                <div class="p-2 w-full md:w-10/12 flex justify-center items-center">
-                  内容<p class="text-point mx-1">＊</p>
-                </div>
-              </div>
-                <%= form.fields_for :recipe_steps do |step| %>
-                  <%= render 'recipe_step_fields', f: step %>
-                <% end %>
-              <div class="mt-2 flex justify-center">
-                <%= link_to_add_association form, :recipe_steps, class: "text-card-body bg-secondary py-2 px-5 hover:shadow-lg rounded-full" do %>
-                  <i class="fa-solid fa-plus mr-2"></i>手順を追加
-                <% end %>
-              </div>
-            </div>
-          </div>
-
-          <%# プルダウンを並べる %>
-          <div class="flex justify-center mt-10">
-            <%# 調理時間 %>
-            <div class="p-2 w-full md:w-1/4">
-              <div class="relative">
-                <div class= 'flex flex-row text-sm'>
-                  <%= form.label :time_required, class: "ml-2" %><p class="text-point mx-1">＊</p>
-                </div>
-                <%= form.select :time_required,
-                                Recipe.time_requireds.keys.map { |k| [I18n.t("enums.recipe.time_required.#{k}"), k] },
-                                { include_blank: "未選択" },
-                                class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3" %>
-              </div>
-            </div>
-            <%# テイスト %>
-            <div class="p-2 w-full md:w-1/4">
-              <div class="relative">
-                <div class= 'flex flex-row text-sm'>
-                  <%= form.label :taste, class: "ml-2" %><p class="text-point mx-1">＊</p>
-                </div>
-                <%= form.select :taste,
-                                Recipe.tastes.keys.map {|k| [I18n.t("enums.recipe.taste.#{k}"), k]},
-                                { include_blank: "未選択" },
-                                class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3" %>
-              </div>
-            </div>
-          </div>
-
-          <%# タグ %>
-
-          <div class="flex justify-center items-center mt-6">
-            食　材<p class="text-point mx-1">＊</p>
-          </div>
-          <div class="flex justify-center">
-            <% if tags.present? %>
-              <% tags.each do |category, tags| %>
-                <div class="w-full md:w-1/6 px-2">
-                      <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "text-sm ml-2" %>
-                      <%= form.select :tag_ids, tags, {include_blank: "選択しない"},
-                            { multiple: true, class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3"} %>
-                </div>
-              <% end %>
+            <%= form.fields_for :recipe_steps do |step| %>
+              <%= render 'recipe_step_fields', f: step %>
             <% end %>
-          </div>
-
-          <div class="mt-10 mx-3 flex justify-center">
-            <div class= "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2">
-              <i class="fa-solid fa-pen-to-square mr-2"></i><%= form.submit %>
-            </div>
+          <div class="mt-2 flex justify-center">
+            <%= link_to_add_association form, :recipe_steps, class: "text-card-body bg-secondary py-2 px-5 hover:shadow-lg rounded-full" do %>
+              <i class="fa-solid fa-plus mr-2"></i>手順を追加
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
+
+      <%# プルダウンを並べる %>
+      <div class="flex justify-center mt-10">
+        <%# 調理時間 %>
+        <div class="p-2 w-full md:w-1/4">
+          <div class="relative">
+            <div class= 'flex flex-row text-sm'>
+              <%= form.label :time_required, class: "ml-2" %><p class="text-point mx-1">＊</p>
+            </div>
+            <%= form.select :time_required,
+                            Recipe.time_requireds.keys.map { |k| [I18n.t("enums.recipe.time_required.#{k}"), k] },
+                            { include_blank: "未選択" },
+                            class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3" %>
+          </div>
+        </div>
+        <%# テイスト %>
+        <div class="p-2 w-full md:w-1/4">
+          <div class="relative">
+            <div class= 'flex flex-row text-sm'>
+              <%= form.label :taste, class: "ml-2" %><p class="text-point mx-1">＊</p>
+            </div>
+            <%= form.select :taste,
+                            Recipe.tastes.keys.map {|k| [I18n.t("enums.recipe.taste.#{k}"), k]},
+                            { include_blank: "未選択" },
+                            class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3" %>
+          </div>
+        </div>
+      </div>
+
+      <%# タグ %>
+
+      <div class="flex justify-center items-center mt-6">
+        食　材<p class="text-point mx-1">＊</p>
+      </div>
+      <div class="flex justify-center">
+        <% if tags.present? %>
+          <% tags.each do |category, tags| %>
+            <div class="w-full md:w-1/6 px-2">
+                  <%= form.label :category, I18n.t("enums.tag.category.#{category}"), class: "text-sm ml-2" %>
+                  <%= form.select :tag_ids, tags, {include_blank: "選択しない"},
+                        { multiple: true, class: "w-full bg-card-body rounded-lg border border-secondary py-2 px-3"} %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="mt-10 mx-3 flex justify-center">
+        <div class= "text-theme bg-point border border-secondary py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2">
+          <i class="fa-solid fa-pen-to-square mr-2"></i><%= form.submit %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
