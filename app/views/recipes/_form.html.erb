@@ -42,11 +42,10 @@
               内容<p class="text-point mx-1">＊</p>
             </div>
           </div>
+          <div class="py-1 w-full flex justify-center items-center">※手順は最低3つ、最大5つで登録してください。</div>
             <%= form.fields_for :recipe_steps do |step| %>
               <%= render 'recipe_step_fields', f: step %>
             <% end %>
-          <div class="p-1 w-full flex justify-center items-center">※手順は最低3つ、最大5つで登録してください。</div>
-
           <div class="mt-2 flex justify-center">
             <%= link_to_add_association form, :recipe_steps, class: "text-card-body bg-secondary py-2 px-5 hover:shadow-lg rounded-full" do %>
               <i class="fa-solid fa-plus mr-2"></i>手順を追加
