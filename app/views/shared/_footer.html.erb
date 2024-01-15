@@ -1,14 +1,14 @@
-<footer class="footer bg-theme text-body border-t pt-2 pb-4 px-8 text-sm flex flex-col items-center">
+<footer class="footer bg-theme text-body border-t pt-4 pb-6 px-8 text-sm flex flex-col items-center">
   <ul class="flex flex-col md:flex-row justify-center md:justify-between text-center">
     <li class="mt-2 md:mt-0">
       <%= link_to '利用規約', terms_of_use_path, class: "hover:text-point"%>
     </li>
-    <li class="ml-0 md:ml-4  mt-2 md:mt-0">
+    <li class="ml-0 md:ml-4 mt-2 md:mt-0">
       <%= link_to 'プライバシーポリシー', privacy_policy_path, class: "hover:text-point"%>
     </li>
-    <li class="ml-0 md:ml-4 mt-2 md:mt-0">
-      <%= link_to 'お問い合わせ', "#", class: "hover:text-point"%>
-    </li>
+    <div class="ml-0 md:ml-4 mt-2 md:mt-0 hover:text-point">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScFiiRU1oz0naYn3T7w1GEQzk2ik8-TBv3dTtJI1lVlEEBbjw/viewform?usp=sf_link" target= '_blank'>お問い合わせ</a>
+    </div>
   </ul>
   <p class="copyright flex mt-2">
     © <%= Time.current.year %> いつものお弁当 All Rights Reserved.
