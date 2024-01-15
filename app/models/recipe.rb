@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   belongs_to :user, optional: true
   has_many :bookmarked_recipes
 
+  # この順番じゃないとエラーになる
   has_many :recipe_tags, dependent: :destroy
   has_many :tags, through: :recipe_tags
   accepts_nested_attributes_for :recipe_tags, reject_if: :all_blank, allow_destroy: true
@@ -23,12 +24,6 @@ class Recipe < ApplicationRecord
 
   def self.ransackable_associations(*)
     ["recipe_tags", "tags"]
-  end
-
-  def make_taste_tag_time(tag_ids)
-    formatted_tag_ids = tag_ids.map { |id| id.to_s.rjust(2, '0') }
-    str_tags = formatted_tag_ids.join('')
-    "#{taste}_#{str_tags}_#{time_required}"
   end
 
   def self.build_with_ingredients_and_steps
@@ -65,8 +60,16 @@ class Recipe < ApplicationRecord
     end
   end
 
+  # AIレシピ用
   def self.make_taste_tag_time(taste, tag_ids, time_required)
     formatted_tag_ids = tag_ids.reject(&:blank?).map { |id| id.to_s.rjust(2, '0') }
+    str_tags = formatted_tag_ids.join('')
+    "#{taste}_#{str_tags}_#{time_required}"
+  end
+
+  # 通常のレシピ用
+  def make_taste_tag_time(tag_ids)
+    formatted_tag_ids = tag_ids.map { |id| id.to_s.rjust(2, '0') }
     str_tags = formatted_tag_ids.join('')
     "#{taste}_#{str_tags}_#{time_required}"
   end

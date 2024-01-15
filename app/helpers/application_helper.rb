@@ -14,7 +14,6 @@ module ApplicationHelper
     page_title.empty? ? base_title : page_title + ' | ' + base_title
   end
 
-
   def show_meta_tags
     set_meta_tags(default_meta_tags)
     display_meta_tags
@@ -22,8 +21,8 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'いつものお弁当',
-      title: 'いつものお弁当',
+      site: '',
+      title: '',
       reverse: true,
       charset: 'utf-8',
       description: '今ある材料でつくれるAIレシピとお弁当の記録カレンダーで、あなたのお弁当作りをサポートします',

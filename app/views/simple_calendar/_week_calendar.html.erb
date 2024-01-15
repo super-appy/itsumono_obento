@@ -1,11 +1,11 @@
 <div class="simple-calendar bg-transparent box-border max-w-full">
   <div class="flex flex-row items-center">
     <div class="mx-5 mb-2">
-      <%= link_to calendar.url_for_previous_view do %>
+      <%= link_to calendar.url_for_previous_view, class:"hover:text-point" do %>
         <i class="fa-solid fa-chevron-left mr-3"></i>
       <% end %>
-      <%= link_to t('simple_calendar.today', default: 'TODAY'), calendar.url_for_today_view %>
-      <%= link_to calendar.url_for_next_view do %>
+      <%= link_to t('simple_calendar.today', default: 'TODAY'), calendar.url_for_today_view, class: 'hover:text-point' %>
+      <%= link_to calendar.url_for_next_view, class: "hover:text-point" do %>
         <i class="fa-solid fa-chevron-right ml-3"></i>
       <% end %>
     </div>

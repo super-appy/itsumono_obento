@@ -33,7 +33,7 @@ module Openai
 
     def handle_response_errors(response)
       case response.status
-      when 200
+      when 200  # 何もしない
       when 401
         raise UnauthorizedError, '認証エラーが発生しました。管理者までお問い合わせください。。'
       when 429
@@ -50,9 +50,7 @@ module Openai
     def extract_message(response_body)
       extracted_message = begin
                             response_json = JSON.parse(response_body)
-                            return nil unless response_json.is_a?(Hash)
-
-                            response_json.dig("error", "message")
+                            response_json.is_a?(Hash) ? response_json.dig("error", "message") : nil
                           rescue JSON::ParserError
                             nil
                           end

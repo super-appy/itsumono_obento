@@ -25,9 +25,4 @@ class LunchboxLog < ApplicationRecord
     existing_log = user.lunchbox_logs.where(cooked_date: cooked_date.beginning_of_day..cooked_date.end_of_day).exists?
     errors.add(:base, "お弁当のログは1日1つしか登録できません。") if existing_log
   end
-
-  def tomorrow_log
-
-  end
-
 end

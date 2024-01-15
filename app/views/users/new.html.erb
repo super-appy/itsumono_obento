@@ -46,7 +46,7 @@
             <%= form.file_field :avator, class: "w-full bg-card-body text-secondary rounded-lg py-1 px-3"%>
             <%= form.hidden_field :avator_cache %>
           </div>
-
+          <p class="text-sm mt-5">＊ <%= link_to '利用規約',terms_of_use_path, class:'text-point'%>をご一読の上、ユーザー登録をお願い致します。</p>
           <%= form.submit class: 'bg-point border border-secondary mt-8 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2 font-semibold'%>
       <% end %>
 
