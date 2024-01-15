@@ -168,33 +168,35 @@
       LET'S START USING
     </p>
 
-    <div class="flex justify-center pb-8">
-      <%= image_tag 'logo.png', class: "h-14" %>
+    <div class="flex justify-center pb-8", id= "scrollToTopBtn">
+      <%= image_tag 'logo.png', class: "h-14 hover:shadow-lg" %>
     </div>
 
 
-    <div class="flex md:flex-row flex-col items-center justify-center">
-      <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-theme text-theme mx-2 my-2 hover:bg-point">
-        <%= link_to new_user_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
-          <p class="text-xl font-semibold">ユーザー登録</p>
-          <i class="fa-solid fa-user-plus text-4xl my-2"></i>
-          <p class="text-sm text-center">すべての機能を<br>使いたい方</p>
-        <% end %>
-      </div>
-      <div class="md:mx-5 bg-theme rounded-full w-48 h-48 flex justify-center items-center border border-theme text-card-body mx-2 my-2 hover:bg-point">
-        <%= link_to login_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
-          <p class="text-xl font-semibold">ログイン</p>
-          <i class="fa-solid fa-right-to-bracket text-4xl my-2"></i>
-          <p class="text-sm text-center">ユーザー登録済みの方</p>
-        <% end %>
-      </div>
-      <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-secondary text-secondary mx-2 my-2 hover:bg-point">
-        <div id= "scrollToTopBtn", class="flex flex-col justify-center items-center h-full w-full">
-          <p class="text-xl font-semibold">お試し</p>
-          <i class="fa-solid fa-laptop text-4xl my-2"></i>
-          <p class="text-sm text-center">まずは使ってみたい方<br>ページトップに<br>戻ります</p>
+    <% unless logged_in?%>
+      <div class="flex md:flex-row flex-col items-center justify-center">
+        <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-theme text-theme mx-2 my-2 hover:bg-point">
+          <%= link_to new_user_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
+            <p class="text-xl font-semibold">ユーザー登録</p>
+            <i class="fa-solid fa-user-plus text-4xl my-2"></i>
+            <p class="text-sm text-center">すべての機能を<br>使いたい方</p>
+          <% end %>
+        </div>
+        <div class="md:mx-5 bg-theme rounded-full w-48 h-48 flex justify-center items-center border border-theme text-card-body mx-2 my-2 hover:bg-point">
+          <%= link_to login_path, class: "flex flex-col justify-center items-center h-full w-full" do %>
+            <p class="text-xl font-semibold">ログイン</p>
+            <i class="fa-solid fa-right-to-bracket text-4xl my-2"></i>
+            <p class="text-sm text-center">ユーザー登録済みの方</p>
+          <% end %>
+        </div>
+        <div class="md:mx-5 bg-card-body rounded-full w-48 h-48 flex justify-center items-center border border-secondary text-secondary mx-2 my-2 hover:bg-point">
+          <div id= "scrollToTopBtn", class="flex flex-col justify-center items-center h-full w-full">
+            <p class="text-xl font-semibold">お試し</p>
+            <i class="fa-solid fa-laptop text-4xl my-2"></i>
+            <p class="text-sm text-center">まずは使ってみたい方<br>ページトップに<br>戻ります</p>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </section>
