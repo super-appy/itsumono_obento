@@ -78,6 +78,9 @@ gem "simple_calendar"
 # ページネーション
 gem 'kaminari'
 
+# OGP
+gem 'meta-tags'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
