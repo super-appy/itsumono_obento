@@ -23,7 +23,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'いつものお弁当',
-      title: 'お弁当作りをサポートするサービス',
+      title: 'いつものお弁当',
       reverse: true,
       charset: 'utf-8',
       description: '今ある材料でつくれるAIレシピとお弁当の記録カレンダーで、あなたのお弁当作りをサポートします',
