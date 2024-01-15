@@ -37,7 +37,6 @@ class RecipesController < ApplicationController
     @from_action = session[:from_action]
     session.delete(:from_action)
     @tags = @recipe.tags
-    # binding.pry
     @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:recipe_id])
     @recipe_steps = RecipeStep.where(recipe_id: params[:recipe_id])
   end
