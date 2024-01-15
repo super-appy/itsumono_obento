@@ -10,7 +10,7 @@
       <%= render 'recipes/control/control_cooked_repeat', bookmarked_recipe: bookmarked_recipe %>
 
       <%# コメントと編集削除ボタンは作ったの一覧でのみ表示 %>
-      <% if current_page?(cooked_bookmarked_recipes_path) %>
+      <% if current_page?(cooked_bookmarked_recipes_path) || current_page?(mypage_path) %>
         <div class= "flex justify-center items-center mt-3">
           <i class="fa-regular fa-comment mr-3"></i><%= bookmarked_recipe.comment %>
         </div>

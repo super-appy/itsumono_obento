@@ -23,7 +23,7 @@
         <% end %>
       <% end %>
 
-      <%= link_to "https://twitter.com/share?url=#{recipe_url(@recipe)}&text=#{ERB::Util.url_encode("お弁当におすすめのAIレシピ「#{@recipe.title}」\nいつものお弁当 | ")}&hashtags=itsumono_obento", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+      <%= link_to "https://twitter.com/share?url=#{recipe_url(@recipe)}&text=#{ERB::Util.url_encode("お弁当におすすめのレシピ「#{@recipe.title}」\nいつものお弁当 | ")}&hashtags=itsumono_obento", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
             class: "bg-point border border-secondary py-2 px-5 hover:shadow-lg rounded-full text-lg mx-4"  do %>
         <i class="fa-brands fa-x-twitter mr-2"></i>で共有
       <% end %>
