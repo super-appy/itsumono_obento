@@ -33,4 +33,7 @@ Rails.application.routes.draw do
   delete'logout', to: 'user_sessions#destroy'
 
   get 'mypage', to:'static_pages#mypage'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'terms_of_use', to: 'static_pages#terms_of_use'
+
 end
