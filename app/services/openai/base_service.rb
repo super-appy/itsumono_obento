@@ -50,7 +50,7 @@ module Openai
     def extract_message(response_body)
       extracted_message = begin
                             response_json = JSON.parse(response_body)
-                            response_json.is_a?(Hash) ? response_json.dig("error", "message") : nil                            response_json.dig("error", "message")
+                            response_json.is_a?(Hash) ? response_json.dig("error", "message") : nil
                           rescue JSON::ParserError
                             nil
                           end
