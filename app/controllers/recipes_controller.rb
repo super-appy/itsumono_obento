@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
     @recipe.taste_tag_time = @recipe.make_taste_tag_time(recipe_params[:tag_ids])
 
     if @recipe.save
+      session[:from_action] = 'create'
       redirect_to recipe_path(@recipe), success: "#{@recipe.title}のレシピを投稿しました！ありがとうございます！"
     else
       set_select_lists
@@ -33,6 +34,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @from_action = session[:from_action]
+    session.delete(:from_action)
     @tags = @recipe.tags
     # binding.pry
     @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:recipe_id])
@@ -41,6 +44,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = current_user.recipes.find(params[:id])
+    session[:from_action] = 'create'
     @tags = set_select_lists
     @selected_tags = @recipe.tags.group_by(&:category).transform_values do |tags|
       tags.map(&:id)

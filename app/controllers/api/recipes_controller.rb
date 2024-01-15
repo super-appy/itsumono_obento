@@ -24,6 +24,7 @@ module Api
           @recipe.controller_name = 'api/recipes'
 
           if @recipe.save
+            session[:from_action] = 'create'
             set_api_request_cookie
             respond_to do |format|
               format.js { render js: "window.hideModal(document.getElementById('modalArea'));" }
