@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= page_title(yield(:title)) %></title>
+    <title><%= page_title(content_for?(:title) ? yield(:title) : '') %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= show_meta_tags %>
     <%= csrf_meta_tags %>
