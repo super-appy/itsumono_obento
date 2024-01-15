@@ -14,7 +14,11 @@ module Api
     end
 
     def create
-      @recipe = current_user.recipes.build(recipe_params)
+      if logged_in?
+        @recipe = current_user.recipes.build(recipe_params)
+      else
+        @recipe = Recipe.new(recipe_params)
+      end
       @recipe.controller_name = 'api/recipes'
 
       if @recipe.valid?
