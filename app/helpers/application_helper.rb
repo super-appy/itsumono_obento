@@ -31,7 +31,7 @@ module ApplicationHelper
       separator: '|',
       og: {
         site_name: :site,
-        title: :title,
+        title: 'いつものお弁当',
         description: :description,
         type: 'website',
         url: request.original_url,
