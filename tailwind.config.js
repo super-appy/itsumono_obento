@@ -15,6 +15,7 @@ module.exports = {
         theme: "#00473e", // メインの文字色
         secondary: "#475d5b", //小さい文字などの色
         point: "#faae2c", //綺麗な黄色
+        button: "#bb7805",
         inputBorder: "#565666",
         input: "#2a2a33",
       },

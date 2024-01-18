@@ -8,4 +8,3 @@ import "cocoon-js-vanilla";
 
 import "./add_steps";
 import "./modal"
-
