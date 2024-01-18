@@ -26,7 +26,7 @@ module Openai
 
               # output
               タイトル:(no break)
-              材料(一人前):(no more than 6)
+              材料(一人前):(no more than 6, format:-ingredient_name:quantity)
               手順:(only 3 steps)"
           }
         ]

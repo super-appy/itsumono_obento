@@ -47,4 +47,22 @@ module ApplicationHelper
       }
     }
   end
+
+  # 手順の加工
+  def formatted_steps(api_step)
+    steps = api_step.split("\n")
+    steps.map do |step|
+      number, description = step.split(/\. /, 2)
+      [number.to_i, description]
+    end
+  end
+
+  # 材料の加工
+  def formatted_ingredients(api_ingredients)
+    api_ingredients.split("\n").map do |ing|
+      ingredient, amount = ing.strip.split(/\s*:\s*/)
+      ingredient = ingredient.gsub(/^-/, '').strip
+      [ingredient, amount]
+    end
+  end
 end
