@@ -1,12 +1,12 @@
 <% content_for(:title, t('.title')) %>
 
 <section class="text-card-body body-font">
-  <div class="container px-8 md:px-14 lg:px-24 w-full py-20 mx-auto flex flex-wrap items-center min-h-full">
+  <div class="container px-4 md:px-10 lg:px-20 w-full md:py-14 pt-10 pb-20 mx-auto flex flex-wrap items-center min-h-full">
     <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 hidden md:block">
       <p class="leading-relaxed mb-4 text-secondary">お弁当の豆知識 「五色の原則」</p>
       <h1 class="title-font font-medium text-lg text-theme">赤、黄、緑、白、黒の5色をお弁当に取り入れることで、栄養バランスと見た目の美しさを両立させることができます。</h1>
     </div>
-    <div class="lg:w-2/6 md:w-1/2 bg-theme rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+    <div class="lg:w-2/6 md:w-1/2 bg-theme rounded-lg md:p-8 p-4 flex flex-col md:ml-auto w-full mt-5 md:mt-0">
       <h2 class="text-lg font-semibold title-font mb-5">
           <i class="fa-solid fa-user-plus mx-2"></i>ユーザー登録
       </h2>
@@ -46,8 +46,14 @@
             <%= form.file_field :avator, class: "w-full bg-card-body text-secondary rounded-lg py-1 px-3"%>
             <%= form.hidden_field :avator_cache %>
           </div>
-          <p class="text-sm mt-5">＊ <%= link_to '利用規約',terms_of_use_path, class:'text-point'%>をご一読の上、ユーザー登録をお願い致します。</p>
-          <%= form.submit class: 'bg-point border border-secondary mt-8 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2 font-semibold'%>
+
+          <div class="my-5">
+            <p class="mb-2 ml-2">利用規約</p>
+            <iframe src="/iframe_terms_of_use.html" class="bg-white w-full"></iframe>
+          </div>
+          <div class="flex justify-center">
+            <%= form.submit '利用規約に同意して登録', class: 'bg-point border border-button my-2 py-2 px-8  border-b-4 rounded-full text-lg mx-2 font-semibold active:scale-95 transition duration-150' %>
+          </div>
       <% end %>
 
     </div>
