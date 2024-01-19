@@ -1,5 +1,6 @@
-<div class= "flex justify-center", id="bookmark-button-for-recipe-<%= recipe.id %>">
-  <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post}, class: "border border-secondary text-sm bg-point border-1 py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
+<div class= "flex justify-center items-center", id="bookmark-button-for-recipe-<%= recipe.id %>">
+  <%= link_to bookmarked_recipes_path(recipe_id: recipe.id), data: {turbo_method: :post},
+        class: "bg-theme text-card-body border border-theme bg-point border-1 py-1 px-5 hover:shadow-lg rounded-full mx-2" do %>
       <i class="fa-regular fa-heart mr-1"></i>つくりたい
   <% end %>
 </div>
