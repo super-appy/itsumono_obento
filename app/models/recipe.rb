@@ -38,7 +38,7 @@ class Recipe < ApplicationRecord
   def self.create_from_api(params, api_resp)
       api_resp_name = api_resp.match(/(?<=:).*/)[0]
     begin
-      api_resp_ingredients = api_resp.match(/(?<=材料\(一人前\):\n)[\s\S]*(?=手順)/)[0]
+      api_resp_ingredients = api_resp.match(/(?<=材料\(一人前\):)[\s\S]*(?=手順)/)[0]
       api_resp_steps = api_resp.match(/(?<=手順:\n)[\s\S]*/)[0]
       taste_tag_time = make_taste_tag_time(params[:taste], params[:tag_ids], params[:time_required])
 

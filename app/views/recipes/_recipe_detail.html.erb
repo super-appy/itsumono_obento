@@ -28,17 +28,17 @@
     </div>
     <%# 食材と分量 %>
     <div class="mt-5 border-b border-dashed border-card-line pb-5">
-      <% if recipe.api_resp == nil%>
         <div class="flex py-2">
           <span class="text-gray-500">食材の名前</span>
           <span class="ml-auto text-gray-500">分量</span>
         </div>
-      <% else %>
-        <p class="text-center">材料</p>
-      <% end %>
+
       <%# 材料のパーシャルファイル %>
       <% if recipe.api_ingredients %>
-      <%= simple_format(recipe.api_ingredients, {}, class: "break-words") %>
+        <% formatted_ingredients = formatted_ingredients(recipe.api_ingredients)%>
+        <% formatted_ingredients.each do |ing|%>
+          <%= render 'recipes/ingredient_api', ing: ing%>
+        <% end %>
       <% else %>
         <% recipe.recipe_ingredients.each do |ingredient| %>
           <%= render 'recipes/ingredient', ingredient: ingredient %>
@@ -55,11 +55,18 @@
   <%# 料理手順 %>
   <div class="md:w-1/3 px-10 ">
     <%# STEP1 %>
-    <% if recipe.api_steps %>
-      <%= simple_format(recipe.api_steps, {}, class: "break-words") %>
+    <% if recipe.api_ingredients == nil && recipe.api_resp != nil %>
+      <%= simple_format(recipe.api_steps, {}, class: "break-words")%>
     <% else %>
-      <% recipe.recipe_steps.each do |step| %>
-        <%= render 'recipes/step', step: step, last: step == recipe.recipe_steps.last %>
+      <% if recipe.api_steps %>
+        <% formatted_steps = formatted_steps(recipe.api_steps)%>
+        <% formatted_steps.each_with_index do |step, index|%>
+          <%= render 'recipes/step_api', step: step, last: index == formatted_steps.length - 1 %>
+        <% end %>
+      <% else %>
+        <% recipe.recipe_steps.each do |step| %>
+          <%= render 'recipes/step', step: step, last: step == recipe.recipe_steps.last %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
