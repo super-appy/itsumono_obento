@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
   enum taste: { japanese: 0, chinese: 1, western:2 }
 
   def self.ransackable_attributes(*)
-    ["taste", "tag_ids", "time_required", "title", "created_at"]
+    ["taste", "tag_ids", "time_required", "title", "created_at", "api_resp"]
   end
 
   def self.ransackable_associations(*)
