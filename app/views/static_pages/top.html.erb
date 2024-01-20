@@ -1,5 +1,5 @@
 <section class="text-secondary body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+  <div class="container mx-auto flex px-5 mt-24 mb-16 md:flex-row flex-col items-center">
     <div class="flex items-center justify-center md:w-1/2 w-full h-80 overflow-hidden">
       <%= image_tag 'top.png', class:"max-w-full max-h-full" %>
     </div>
@@ -23,6 +23,14 @@
         </p>
       </div>
     </div>
+  </div>
+  <div class="flex flex-col justify-center items-center mb-16">
+    <%= link_to new_api_recipe_path, class: "bg-point text-xl border border-secondary py-2 md:px-10 px-4 hover:shadow-lg rounded-full text-lg md:mx-4 mx-1" do %>
+      <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる
+    <% end %>
+    <p class="mt-2">
+      <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
+    </p>
   </div>
   <div class="w-full px-5 pt-10 pb-16 flex flex-col bg-theme">
     <p class="text-center text-3xl font-semibold text-card-body pb-2">
