@@ -2,60 +2,61 @@
   <div class="bg-card-body w-full p-4 rounded-lg border border-secondary">
     <%# 日付とユーザー %>
     <div class="flex flex-row justify-between pb-2 border-b border-dashed border-secondary">
-      <div class="flex flex-col">
-        <div class="text-xs"><%= log.cooked_date.year %></div>
-        <div class="flex justify-centr font-semibold"><%= log.cooked_date.month %>.<%= log.cooked_date.day %></div>
-      </div>
       <div class="flex flex-row items-center">
         <%= image_tag log.user.avator.url, class:"rounded-full h-9 w-9 flex items-center justify-center border mr-2"%>
         <%= log.user.name%>
       </div>
+      <div class="flex flex-col">
+        <div class="text-xs"><%= log.cooked_date.year %></div>
+        <div class="flex justify-centr font-semibold"><%= log.cooked_date.month %>.<%= log.cooked_date.day %></div>
+      </div>
     </div>
 
-    <div class="my-2">
+
       <%# 画像 %>
-      <div class="flex items-center justify-center w-full h-64 bg-card-body overflow-hidden">
+      <div class="flex items-center justify-center w-full h-64 bg-card-body overflow-hidden mt-2">
         <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
       </div>
-      <%# アプリのメニュー %>
-      <% if log.cooked_recipe_ids %>
-        <p class="text-xs mt-3">▼ アプリ内メニュー</p>
-        <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
-        <%= link_to recipe.title, recipe_path(recipe) %>
-        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-      <% end %>
-      <%# オリジナルメニュー %>
-      <% if log.original_menu != "" %>
-        <p class="text-xs mt-3">▼ オリジナルメニュー</p>
-        <%= log.original_menu%>
-      <% end %>
-      <%# コメント %>
-      <p class="text-xs mt-3">▼ コメント</p>
-      <%= log.comment%>
-    </div>
-
-    <%# いいねと編集 %>
-    <% if logged_in? %>
-      <div class="flex flex-row justify-end items-end border-t border-dashed border-secondary mt-2 pt-1">
-        <% if current_user.own?(log) %>
-          <%# 自分の投稿なら編集・削除 %>
-          <div class="flex flex-row">
-            <%= link_to edit_lunchbox_log_path(log), class: "px-2" do %>
-              <i class="fa-solid fa-pencil"></i>
-            <%end%>
-            <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
-          </div>
-        <% else %>
-        <%# 他人の投稿であればいいねボタン %>
-          <% if current_user.like?(log) %>
-            <%= render 'lunchbox_logs/unlike', log: log%>
+      <%# いいねと編集 %>
+      <% if logged_in? %>
+        <div class="flex flex-row justify-end items-end border-b border-dashed border-secondary mt-2 pt-1">
+          <% if current_user.own?(log) %>
+            <%# 自分の投稿なら編集・削除 %>
+            <div class="flex flex-row">
+              <%= link_to edit_lunchbox_log_path(log), class: "px-2" do %>
+                <i class="fa-solid fa-pencil"></i>
+              <%end%>
+              <%= link_to lunchbox_log_path(log), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </div>
           <% else %>
-            <%= render 'lunchbox_logs/like', log: log%>
+          <%# 他人の投稿であればいいねボタン %>
+            <% if current_user.like?(log) %>
+              <%= render 'lunchbox_logs/unlike', log: log%>
+            <% else %>
+              <%= render 'lunchbox_logs/like', log: log%>
+            <% end %>
           <% end %>
+        </div>
+      <% end %>
+      <div class="mt-2 md:max-h-20 always-show-scrollbar">
+        <%# アプリのメニュー %>
+        <% if log.cooked_recipe_ids %>
+          <p class="text-xs mt-3">▼ アプリ内メニュー</p>
+          <% recipe = Recipe.find_by(id: log.cooked_recipe_ids) %>
+          <%= link_to recipe.title, recipe_path(recipe) %>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
         <% end %>
+        <%# オリジナルメニュー %>
+        <% if log.original_menu != "" %>
+          <p class="text-xs mt-3">▼ オリジナルメニュー</p>
+          <%= log.original_menu%>
+        <% end %>
+        <%# コメント %>
+        <p class="text-xs mt-3">▼ コメント</p>
+        <%= log.comment%>
       </div>
-    <% end %>
+
   </div>
 </div>

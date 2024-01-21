@@ -27,7 +27,7 @@
           <%= render 'recipes/recipe_controls', recipe: @recipe, current_user: current_user %>
         <% else %>
           <div class="mx-3 flex flex-col justify-center items-center text-xl">
-            <p class="text-sm tracking-widest">つくりたいリストに追加する</p>
+            <p class="text-sm tracking-wide mb-1">つくりたいリストに追加するなら</p>
             <%= link_to 'ユーザー登録', new_user_path, class: "text-card-body bg-theme border border-theme py-1 md:px-12 px-8 hover:shadow-lg rounded-full mx-2"%>
           </div>
         <% end %>

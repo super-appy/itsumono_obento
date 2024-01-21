@@ -1,5 +1,5 @@
 <section class="text-secondary body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+  <div class="container mx-auto flex px-5 mt-24 mb-16 md:flex-row flex-col items-center">
     <div class="flex items-center justify-center md:w-1/2 w-full h-80 overflow-hidden">
       <%= image_tag 'top.png', class:"max-w-full max-h-full" %>
     </div>
@@ -24,6 +24,14 @@
       </div>
     </div>
   </div>
+  <div class="flex flex-col justify-center items-center mb-16">
+    <%= link_to new_api_recipe_path, class: "bg-point text-xl border-b-4 border-button py-2 md:px-10 px-4 rounded-full text-lg md:mx-4 mx-1 active:scale-95 transition duration-150" do %>
+      <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる！
+    <% end %>
+    <p class="mt-2">
+      <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
+    </p>
+  </div>
   <div class="w-full px-5 pt-10 pb-16 flex flex-col bg-theme">
     <p class="text-center text-3xl font-semibold text-card-body pb-2">
       <i class="fa-solid fa-magnifying-glass mr-2"></i>HOW TO USE
@@ -39,9 +47,9 @@
           <img src="https://i.gyazo.com/f3bc51d72c75e49871c743bc975453f7.gif" alt="レシピ生成の操作イメージ" width="800"/>
         </div>
         <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
+          <%= link_to new_api_recipe_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do%>
             <i class="fa-solid fa-robot mr-2"></i>AIレシピ生成
-          </p>
+          <% end %>
           <div class= "py-4 px-1">
             AIでお弁当にあうレシピを生成できます。<br>
             調理時間・味のテイスト・使いたい食材を入力してください。<br>
@@ -58,9 +66,9 @@
           <img src="https://i.gyazo.com/abef5cc7ec1943cc7dea99ad8f267ba4.gif" alt="レシピ一覧の操作イメージ" width="800" />
         </div>
         <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
+          <%= link_to recipes_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do %>
             <i class="fa-solid fa-list mr-2"></i>レシピ一覧
-          </p>
+          <% end %>
           <div class= "py-4 px-1">
             AIレシピと投稿されたレシピの一覧です。<br>
             調理時間・味のテイスト・食材を選択してレシピを検索できます。<br>
@@ -77,9 +85,9 @@
           <img src="https://i.gyazo.com/285d6183f1c4865ade45da12d2663858.jpg" alt="お弁当一覧のイメージ" width="800"/>
         </div>
         <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
+          <%= link_to lunchbox_logs_path, class:"leading-relaxed text-xl pt-4 hover:text-point" do %>
             <i class="fa-solid fa-camera mr-2"></i>みんなのお弁当
-          </p>
+          <% end %>
           <div class= "py-4 px-1">
             他のユーザーが投稿したお弁当を見ることができます。<br>
             明日のお弁当の参考にしてみてくださいね。<br>
@@ -95,10 +103,10 @@
         <div class="sm:w-1/2 text-center p-3">
           <img src="https://i.gyazo.com/ab2fe2a45cef3a25f9c888acfae13106.gif" alt="お弁当カレンダーのイメージ" width="800"/>
         </div>
-        <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center ">
+          <%= link_to mypage_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do%>
             <i class="fa-solid fa-calendar mr-2"></i>お弁当記録カレンダー
-          </p>
+          <% end %>
           <div class= "py-4 px-1">
             お弁当を記録して、週単位でお弁当を振り返ってみましょう。<br>
             ※お弁当の記録は公開範囲が選択できるので、気軽に投稿してみてください
@@ -119,9 +127,9 @@
           <img src="https://i.gyazo.com/a03df413d8732d17dcf52529ebcf833d.gif" alt="作ったを登録するイメージ" width="800"/>
         </div>
         <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
-            <i class="fa-solid fa-heart mr-2"></i>作りたいレシピ&作ったレシピ
-          </p>
+          <%= link_to want_to_cook_bookmarked_recipes_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do %>
+            <i class="fa-solid fa-heart mr-2"></i>作りたいレシピ & 作ったレシピ
+          <% end %>
           <div class= "py-4 px-1">
             気になるレシピを作りたいリストに追加できます。<br>
             実際に作ったレシピは、あなただけのメモを添えて登録できます。
@@ -137,15 +145,15 @@
 
 
     <%# レシピ投稿 %>
-    <div class="lg:w-4/6 mx-auto bg-card-body rounded-lg my-2 border-2 border-theme hover:shadow-lg hover:-translate-y-1 transform transition duration-300 ease-in-out">
+    <div class="lg:w-4/6 mx-auto bg-card-body rounded-lg my-2 border-2 border-theme hover:-translate-y-1 transform transition duration-300 ease-in-out">
       <div class="flex flex-col sm:flex-row px-5">
         <div class="sm:w-1/2 text-center p-3">
           <img src="https://i.gyazo.com/3b2cebc7a99ac21a7734b3cf8c0320e5.gif" alt="投稿画面のイメージ" width="800"/>
         </div>
         <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <p class="leading-relaxed text-xl pt-4">
+          <%= link_to new_recipe_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do %> 
             <i class="fa-solid fa-pen-to-square mr-2"></i>レシピ投稿
-          </p>
+          <% end %>
           <div class= "py-4 px-1">
             あなたの定番のレシピを登録することができます。<br>
             自慢のレシピを投稿してみませんか？

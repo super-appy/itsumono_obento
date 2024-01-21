@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.always-show-scrollbar {
+  overflow-y: scroll;
+}
+
+/* オプション：スクロールバーのスタイルをカスタマイズ */
+.always-show-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.always-show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 5px;
+}
