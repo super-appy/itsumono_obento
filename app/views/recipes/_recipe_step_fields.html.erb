@@ -10,10 +10,11 @@
         <%= f.text_area :description, class: "w-full rounded-lg border border-card-line py-1 px-3"%>
       </div>
     </div>
-    <div class="p-2 w-full md:w-1/12 flex justify-center">
-      <%= link_to_remove_association f, { wrapper_class: 'step-nested-fields', class: "text-white bg-secondary rounded-full h-8 w-8 flex items-center justify-center hover:bg-point"} do %>
+    <%= link_to_remove_association f, { wrapper_class: 'step-nested-fields', class: "remove-step p-2 md:w-1/12"} do %>
+    <div class=" text-white bg-secondary rounded-full h-8 w-8 flex items-center justify-center hover:bg-point">
         <i class="fa-solid fa-xmark"></i>
-      <% end %>
     </div>
+    <% end %>
+
   </div>
 </div>
