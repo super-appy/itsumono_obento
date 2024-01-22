@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
 
   root 'static_pages#top'
   resources :users, only: %i[new create]
@@ -26,6 +29,7 @@ Rails.application.routes.draw do
   end
   resources :like_lunchbox_logs, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 
   get 'login', to:'user_sessions#new'
@@ -36,4 +40,5 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'terms_of_use', to: 'static_pages#terms_of_use'
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

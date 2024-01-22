@@ -1,0 +1,31 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
+    <div class="flex flex-wrap w-full mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-theme">
+          <i class="fa-regular fa-address-card mx-4"></i>パスワードリセット
+        </h1>
+        <div class="h-1 w-20 bg-point rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-secondary">
+        登録しているメールアドレスを入力してください。<br>
+        パスワードリセット用のメールが届きます。
+      </p>
+    </div>
+    <div class="px-4 md:pt-24 pt-12 flex flex-col w-full max-w-md mx-auto">
+      <%= form_with url: password_resets_path, local: true, method: :post do |form| %>
+
+        <div class= "mb-3">
+          <div class= 'flex flex-row text-sm ml-2'>
+            <%= form.label :email, 'メールアドレス'%><p class="text-point mx-1">＊</p>
+          </div>
+          <%= form.text_field :email, placeholder: 'sample@email.com', class: "w-full bg-card-body rounded-lg border border-card-line py-2 px-3" %>
+        </div>
+
+        <div class= "flex justify-center mt-16">
+          <%= form.submit 'パスワードリセット', class: "text-theme bg-point border-0 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
