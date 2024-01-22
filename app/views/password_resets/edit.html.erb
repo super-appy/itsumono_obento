@@ -1,0 +1,45 @@
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center min-h-full">
+    <div class="flex flex-wrap w-full mb-10">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-theme">
+          <i class="fa-solid fa-lock mx-4"></i>パスワード変更
+        </h1>
+        <div class="h-1 w-20 bg-point rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-secondary">
+        <%# コメント入れるならここ %>
+      </p>
+    </div>
+    <div class="px-4 md:pt-18 pt-8 flex flex-col w-full max-w-md mx-auto">
+      <%= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |form| %>
+        <%= render 'shared/error_messages', object: form.object %>
+        <div class= "mb-5">
+          <div class= 'flex flex-row text-sm ml-2 mb-1'>
+            <%= form.label :email, 'メールアドレス'%>
+          </div>
+          <p class="pl-4"><%= @user.email %></p>
+        </div>
+
+
+        <div class= "mb-3">
+          <div class= 'flex flex-row text-sm ml-2'>
+            <%= form.label :password, 'パスワード'%><p class="text-point mx-1">＊</p>
+          </div>
+          <%= form.password_field :password, class: "w-full bg-card-body rounded-lg border border-card-line py-2 px-3" %>
+        </div>
+
+        <div class= "mb-3">
+          <div class= 'flex flex-row text-sm ml-2'>
+            <%= form.label :password_confirmation, 'パスワード確認'%><p class="text-point mx-1">＊</p>
+          </div>
+          <%= form.password_field :password_confirmation, class: "w-full bg-card-body rounded-lg border border-card-line py-2 px-3" %>
+        </div>
+
+        <div class= "flex justify-center mt-16">
+          <%= form.submit '変更する', class: "text-theme bg-point border-0 py-2 px-8 hover:shadow-lg rounded-full text-lg mx-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
