@@ -25,7 +25,9 @@
         <%= form.submit 'ログイン', class: 'bg-point border border-button my-2 py-2 px-8  border-b-4 rounded-full text-lg mx-2 font-semibold active:scale-95 transition duration-150'%>
       <% end %>
 
-<%= link_to 'Forgot Password?', new_password_reset_path %>
+      <%= link_to new_password_reset_path, class: "mt-5 ml-2 underline underline-offset-2 hover:text-point" do %>
+        <i class="fa-solid fa-lock mr-2"></i>パスワードを忘れた方はこちら
+      <% end %>
     </div>
   </div>
 </section>
