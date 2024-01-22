@@ -396,7 +396,7 @@ Rails.application.config.sorcery.configure do |config|
     # When was password reset email sent. Used for hammering protection.
     # Default: `:reset_password_email_sent_at`
     #
-    # user.reset_password_email_sent_at_attribute_name =
+    user.reset_password_email_sent_at_attribute_name = :reset_password_email_sent_at
 
     # REQUIRED:
     # Password reset mailer class.
