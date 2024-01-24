@@ -30,6 +30,31 @@
       <% end %>
     <% end %>
 
+    <%# おすすめレシピ %>
+    <div class="text-sm title-font text-point mt-16 flex justify-center tracking-widest">
+      <% if @recommendation_based_on == 'bookmarks' %>
+        <p>お気に入りから</p>
+      <% elsif @recommendation_based_on == 'search_history'%>
+        <p>検索履歴から</p>
+      <% end %>
+    </div>
+    <div class="flex items-center gap-4 mb-10">
+      <div class="flex-grow border border-dashed border-secondary text-sm"></div>
+        <h1 class="text-2xl title-font text-them">
+          <i class="fa-solid fa-heart mr-1"></i>あなたにおすすめのレシピ
+        </h1>
+      <div class="flex-grow border border-dashed border-secondary"></div>
+    </div>
+
+    <% if @recommended_recipes.length != 0 %>
+      <div class="flex flex-wrap -m-4">
+        <% @recommended_recipes.each do |recipe| %>
+          <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+    <% end %>
+
+
     <%# 作りたいレシピ %>
     <p class="text-sm title-font text-point mt-16 flex justify-center tracking-widest">
       最近追加した

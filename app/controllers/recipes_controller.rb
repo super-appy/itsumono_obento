@@ -6,6 +6,15 @@ class RecipesController < ApplicationController
   def index
     @tags = Tag.all
     @q = Recipe.ransack(params[:q])
+    # 検索のパラメーターをjsonで保存
+    if params[:q].present? && !all_blank(params[:q]) && current_user
+      current_user.user_search_logs.create!(search_params: params[:q].to_json)
+    end
+    # 3つ以上になったら、古いものから削除する
+    if current_user.user_search_logs.size > 3
+      oldest_log = current_user.user_search_logs.order(:created_at).first
+      oldest_log.destroy
+    end
     @recipes = @q.result.includes(:tags).sorted_by_creation.distinct.page(params[:page])
   end
 
@@ -73,6 +82,10 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:title, :time_required, :taste, tag_ids:[],
       recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy],
       recipe_steps_attributes: [:id, :number, :description, :_destroy])
+  end
+
+  def all_blank(params)
+    params.to_unsafe_h.all? { |_, v| v.blank? }
   end
 
 end
