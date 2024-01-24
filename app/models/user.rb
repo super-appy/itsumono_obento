@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :lunchbox_logs
   has_many :like_lunchbox_logs, dependent: :destroy
   has_many :liked_lunchbox_logs, through: :like_lunchbox_logs, source: :lunchbox_log
+  has_many :user_search_logs, dependent: :destroy
 
   enum line_registerd: { not_registerd: 0, done: 1 }, _prefix: true
 
