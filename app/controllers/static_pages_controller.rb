@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
     @recommended_recipes, @recommendation_based_on = recommendation_service.recommended_recipes
 
     if @recommended_recipes.blank?
-      bookmarked_recipe_ids = @user.bookmarked_recipes.pluck(:recipe_id)
+      bookmarked_recipe_ids = current_user.bookmarked_recipes.pluck(:recipe_id)
       @recommended_recipes = Recipe.where.not(user_id: current_user.id)
                                     .where.not(id: bookmarked_recipe_ids)
                                     .order(Arel.sql('RANDOM()'))
