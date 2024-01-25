@@ -5,7 +5,7 @@
     <%= render 'recipe_detail', recipe: @recipe, tags: @tags%>
 
     <% if logged_in? %>
-      <% if current_user.own?(@recipe) %>
+      <% if current_user.own?(@recipe) && @recipe.api_resp == nil%>
         <div class="mt-10 mx-3 flex flex-row md:justify-end justify-center md:mt-0">
           <%= link_to edit_recipe_path(@recipe),
                 class: "bg-card-body border border-secondary py-1 px-5 mr-2 hover:shadow-lg rounded-full" do %>

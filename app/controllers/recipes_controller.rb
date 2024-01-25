@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def posted
-    @posted_recipes = current_user.recipes.page(params[:page])
+    @posted_recipes = current_user.recipes.where(api_resp: nil).page(params[:page])
   end
 
   def new
