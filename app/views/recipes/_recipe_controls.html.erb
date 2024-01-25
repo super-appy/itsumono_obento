@@ -1,4 +1,4 @@
-<% if current_user.own?(recipe) %>
+<% if current_user.own?(recipe) && recipe.api_resp == nil %>
     <%= render 'recipes/control/control_edit_button', recipe: recipe unless current_page?(recipe_path(recipe)) %>
 <% else %>
   <% bookmarked_recipe = current_user.bookmarked_recipes.find_by(recipe_id: recipe.id)%>

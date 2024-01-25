@@ -6,20 +6,22 @@ class RecipesController < ApplicationController
   def index
     @tags = Tag.all
     @q = Recipe.ransack(params[:q])
-    # 検索のパラメーターをjsonで保存
-    if params[:q].present? && !all_blank(params[:q]) && current_user
-      current_user.user_search_logs.create!(search_params: params[:q].to_json)
-    end
-    # 3つ以上になったら、古いものから削除する
-    if current_user.user_search_logs.size > 3
-      oldest_log = current_user.user_search_logs.order(:created_at).first
-      oldest_log.destroy
+    if logged_in?
+      # 検索のパラメーターをjsonで保存
+      if params[:q].present? && !all_blank(params[:q]) && current_user
+        current_user.user_search_logs.create!(search_params: params[:q].to_json)
+      end
+      # 3つ以上になったら、古いものから削除する
+      if current_user.user_search_logs.size > 3
+        oldest_log = current_user.user_search_logs.order(:created_at).first
+        oldest_log.destroy
+      end
     end
     @recipes = @q.result.includes(:tags).sorted_by_creation.distinct.page(params[:page])
   end
 
   def posted
-    @posted_recipes = current_user.recipes.page(params[:page])
+    @posted_recipes = current_user.recipes.where(api_resp: nil).page(params[:page])
   end
 
   def new
