@@ -6,12 +6,10 @@ module Api
 
 
     def new
-      if logged_in? && current_user.recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).where.not(api_resp: [nil, '']).size == 0
-        @recipe = Recipe.new
-      elsif api_request_allowed?
+      if can_create_recipe?
         @recipe = Recipe.new
       else
-        redirect_to root_path, alert: 'レシピの生成は1日1度までです'
+        redirect_to root_path, alert: '本日はすでにレシピを生成しています。レシピの生成は1日1度までです。'
       end
     end
 
@@ -56,6 +54,15 @@ module Api
     end
 
     private
+
+    def can_create_recipe?
+      unless logged_in?
+        return api_request_allowed?
+      end
+
+      !current_user.recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
+                      .where.not(api_resp: [nil, '']).exists?
+    end
 
     def recipe_params
       if logged_in?
