@@ -6,10 +6,10 @@ module Api
 
 
     def new
-      if api_request_allowed?
+      if can_create_recipe?
         @recipe = Recipe.new
       else
-        redirect_to root_path, alert: 'レシピの生成は1日1度までです'
+        redirect_to root_path, alert: '本日はすでにレシピを生成しています。レシピの生成は1日1度までです。'
       end
     end
 
@@ -55,8 +55,21 @@ module Api
 
     private
 
+    def can_create_recipe?
+      unless logged_in?
+        return api_request_allowed?
+      end
+
+      !current_user.recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
+                      .where.not(api_resp: [nil, '']).exists?
+    end
+
     def recipe_params
-      params.require(:recipe).permit(:time_required, :taste, tag_ids:[])
+      if logged_in?
+        params.require(:recipe).permit(:time_required, :taste, tag_ids:[]).merge(user_id: current_user.id)
+      else
+        params.require(:recipe).permit(:time_required, :taste, tag_ids:[])
+      end
     end
 
     def api_request_allowed?
