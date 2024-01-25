@@ -31,7 +31,20 @@
     <p class="mt-2">
       <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
     </p>
-    <% unless logged_in?%>
+    <% if logged_in? %>
+      <div class="py-3 md:px-10 px-3 mb5 mt-10 md:mx-auto mx-3 bg-card-body border border-theme rounded-lg">
+        公式LINEはじめました 📢<br>
+        「いつものお弁当」をご利用いただき、誠にありがとうございます。<br>
+        公式LINEをはじめました！毎週月曜日に人気のレシピをお届けします♩<br>
+        また、LINEからいつものお弁当にアクセスできるようになります◎<br>
+        ぜひ登録してください！
+        <div class="flex items-center justify-center mt-2">
+            <a href="https://lin.ee/TPDORrr" class="h-12">
+                <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" class="h-full object-cover">
+            </a>
+        </div>
+      </div>
+    <% else %>
       <div class="py-3 md:px-10 px-3 mb5 mt-10 md:mx-auto mx-3 bg-card-body border border-theme rounded-lg">
         おしらせ 📢<br>
         「いつものお弁当」をご利用いただき、誠にありがとうございます。<br>
