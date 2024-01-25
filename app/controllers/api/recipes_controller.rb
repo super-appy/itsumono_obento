@@ -6,7 +6,9 @@ module Api
 
 
     def new
-      if api_request_allowed?
+      if logged_in? && current_user.recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).where.not(api_resp: [nil, '']).size == 0
+        @recipe = Recipe.new
+      elsif api_request_allowed?
         @recipe = Recipe.new
       else
         redirect_to root_path, alert: 'レシピの生成は1日1度までです'
@@ -56,7 +58,11 @@ module Api
     private
 
     def recipe_params
-      params.require(:recipe).permit(:time_required, :taste, tag_ids:[])
+      if logged_in?
+        params.require(:recipe).permit(:time_required, :taste, tag_ids:[]).merge(user_id: current_user.id)
+      else
+        params.require(:recipe).permit(:time_required, :taste, tag_ids:[])
+      end
     end
 
     def api_request_allowed?
