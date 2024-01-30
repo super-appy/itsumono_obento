@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  constraints host: 'https://everydaylunchbox-d534442e43a4.herokuapp.com/' do
+    get '/(*path)', to: redirect { |path_params,| "https://www.itsumono-obento.com/#{path_params[:path]}" }
+  end
+
   get 'password_resets/create'
   get 'password_resets/edit'
   get 'password_resets/update'
