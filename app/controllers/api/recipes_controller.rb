@@ -5,7 +5,7 @@ module Api
     before_action :require_login, only: [:new, :create]
 
     def new
-      if can_create_recipe?
+      if current_user.can_create_recipe?
         @recipe = Recipe.new
       else
         redirect_to root_path, alert: '本日はすでにレシピを生成しています。レシピの生成は1日1度までです。'
@@ -48,11 +48,6 @@ module Api
     end
 
     private
-
-    def can_create_recipe?
-      !current_user.recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
-                      .where.not(api_resp: [nil, '']).exists?
-    end
 
     def recipe_params
       params.require(:recipe).permit(:time_required, :taste, tag_ids:[]).merge(user_id: current_user.id)

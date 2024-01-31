@@ -43,6 +43,11 @@ class User < ApplicationRecord
     bookmarked_recipes.where(status: :cooked).order(updated_at: :desc).map(&:recipe)
   end
 
+  def can_create_recipe?
+    !recipes.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day)
+                    .where.not(api_resp: [nil, '']).exists?
+  end
+
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, length: { maximum: 20 }
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
