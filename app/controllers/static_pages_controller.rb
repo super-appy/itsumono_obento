@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   skip_before_action :require_login, only: %i[top privacy_policy terms_of_use]
 
-  def top; end
+  def top
+    @can_create_recipe = current_user.can_create_recipe? if logged_in?
+  end
 
   def mypage
     @lunchbox_logs = current_user.lunchbox_logs

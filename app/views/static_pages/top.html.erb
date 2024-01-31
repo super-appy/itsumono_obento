@@ -25,17 +25,19 @@
     </div>
   </div>
   <div class="flex flex-col justify-center items-center mb-16">
-    <%= link_to new_api_recipe_path, class: "bg-point text-xl border-b-4 border-button py-2 md:px-10 px-4 rounded-full text-lg md:mx-4 mx-1 active:scale-95 transition duration-150" do %>
-      <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる！
-    <% end %>
-    <p class="mt-2">
-      <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
-    </p>
     <% if logged_in? %>
+      <% if @can_create_recipe %>
+        <%= link_to new_api_recipe_path, class: "bg-point text-xl border-b-4 border-button py-2 md:px-10 px-4 rounded-full text-lg md:mx-4 mx-1 active:scale-95 transition duration-150" do %>
+          <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる！
+        <% end %>
+        <p class="mt-2">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
+        </p>
+      <% end %>
       <div class="py-3 md:px-10 px-3 mb5 mt-10 md:mx-auto mx-3 bg-card-body border border-theme rounded-lg">
         公式LINEはじめました 📢<br>
         「いつものお弁当」をご利用いただき、誠にありがとうございます。<br>
-        公式LINEをはじめました！毎週月曜日に人気のレシピをお届けします♩<br>
+        公式LINEをはじめました！毎週月曜日におすすめのレシピをお届けします♩<br>
         また、LINEからいつものお弁当にアクセスできるようになります◎<br>
         ぜひ登録してください！
         <div class="flex items-center justify-center mt-2">
@@ -48,9 +50,8 @@
       <div class="py-3 md:px-10 px-3 mb5 mt-10 md:mx-auto mx-3 bg-card-body border border-theme rounded-lg">
         おしらせ 📢<br>
         「いつものお弁当」をご利用いただき、誠にありがとうございます。<br>
-        2024年2月1日以降、レシピ生成機能はログインユーザー限定機能となります。<br>
-        まだの方はユーザー登録がおすすめです。
-        ユーザー登録は<%= link_to 'こちら', new_user_path, class: "underline hover:text-point"%>
+        2024年2月1日より、レシピ生成機能はログインユーザー限定機能となりました。<br>
+        ぜひ、<%= link_to 'ユーザー登録', new_user_path, class: "underline hover:text-point"%>をしてご利用ください。<br>
       </div>
     <% end %>
   </div>
@@ -60,25 +61,6 @@
     </p>
     <div class="flex justify-center pb-8">
       <%= image_tag 'logo.png', class: "h-14" %>
-    </div>
-
-    <%# レシピ生成 %>
-    <div class="lg:w-4/6 mx-auto bg-card-body rounded-lg my-2 border-2 border-theme hover:shadow-lg hover:-translate-y-1 transform transition duration-300 ease-in-out">
-      <div class="flex flex-col sm:flex-row px-5">
-        <div class="sm:w-1/2 text-center p-3">
-          <img src="https://i.gyazo.com/f3bc51d72c75e49871c743bc975453f7.gif" alt="レシピ生成の操作イメージ" width="800"/>
-        </div>
-        <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
-          <%= link_to new_api_recipe_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do%>
-            <i class="fa-solid fa-robot mr-2"></i>AIレシピ生成
-          <% end %>
-          <div class= "py-4 px-1">
-            AIでお弁当にあうレシピを生成できます。<br>
-            調理時間・味のテイスト・使いたい食材を入力してください。<br>
-            ※ レシピの生成は1日1回までです
-          </div>
-        </div>
-      </div>
     </div>
 
     <%# レシピ一覧 %>
@@ -114,6 +96,30 @@
             他のユーザーが投稿したお弁当を見ることができます。<br>
             明日のお弁当の参考にしてみてくださいね。<br>
             ※ユーザー登録をするといいね機能が使えます
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# レシピ生成 %>
+    <div class="lg:w-4/6 mx-auto bg-card-body rounded-lg my-2 border-2 border-theme hover:shadow-lg hover:-translate-y-1 transform transition duration-300 ease-in-out">
+      <div class="flex flex-col sm:flex-row px-5">
+        <div class="sm:w-1/2 text-center p-3">
+          <img src="https://i.gyazo.com/f3bc51d72c75e49871c743bc975453f7.gif" alt="レシピ生成の操作イメージ" width="800"/>
+        </div>
+        <div class="sm:w-1/2 p-3 sm:mt-0 text-left flex flex-col justify-center">
+          <%= link_to new_api_recipe_path, class: "leading-relaxed text-xl pt-4 hover:text-point" do%>
+            <i class="fa-solid fa-robot mr-2"></i>AIレシピ生成
+          <% end %>
+          <div class= "py-4 px-1">
+            AIでお弁当にあうレシピを生成できます。<br>
+            調理時間・味のテイスト・使いたい食材を入力してください。<br>
+            ※ レシピの生成は1日1回までです
+          </div>
+          <div class="bg-point rounded-full flex justify-center md:w-1/3 w-1/2 mb-4">
+            <div class="px-1 flex items-center text-card-body">
+              ログイン限定
+            </div>
           </div>
         </div>
       </div>
