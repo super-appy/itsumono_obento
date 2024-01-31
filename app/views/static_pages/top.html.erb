@@ -26,12 +26,14 @@
   </div>
   <div class="flex flex-col justify-center items-center mb-16">
     <% if logged_in? %>
-      <%= link_to new_api_recipe_path, class: "bg-point text-xl border-b-4 border-button py-2 md:px-10 px-4 rounded-full text-lg md:mx-4 mx-1 active:scale-95 transition duration-150" do %>
-        <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる！
+      <% if @can_create_recipe %>
+        <%= link_to new_api_recipe_path, class: "bg-point text-xl border-b-4 border-button py-2 md:px-10 px-4 rounded-full text-lg md:mx-4 mx-1 active:scale-95 transition duration-150" do %>
+          <i class="fa-solid fa-robot mr-2"></i>AIでレシピを生成してみる！
+        <% end %>
+        <p class="mt-2">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
+        </p>
       <% end %>
-      <p class="mt-2">
-        <i class="fa-solid fa-triangle-exclamation mr-1"></i>レシピの生成は1日1回までです。
-      </p>
       <div class="py-3 md:px-10 px-3 mb5 mt-10 md:mx-auto mx-3 bg-card-body border border-theme rounded-lg">
         公式LINEはじめました 📢<br>
         「いつものお弁当」をご利用いただき、誠にありがとうございます。<br>
