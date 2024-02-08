@@ -97,6 +97,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rubocop', require: false
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'spring-commands-rspec'
 
 end
 
