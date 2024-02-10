@@ -52,7 +52,7 @@
     <%= link_to 'マイページ', mypage_path %>
   </div>
   <%# マイページのプルダウン %>
-  <div class="group relative cursor-pointer">
+  <div class="mypage_pulldown group relative cursor-pointer">
     <div class="flex items-center justify-between">
       <a class="menu-hover">
         <%= image_tag current_user.avator.url, class: "rounded-full h-12 w-12 border border-card-line flex items-center justify-center mb-2" %>
@@ -63,9 +63,9 @@
         <i class="fa-regular fa-address-card mr-1"></i>
         <%= link_to "プロフィール", profile_path %>
       </div>
-      <div class="flex items-center my-1 px-4 py-1 hover:text-point">
+      <div class=" flex items-center my-1 px-4 py-1 hover:text-point">
         <i class="fa-solid fa-right-from-bracket mr-1"></i>
-        <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+        <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: "logout_button" %>
       </div>
     </div>
   </div>
