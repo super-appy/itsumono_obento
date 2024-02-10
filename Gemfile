@@ -118,8 +118,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
-
+  gem "selenium-webdriver", "4.3.0"
 end
 
 # group :production do
