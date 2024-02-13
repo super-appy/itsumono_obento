@@ -24,7 +24,7 @@
       <% logs.each do |log| %>
         <%= link_to lunchbox_log_path(log) do %>
         <div class="flex items-center justify-center w-11/12 mx-auto md:h-32 h-50 overflow-hidden rounded-3xl border border-gray-200hover:scale-105 hover:shadow-lg cursor-pointer transition-transform duration-300 ease-in-out">
-          <%= image_tag log.image.url, class:"max-w-full max-h-full" %>
+          <%= image_tag log.image.url, class:"lunchbox_image_#{log.id} max-w-full max-h-full" %>
         </div>
         <% end %>
       <% end %>
