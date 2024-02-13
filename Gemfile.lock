@@ -457,7 +457,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   rubocop
-  selenium-webdriver (= 4.3.0)
+  selenium-webdriver
   simple_calendar
   sorcery
   spring-commands-rspec
