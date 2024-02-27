@@ -22,20 +22,20 @@
     </div>
 
     <div class= "flex my-2 w-full">
-      <div class="border rounded-full flex justify-center w-1/2 mx-2">
-        <div class="px-1 flex items-center ">
-          <%= link_to recipes_path(q: {time_required_eq: Recipe.time_requireds[recipe.time_required]}) do%>
+      <%= link_to recipes_path(q: {time_required_eq: Recipe.time_requireds[recipe.time_required]}), class:"w-1/2" do %>
+        <div class="border rounded-full flex justify-center mx-2 px-1">
+          <div class="flex items-center px-5">
             <i class="fa-regular fa-clock pr-2"></i><%= recipe.time_required_i18n %>
-          <% end %>
+          </div>
         </div>
-      </div>
-      <div class="border rounded-full flex justify-center w-1/2 mx-2">
-        <div class="px-1 flex items-center ">
-          <%= link_to recipes_path(q: {taste_eq: Recipe.tastes[recipe.taste]}) do%>
-            <i class="fa-solid fa-bowl-rice pr-2"></i><%= recipe.taste_i18n %>
-          <% end %>
+      <% end %>
+      <%= link_to recipes_path(q: {taste_eq: Recipe.tastes[recipe.taste]}), class:"w-1/2" do%>
+        <div class="border rounded-full flex justify-center mx-2">
+          <div class="px-1 flex items-center px-5">
+              <i class="fa-solid fa-bowl-rice pr-2"></i><%= recipe.taste_i18n %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
 
     <div class="">

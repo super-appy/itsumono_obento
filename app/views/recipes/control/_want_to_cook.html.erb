@@ -1,8 +1,8 @@
 <div class="flex justify-center items-center", id="want_to_cook_area_for_bookmarked_recipe_<%= recipe.id%>">
-  <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "text-theme border border-secondary py-1 px-3 hover:shadow-lg rounded-full md:mx-2 mx-1" do %>
+  <%= link_to bookmarked_recipe_path(bookmarked_recipe), data: {turbo_method: :delete}, class: "text-theme border border-secondary py-2 px-3 hover:shadow-lg rounded-full md:mx-2 mx-1" do %>
     <i class="fa-solid fa-xmark mr-1"></i>つくりたい取消
   <% end %>
-  <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "bg-theme text-card-body border border-theme py-1 px-3 hover:shadow-lg rounded-full md:mx-2 mx-1" do %>
+  <%= link_to edit_bookmarked_recipe_path(bookmarked_recipe), class: "bg-theme text-card-body border border-theme py-2 px-3 hover:shadow-lg rounded-full md:mx-2 mx-1" do %>
     <i class="fa-solid fa-pen-to-square mr-1"></i>つくった登録
   <% end %>
 </div>

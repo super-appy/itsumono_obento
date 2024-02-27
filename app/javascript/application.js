@@ -8,3 +8,4 @@ import "cocoon-js-vanilla";
 
 import "./add_steps";
 import "./modal"
+import "./menu_button"

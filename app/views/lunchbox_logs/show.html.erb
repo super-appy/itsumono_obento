@@ -59,7 +59,7 @@
       <% end %>
       <%= link_to lunchbox_log_path(@lunchbox_log),
             data: { turbo_method: :delete, turbo_confirm: "削除してもよろしいですか？\n公開範囲を「自分限定」にすることも可能です。"},
-            class: "bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
+            class: "button-delete-#{@lunchbox_log.id} bg-card-body border border-secondary py-1 px-5 hover:shadow-lg rounded-full" do %>
         <i class="fa-solid fa-trash-can mr-2"></i>削除
       <% end %>
     </div>

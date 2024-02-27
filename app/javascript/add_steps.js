@@ -1,15 +1,43 @@
 document.addEventListener('cocoon:after-insert', function(e) {
-  updateSteps();
+  updateUI();
 });
 
 document.addEventListener('cocoon:after-remove', function(e) {
-  updateSteps();
+  updateUI();
 });
 
 document.addEventListener("turbo:load", function() {
-  updateSteps();
+  updateUI();
 });
 
+function updateUI() {
+  updateSteps(); // 既存のステップ更新処理
+  addButtons(); // ボタンの追加処理もここに統合
+}
+
+function addButtons() {
+  // addButtonsの中身を、競合を避けるように調整
+  const addStepButton = document.querySelector('.add-step-button'); // querySelectorAllからquerySelectorに変更
+  const addIngButton = document.querySelector('.add-ing-button'); // 同上
+  
+  const stepFields = document.querySelectorAll('.step-nested-fields');
+  const ingFields = document.querySelectorAll('.ing-nested-fields');
+  
+  const maxStep = 5;
+  const maxIng = 8;
+  
+  if(stepFields.length >= maxStep) {
+    addStepButton.style.display = 'none';
+  } else {
+    addStepButton.style.display = 'block';
+  }
+
+  if(ingFields.length >= maxIng) {
+    addIngButton.style.display = 'none';
+  } else {
+    addIngButton.style.display = 'block';
+  }
+}
 
 function updateSteps() {
   const stepFields = document.querySelectorAll('.step-nested-fields');
@@ -32,4 +60,3 @@ function updateSteps() {
     }
   });
 }
-
