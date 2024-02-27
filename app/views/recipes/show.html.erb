@@ -22,7 +22,7 @@
 
 
     <div class="mx-3 flex flex-col justify-center items-center">
-      <div class="p-10 border-b border-secondary w-full">
+      <div class="md:px-10 py-10 p-0 border-b border-secondary w-full">
         <% if logged_in? %>
           <%= render 'recipes/recipe_controls', recipe: @recipe, current_user: current_user %>
         <% else %>
