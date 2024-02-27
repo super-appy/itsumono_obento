@@ -4,50 +4,50 @@
     <ul class="flex flex-col z-10 items-start border border-card-line">
 
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-robot fa-fw mr-1"></i>
+        <i class="fa-solid fa-robot fa-fw mr-1 w-5"></i>
         <%= link_to 'レシピ生成', new_api_recipe_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-list fa-fw mr-1"></i>
+        <i class="fa-solid fa-list fa-fw mr-1 w-5"></i>
         <%= link_to 'レシピ一覧', recipes_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-heart mr-1"></i>
+        <i class="fa-solid fa-heart mr-1 w-5"></i>
         <%= link_to '作りたいレシピ', want_to_cook_bookmarked_recipes_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-utensils mr-1"></i>
+        <i class="fa-solid fa-utensils mr-1 w-5"></i>
         <%= link_to '作ったレシピ', cooked_bookmarked_recipes_path %>
       </div>
       <div class="text-sm px-3">ーーーーーーーーーーー</div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-pen-to-square fa-fw mr-1"></i>
+        <i class="fa-solid fa-pen-to-square fa-fw mr-1 w-5"></i>
         <%= link_to 'レシピ投稿', new_recipe_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-regular fa-circle-up mr-1"></i>
+        <i class="fa-regular fa-circle-up mr-1 w-5"></i>
         <%= link_to '投稿したレシピ', posted_recipes_path %>
       </div>
       <div class="text-sm px-3">ーーーーーーーーーーー</div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-regular fa-images mr-1"></i>
+        <i class="fa-regular fa-images mr-1 w-5"></i>
         <%= link_to 'みんなのお弁当', lunchbox_logs_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-regular fa-pen-to-square mr-1"></i>
+        <i class="fa-regular fa-pen-to-square mr-1 w-5"></i>
         <%= link_to 'お弁当を記録', new_lunchbox_log_path %>
       </div>
       <div class="text-sm px-3">ーーーーーーーーーーー</div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-user mr-1"></i>
+        <i class="fa-solid fa-user mr-1 w-5"></i>
         <%= link_to 'マイページ', mypage_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-regular fa-address-card mr-1"></i>
+        <i class="fa-regular fa-address-card mr-1 w-5"></i>
         <%= link_to "プロフィール", profile_path %>
       </div>
       <div class="flex items-center my-1 px-4 py-1 hover:text-point">
-        <i class="fa-solid fa-right-from-bracket mr-1"></i>
+        <i class="fa-solid fa-right-from-bracket mr-1 w-5"></i>
         <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
       </div>
     </ul>
